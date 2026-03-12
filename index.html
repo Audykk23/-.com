@@ -974,6 +974,312 @@ footer {
   </div>
 </section>
 
+
+<!-- SMC DASHBOARD SECTION -->
+<section id="smc" style="padding: 96px 48px; background: var(--off-white); border-top: 1px solid var(--border);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="reveal" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="section-label">Smart Money Concepts</div>
+        <h2 class="section-title">SMC Levels XAUUSD 🎯</h2>
+        <p class="section-sub">Strong/Weak High & Low จากลุงอัด อัปเดตทุกวัน</p>
+      </div>
+      <!-- TF Switcher -->
+      <div style="display:flex; gap:8px;" id="tfSwitcher">
+        <button onclick="switchTF('1M')" class="tf-btn tf-active" id="btn-1M">1M</button>
+        <button onclick="switchTF('5M')" class="tf-btn" id="btn-5M">5M</button>
+        <button onclick="switchTF('15M')" class="tf-btn" id="btn-15M">15M</button>
+      </div>
+    </div>
+
+    <!-- SMC Cards -->
+    <div id="smcDisplay" style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
+
+      <!-- Strong High -->
+      <div class="about-card reveal" style="flex-direction:column; gap:10px; border-left:4px solid #16a34a;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase;">Strong High 💪</div>
+          <div style="font-size:11px; background:rgba(22,163,74,0.1); color:#16a34a; border:1px solid rgba(22,163,74,0.2); padding:3px 10px; border-radius:50px; font-family:Kanit,sans-serif;">Resistant</div>
+        </div>
+        <div id="val-SH-1M" style="font-family:'Playfair Display',serif; font-size:36px; font-weight:900; color:#16a34a;">—</div>
+        <div id="note-SH-1M" style="font-size:13px; color:var(--text-muted); font-family:Sarabun,sans-serif;">ยังไม่มีข้อมูล</div>
+      </div>
+
+      <!-- Weak High -->
+      <div class="about-card reveal" style="flex-direction:column; gap:10px; border-left:4px solid #86efac; transition-delay:0.1s;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase;">Weak High 🔸</div>
+          <div style="font-size:11px; background:rgba(134,239,172,0.15); color:#16a34a; border:1px solid rgba(134,239,172,0.3); padding:3px 10px; border-radius:50px; font-family:Kanit,sans-serif;">Watch</div>
+        </div>
+        <div id="val-WH-1M" style="font-family:'Playfair Display',serif; font-size:36px; font-weight:900; color:#4ade80;">—</div>
+        <div id="note-WH-1M" style="font-size:13px; color:var(--text-muted); font-family:Sarabun,sans-serif;">ยังไม่มีข้อมูล</div>
+      </div>
+
+      <!-- Strong Low -->
+      <div class="about-card reveal" style="flex-direction:column; gap:10px; border-left:4px solid var(--red); transition-delay:0.2s;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase;">Strong Low 💪</div>
+          <div style="font-size:11px; background:rgba(192,57,43,0.08); color:var(--red); border:1px solid rgba(192,57,43,0.2); padding:3px 10px; border-radius:50px; font-family:Kanit,sans-serif;">Support</div>
+        </div>
+        <div id="val-SL-1M" style="font-family:'Playfair Display',serif; font-size:36px; font-weight:900; color:var(--red);">—</div>
+        <div id="note-SL-1M" style="font-size:13px; color:var(--text-muted); font-family:Sarabun,sans-serif;">ยังไม่มีข้อมูล</div>
+      </div>
+
+      <!-- Weak Low -->
+      <div class="about-card reveal" style="flex-direction:column; gap:10px; border-left:4px solid #fca5a5; transition-delay:0.3s;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase;">Weak Low 🔸</div>
+          <div style="font-size:11px; background:rgba(252,165,165,0.15); color:#ef4444; border:1px solid rgba(252,165,165,0.3); padding:3px 10px; border-radius:50px; font-family:Kanit,sans-serif;">Watch</div>
+        </div>
+        <div id="val-WL-1M" style="font-family:'Playfair Display',serif; font-size:36px; font-weight:900; color:#ef4444;">—</div>
+        <div id="note-WL-1M" style="font-size:13px; color:var(--text-muted); font-family:Sarabun,sans-serif;">ยังไม่มีข้อมูล</div>
+      </div>
+
+    </div>
+
+    <!-- Last update + bias -->
+    <div style="margin-top:20px; display:flex; gap:16px; flex-wrap:wrap;" class="reveal">
+      <div style="flex:1; background:white; border:1px solid var(--border); border-radius:8px; padding:16px 20px; display:flex; gap:12px; align-items:center;">
+        <span style="font-size:24px;">📝</span>
+        <div>
+          <div style="font-family:Kanit,sans-serif; font-size:12px; color:var(--text-muted);">Bias ลุงอัด</div>
+          <div id="bias-1M" style="font-family:Kanit,sans-serif; font-size:16px; font-weight:700; color:var(--text-main);">—</div>
+        </div>
+      </div>
+      <div style="flex:1; background:white; border:1px solid var(--border); border-radius:8px; padding:16px 20px; display:flex; gap:12px; align-items:center;">
+        <span style="font-size:24px;">🕐</span>
+        <div>
+          <div style="font-family:Kanit,sans-serif; font-size:12px; color:var(--text-muted);">อัปเดตล่าสุด</div>
+          <div id="updated-1M" style="font-family:Kanit,sans-serif; font-size:14px; font-weight:600; color:var(--gold);">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px; text-align:center; font-size:12px; color:var(--text-muted); font-family:Kanit,sans-serif;">
+      ⚠️ ข้อมูลนี้เป็นการวิเคราะห์ส่วนตัวของลุงอัด ไม่ใช่คำแนะนำการลงทุน
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN PANEL (hidden by default) -->
+<div id="adminPanel" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.7); backdrop-filter:blur(8px); overflow-y:auto;">
+  <div style="max-width:600px; margin:40px auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    
+    <!-- Admin Header -->
+    <div style="background:var(--text-main); padding:24px 28px; display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:var(--gold);">Admin Panel 👴</div>
+        <div style="font-size:12px; color:rgba(255,255,255,0.5); font-family:Kanit,sans-serif; margin-top:2px;">ลุงอัด ซัดกราฟ — อัปเดต SMC Levels</div>
+      </div>
+      <button onclick="closeAdmin()" style="background:rgba(255,255,255,0.1); border:none; color:white; font-size:20px; width:36px; height:36px; border-radius:50%; cursor:pointer;">✕</button>
+    </div>
+
+    <!-- Password -->
+    <div id="adminLogin" style="padding:32px 28px;">
+      <div style="font-family:Kanit,sans-serif; font-size:16px; font-weight:700; color:var(--text-main); margin-bottom:16px;">🔐 ใส่รหัสผ่าน</div>
+      <input type="password" id="adminPass" placeholder="รหัสผ่านลุงอัด" style="width:100%; padding:12px 16px; border:1.5px solid var(--border); border-radius:6px; font-family:Kanit,sans-serif; font-size:15px; outline:none; margin-bottom:12px;">
+      <button onclick="checkPass()" style="width:100%; background:var(--gold); color:white; border:none; padding:13px; border-radius:6px; font-family:Kanit,sans-serif; font-size:15px; font-weight:700; cursor:pointer;">เข้าสู่ระบบ</button>
+      <div id="passError" style="color:var(--red); font-size:13px; margin-top:8px; font-family:Kanit,sans-serif; display:none;">รหัสผ่านไม่ถูกต้องครับ 🙅</div>
+    </div>
+
+    <!-- Admin Form (hidden until login) -->
+    <div id="adminForm" style="display:none; padding:0 28px 28px;">
+      
+      <!-- TF Tabs -->
+      <div style="display:flex; gap:8px; margin-bottom:24px;">
+        <button onclick="setAdminTF('1M')" class="tf-btn tf-active" id="admin-btn-1M">1M</button>
+        <button onclick="setAdminTF('5M')" class="tf-btn" id="admin-btn-5M">5M</button>
+        <button onclick="setAdminTF('15M')" class="tf-btn" id="admin-btn-15M">15M</button>
+      </div>
+
+      <div id="adminFields">
+        <!-- Fields injected by JS -->
+      </div>
+
+      <button onclick="saveData()" style="width:100%; background:var(--gold); color:white; border:none; padding:14px; border-radius:6px; font-family:Kanit,sans-serif; font-size:16px; font-weight:700; cursor:pointer; margin-top:8px;">
+        💾 บันทึกข้อมูล
+      </button>
+      <div id="saveMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึกสำเร็จแล้วครับ!</div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Trigger (hidden button bottom right) -->
+<button onclick="openAdmin()" style="position:fixed; bottom:24px; right:24px; z-index:100; background:var(--text-main); color:var(--gold); border:1px solid rgba(184,151,42,0.3); border-radius:50%; width:48px; height:48px; font-size:20px; cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,0.3);" title="Admin">⚙️</button>
+
+<style>
+.tf-btn {
+  font-family: Kanit, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border);
+  background: white;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tf-btn:hover { border-color: var(--gold); color: var(--gold); }
+.tf-active { background: var(--gold) !important; color: white !important; border-color: var(--gold) !important; }
+.admin-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-family: Kanit, sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 4px;
+}
+.admin-input:focus { border-color: var(--gold); }
+.admin-label {
+  font-family: Kanit, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  margin-top: 14px;
+  display: block;
+}
+</style>
+
+<script>
+// ===== SMC DATA STORE =====
+const ADMIN_PASSWORD = 'lungad2025';
+const TFS = ['1M', '5M', '15M'];
+let currentTF = '1M';
+let adminTF = '1M';
+let smcData = {};
+
+// Load from localStorage
+function loadData() {
+  const saved = localStorage.getItem('smcData');
+  if (saved) smcData = JSON.parse(saved);
+  else {
+    TFS.forEach(tf => {
+      smcData[tf] = { SH: '', WH: '', SL: '', WL: '', bias: '', updated: '' };
+    });
+  }
+}
+
+function saveToStorage() {
+  localStorage.setItem('smcData', JSON.stringify(smcData));
+}
+
+// ===== DISPLAY =====
+function updateDisplay(tf) {
+  const d = smcData[tf] || {};
+  const keys = ['SH', 'WH', 'SL', 'WL'];
+  const labels = { SH: 'Strong High', WH: 'Weak High', SL: 'Strong Low', WL: 'Weak Low' };
+
+  // Update all cards
+  keys.forEach(k => {
+    const valEl = document.getElementById(`val-${k}-1M`);
+    const noteEl = document.getElementById(`note-${k}-1M`);
+    if (valEl) valEl.textContent = d[k] ? d[k] : '—';
+    if (noteEl) noteEl.textContent = d[k] ? labels[k] + ' @ ' + d[k] : 'ยังไม่มีข้อมูล';
+  });
+
+  const biasEl = document.getElementById('bias-1M');
+  const updEl = document.getElementById('updated-1M');
+  if (biasEl) biasEl.textContent = d.bias || '—';
+  if (biasEl && d.bias) {
+    biasEl.style.color = d.bias.toLowerCase().includes('bull') || d.bias.includes('ขึ้น') ? '#16a34a' : d.bias.toLowerCase().includes('bear') || d.bias.includes('ลง') ? 'var(--red)' : 'var(--text-main)';
+  }
+  if (updEl) updEl.textContent = d.updated || '—';
+}
+
+// ===== TF SWITCH =====
+function switchTF(tf) {
+  currentTF = tf;
+  TFS.forEach(t => {
+    document.getElementById('btn-' + t)?.classList.remove('tf-active');
+  });
+  document.getElementById('btn-' + tf)?.classList.add('tf-active');
+  updateDisplay(tf);
+}
+
+// ===== ADMIN =====
+function openAdmin() { document.getElementById('adminPanel').style.display = 'block'; }
+function closeAdmin() {
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('adminLogin').style.display = 'block';
+  document.getElementById('adminForm').style.display = 'none';
+  document.getElementById('adminPass').value = '';
+  document.getElementById('passError').style.display = 'none';
+}
+
+function checkPass() {
+  const pass = document.getElementById('adminPass').value;
+  if (pass === ADMIN_PASSWORD) {
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('adminForm').style.display = 'block';
+    renderAdminFields(adminTF);
+  } else {
+    document.getElementById('passError').style.display = 'block';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('adminPass') === document.activeElement) checkPass();
+});
+
+function setAdminTF(tf) {
+  adminTF = tf;
+  TFS.forEach(t => document.getElementById('admin-btn-' + t)?.classList.remove('tf-active'));
+  document.getElementById('admin-btn-' + tf)?.classList.add('tf-active');
+  renderAdminFields(tf);
+}
+
+function renderAdminFields(tf) {
+  const d = smcData[tf] || {};
+  document.getElementById('adminFields').innerHTML = `
+    <div style="background:#f9f9f7; border-radius:8px; padding:16px; margin-bottom:16px;">
+      <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--gold); margin-bottom:12px;">📊 TF: ${tf}</div>
+      
+      <label class="admin-label">💪 Strong High</label>
+      <input class="admin-input" id="field-SH" type="number" step="0.01" placeholder="เช่น 2345.50" value="${d.SH || ''}">
+      
+      <label class="admin-label">🔸 Weak High</label>
+      <input class="admin-input" id="field-WH" type="number" step="0.01" placeholder="เช่น 2338.20" value="${d.WH || ''}">
+      
+      <label class="admin-label">💪 Strong Low</label>
+      <input class="admin-input" id="field-SL" type="number" step="0.01" placeholder="เช่น 2310.00" value="${d.SL || ''}">
+      
+      <label class="admin-label">🔸 Weak Low</label>
+      <input class="admin-input" id="field-WL" type="number" step="0.01" placeholder="เช่น 2318.75" value="${d.WL || ''}">
+      
+      <label class="admin-label">📝 Bias ลุงอัด</label>
+      <input class="admin-input" id="field-bias" type="text" placeholder="เช่น Bullish / Bearish / Sideways" value="${d.bias || ''}">
+    </div>
+  `;
+  document.getElementById('saveMsg').style.display = 'none';
+}
+
+function saveData() {
+  const tf = adminTF;
+  smcData[tf] = {
+    SH: document.getElementById('field-SH').value,
+    WH: document.getElementById('field-WH').value,
+    SL: document.getElementById('field-SL').value,
+    WL: document.getElementById('field-WL').value,
+    bias: document.getElementById('field-bias').value,
+    updated: new Date().toLocaleString('th-TH', { dateStyle: 'short', timeStyle: 'short' })
+  };
+  saveToStorage();
+  updateDisplay(currentTF);
+  document.getElementById('saveMsg').style.display = 'block';
+  setTimeout(() => document.getElementById('saveMsg').style.display = 'none', 3000);
+}
+
+// Init
+loadData();
+updateDisplay('1M');
+</script>
+
 <!-- TOOLS SECTION -->
 <section id="tools" style="padding: 96px 48px; background: var(--off-white); border-top: 1px solid var(--border);">
   <div style="max-width: 1100px; margin: 0 auto;">
