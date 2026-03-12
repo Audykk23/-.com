@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Position Size & Pip Calculator XAUUSD | ลุงอัด ซัดกราฟ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Kanit:wght@300;400;600;700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E2C06A;
+  --gold-pale: #FFF8E7;
+  --gold-shine: #FFE680;
+  --black: #0A0A0A;
+  --off-white: #FFFFFF;
+  --warm-white: #F4F4F4;
+  --text-main: #0A0A0A;
+  --text-sub: #333333;
+  --text-muted: #888888;
+  --red: #C0392B;
+  --red-light: #E74C3C;
+  --green: #16a34a;
+  --green-light: #4ade80;
+  --border: rgba(201,168,76,0.2);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--off-white);
+  color: var(--text-main);
+  font-family: 'Sarabun', sans-serif;
+  min-height: 100vh;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--warm-white); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 900;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--text-main); }
+.nav-back {
+  display: flex; align-items: center; gap: 8px;
+  font-family: Kanit, sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--text-muted); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--gold); }
+
+/* HERO STRIP */
+.hero-strip {
+  background: var(--text-main);
+  padding: 48px 48px 40px;
+  text-align: center;
+  border-bottom: 2px solid var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+.hero-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(201,168,76,0.12) 0%, transparent 70%);
+}
+.hero-label {
+  font-family: Kanit, sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 3px; color: var(--gold); text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px; font-weight: 900; color: white;
+  line-height: 1.2; margin-bottom: 10px;
+}
+.hero-title span { color: var(--gold-light); }
+.hero-sub {
+  font-size: 14px; color: rgba(255,255,255,0.45);
+  font-family: Sarabun, sans-serif;
+}
+
+/* TABS */
+.tab-bar {
+  display: flex; gap: 0;
+  max-width: 600px; margin: 32px auto 0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
+  position: relative; z-index: 1;
+}
+.tab-btn {
+  flex: 1; padding: 13px;
+  font-family: Kanit, sans-serif; font-size: 14px; font-weight: 700;
+  border: none; background: transparent; color: rgba(255,255,255,0.4);
+  cursor: pointer; transition: all 0.2s;
+}
+.tab-btn.active {
+  background: var(--gold);
+  color: #000;
+}
+.tab-btn:hover:not(.active) { color: var(--gold-light); }
+
+/* MAIN LAYOUT */
+.main-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* PANELS */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* CARD */
+.calc-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.calc-card-header {
+  background: var(--text-main);
+  padding: 20px 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.calc-card-header-icon { font-size: 24px; }
+.calc-card-header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 900; color: var(--gold-light);
+}
+.calc-card-header-sub {
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  font-family: Kanit, sans-serif; margin-top: 2px;
+}
+.calc-body { padding: 28px; }
+
+/* FORM GRID */
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 20px;
+}
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+label {
+  font-family: Kanit, sans-serif; font-size: 12px; font-weight: 700;
+  color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase;
+}
+.input-wrap { position: relative; }
+input[type="number"], select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 8px;
+  font-family: Kanit, sans-serif; font-size: 16px; font-weight: 600;
+  color: var(--text-main);
+  background: var(--warm-white);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+}
+input[type="number"]:focus, select:focus {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+}
+.input-unit {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  font-family: Kanit, sans-serif; font-size: 12px; font-weight: 700;
+  color: var(--text-muted); pointer-events: none;
+}
+select { cursor: pointer; padding-right: 36px; }
+.select-arrow {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  pointer-events: none; color: var(--text-muted); font-size: 10px;
+}
+
+/* RISK TOGGLE */
+.risk-toggle {
+  display: flex; gap: 8px; margin-bottom: 6px;
+}
+.risk-toggle-btn {
+  flex: 1; padding: 9px;
+  font-family: Kanit, sans-serif; font-size: 13px; font-weight: 700;
+  border: 1.5px solid #e5e5e5; border-radius: 6px;
+  background: white; color: var(--text-muted); cursor: pointer;
+  transition: all 0.2s;
+}
+.risk-toggle-btn.active {
+  background: var(--gold); border-color: var(--gold); color: #000;
+}
+
+/* CALC BUTTON */
+.btn-calc {
+  width: 100%; padding: 15px;
+  background: var(--gold); border: none; border-radius: 8px;
+  font-family: Kanit, sans-serif; font-size: 16px; font-weight: 700;
+  color: #000; cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 8px;
+}
+.btn-calc:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-calc:active { transform: translateY(0); }
+
+/* RESULT BOX */
+.result-box {
+  margin-top: 20px;
+  background: var(--text-main);
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.result-box.show { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+.result-main {
+  display: flex; align-items: baseline; gap: 8px;
+  margin-bottom: 16px;
+}
+.result-label {
+  font-family: Kanit, sans-serif; font-size: 12px; font-weight: 700;
+  color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase;
+}
+.result-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px; font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.result-unit {
+  font-family: Kanit, sans-serif; font-size: 18px; font-weight: 700;
+  color: rgba(255,255,255,0.5);
+}
+
+.result-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 12px; margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.result-item { text-align: center; }
+.result-item-val {
+  font-family: Kanit, sans-serif; font-size: 16px; font-weight: 700;
+  color: white; margin-bottom: 3px;
+}
+.result-item-label {
+  font-size: 11px; color: rgba(255,255,255,0.35);
+  font-family: Sarabun, sans-serif;
+}
+
+/* WARNING */
+.warning-box {
+  margin-top: 16px;
+  background: rgba(192,57,43,0.1);
+  border: 1px solid rgba(192,57,43,0.25);
+  border-radius: 8px; padding: 12px 16px;
+  font-size: 12px; color: #e87; font-family: Sarabun, sans-serif;
+  display: none;
+}
+.warning-box.show { display: block; }
+
+/* INFO BOX */
+.info-box {
+  margin-top: 20px;
+  background: var(--gold-pale);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 10px; padding: 16px 20px;
+}
+.info-box-title {
+  font-family: Kanit, sans-serif; font-size: 13px; font-weight: 700;
+  color: var(--gold); margin-bottom: 8px;
+}
+.info-box p {
+  font-size: 13px; color: var(--text-sub);
+  font-family: Sarabun, sans-serif; line-height: 1.8;
+}
+
+/* FORMULA STRIP */
+.formula-strip {
+  margin-top: 24px;
+  background: var(--warm-white);
+  border-radius: 10px; padding: 16px 20px;
+  border: 1px solid #eee;
+}
+.formula-strip-title {
+  font-family: Kanit, sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.formula {
+  font-family: 'Courier New', monospace; font-size: 13px;
+  color: var(--text-sub); line-height: 1.8;
+}
+.formula span { color: var(--gold); font-weight: 700; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .hero-strip { padding: 40px 20px 36px; }
+  .hero-title { font-size: 28px; }
+  .main-wrap { padding: 24px 16px 60px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .calc-body { padding: 20px; }
+  .result-grid { grid-template-columns: repeat(2,1fr); }
+  .result-value { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">ลุงอัด <span>ซัดกราฟ</span></a>
+  <a href="index.html" class="nav-back">← กลับหน้าหลัก</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-strip">
+  <div class="hero-label">XAUUSD Tools</div>
+  <h1 class="hero-title">Position Size &<br><span>Pip Calculator</span></h1>
+  <p class="hero-sub">คำนวณ Lot Size และมูลค่า Pip สำหรับ XAUUSD โดยเฉพาะ</p>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('pos')">📐 Position Size</button>
+    <button class="tab-btn" onclick="switchTab('pip')">💰 Pip Calculator</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+
+  <!-- ===== POSITION SIZE PANEL ===== -->
+  <div id="panel-pos" class="panel active">
+    <div class="calc-card">
+      <div class="calc-card-header">
+        <div class="calc-card-header-icon">📐</div>
+        <div>
+          <div class="calc-card-header-title">Position Size Calculator</div>
+          <div class="calc-card-header-sub">คำนวณ Lot ที่เหมาะสมตาม Risk ของคุณ — XAUUSD</div>
+        </div>
+      </div>
+      <div class="calc-body">
+
+        <div class="form-grid">
+
+          <!-- Account Balance -->
+          <div class="form-group">
+            <label>💰 Account Balance</label>
+            <div class="input-wrap">
+              <input type="number" id="pos-balance" value="10000" min="1" step="100">
+              <span class="input-unit">USD</span>
+            </div>
+          </div>
+
+          <!-- Currency -->
+          <div class="form-group">
+            <label>🌍 Account Currency</label>
+            <div class="input-wrap">
+              <select id="pos-currency">
+                <option value="USD">USD (ดอลลาร์)</option>
+                <option value="THB">THB (บาท)</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+          </div>
+
+          <!-- Risk Type -->
+          <div class="form-group full">
+            <label>⚠️ ความเสี่ยงที่รับได้</label>
+            <div class="risk-toggle">
+              <button class="risk-toggle-btn active" id="risk-pct-btn" onclick="setRiskType('pct')">% ของพอร์ต</button>
+              <button class="risk-toggle-btn" id="risk-usd-btn" onclick="setRiskType('usd')">จำนวนเงิน (USD)</button>
+            </div>
+            <div class="input-wrap" id="risk-pct-wrap">
+              <input type="number" id="pos-risk-pct" value="1" min="0.1" max="100" step="0.1">
+              <span class="input-unit">%</span>
+            </div>
+            <div class="input-wrap" id="risk-usd-wrap" style="display:none;">
+              <input type="number" id="pos-risk-usd" value="100" min="1" step="10">
+              <span class="input-unit">USD</span>
+            </div>
+          </div>
+
+          <!-- Entry Price -->
+          <div class="form-group">
+            <label>📍 Entry Price</label>
+            <div class="input-wrap">
+              <input type="number" id="pos-entry" value="2350.00" step="0.01">
+              <span class="input-unit">USD</span>
+            </div>
+          </div>
+
+          <!-- Stop Loss -->
+          <div class="form-group">
+            <label>🛑 Stop Loss</label>
+            <div class="input-wrap">
+              <input type="number" id="pos-sl" value="2340.00" step="0.01">
+              <span class="input-unit">USD</span>
+            </div>
+          </div>
+
+          <!-- Take Profit (optional) -->
+          <div class="form-group full">
+            <label>🎯 Take Profit (ไม่บังคับ)</label>
+            <div class="input-wrap">
+              <input type="number" id="pos-tp" value="" placeholder="เช่น 2370.00" step="0.01">
+              <span class="input-unit">USD</span>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="btn-calc" onclick="calcPositionSize()">⚡ คำนวณ Lot Size</button>
+
+        <!-- Result -->
+        <div class="result-box" id="pos-result">
+          <div class="result-label">Recommended Lot Size</div>
+          <div class="result-main">
+            <div class="result-value" id="pos-lot">0.00</div>
+            <div class="result-unit">Lots</div>
+          </div>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-item-val" id="pos-risk-amt">$0</div>
+              <div class="result-item-label">Risk Amount</div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-val" id="pos-sl-pips">0</div>
+              <div class="result-item-label">SL (pips)</div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-val" id="pos-rr">—</div>
+              <div class="result-item-label">R:R Ratio</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="warning-box" id="pos-warning">⚠️ SL ต้องห่างจาก Entry อย่างน้อย 1 pip ครับ</div>
+
+        <div class="formula-strip" style="margin-top:20px;">
+          <div class="formula-strip-title">📌 สูตรที่ใช้ (XAUUSD)</div>
+          <div class="formula">
+            Lot Size = <span>Risk (USD)</span> ÷ (<span>SL pips</span> × <span>10</span>)<br>
+            <small style="color:var(--text-muted);">* 1 Standard Lot XAUUSD = $10 ต่อ pip (0.01 USD)</small>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-box-title">💡 ลุงอัดแนะนำ</div>
+          <p>ไม่ควร Risk เกิน <strong>1-2%</strong> ต่อออเดอร์ครับ — ถ้าพอร์ต $10,000 ควร Risk ไม่เกิน $100-200 ต่อเทรด แม้จะมั่นใจแค่ไหนก็ตาม เพราะตลาดทองผันผวนได้เสมอครับ 🥇</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PIP CALCULATOR PANEL ===== -->
+  <div id="panel-pip" class="panel">
+    <div class="calc-card">
+      <div class="calc-card-header">
+        <div class="calc-card-header-icon">💰</div>
+        <div>
+          <div class="calc-card-header-title">Pip Value Calculator</div>
+          <div class="calc-card-header-sub">คำนวณมูลค่า Pip สำหรับ XAUUSD</div>
+        </div>
+      </div>
+      <div class="calc-body">
+
+        <div class="form-grid">
+
+          <!-- Lot Size -->
+          <div class="form-group">
+            <label>📦 Lot Size</label>
+            <div class="input-wrap">
+              <input type="number" id="pip-lot" value="0.10" min="0.01" step="0.01">
+              <span class="input-unit">Lots</span>
+            </div>
+          </div>
+
+          <!-- Lot Type -->
+          <div class="form-group">
+            <label>🔢 ประเภท Lot</label>
+            <div class="input-wrap">
+              <select id="pip-lottype" onchange="updateLotInfo()">
+                <option value="standard">Standard (1.00)</option>
+                <option value="mini">Mini (0.10)</option>
+                <option value="micro">Micro (0.01)</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+          </div>
+
+          <!-- Number of Pips -->
+          <div class="form-group">
+            <label>📏 จำนวน Pips</label>
+            <div class="input-wrap">
+              <input type="number" id="pip-pips" value="10" min="0.1" step="0.1">
+              <span class="input-unit">pips</span>
+            </div>
+          </div>
+
+          <!-- Account Currency -->
+          <div class="form-group">
+            <label>💵 สกุลเงินบัญชี</label>
+            <div class="input-wrap">
+              <select id="pip-currency">
+                <option value="USD">USD</option>
+                <option value="THB">THB</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+          </div>
+
+          <!-- USDTHB Rate (show if THB) -->
+          <div class="form-group full" id="thb-rate-wrap" style="display:none;">
+            <label>💱 อัตราแลกเปลี่ยน USD/THB</label>
+            <div class="input-wrap">
+              <input type="number" id="pip-thbrate" value="35.5" min="1" step="0.1">
+              <span class="input-unit">THB</span>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="btn-calc" onclick="calcPipValue()">⚡ คำนวณมูลค่า Pip</button>
+
+        <!-- Result -->
+        <div class="result-box" id="pip-result">
+          <div class="result-label">มูลค่าต่อ Pip</div>
+          <div class="result-main">
+            <div class="result-value" id="pip-val-per">0.00</div>
+            <div class="result-unit" id="pip-currency-label">USD</div>
+          </div>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-item-val" id="pip-total">$0.00</div>
+              <div class="result-item-label">มูลค่ารวม</div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-val" id="pip-contract">—</div>
+              <div class="result-item-label">Contract Size</div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-val" id="pip-per-pip">$10</div>
+              <div class="result-item-label">$/pip (1 Lot)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-strip" style="margin-top:20px;">
+          <div class="formula-strip-title">📌 ข้อมูล XAUUSD</div>
+          <div class="formula">
+            Contract Size: <span>100 oz</span> ต่อ 1 Standard Lot<br>
+            1 pip = <span>$0.01</span> USD (ทศนิยม 2 ตำแหน่ง)<br>
+            Pip Value: <span>1 Lot</span> = <span>$10/pip</span> | <span>0.1 Lot</span> = <span>$1/pip</span> | <span>0.01 Lot</span> = <span>$0.10/pip</span>
+          </div>
+        </div>
+
+        <!-- Quick Reference Table -->
+        <div style="margin-top:20px;">
+          <div style="font-family:Kanit,sans-serif; font-size:12px; font-weight:700; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">📋 ตารางอ้างอิงด่วน</div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-family:Kanit,sans-serif; font-size:13px;">
+              <thead>
+                <tr style="background:var(--text-main); color:white;">
+                  <th style="padding:10px 14px; text-align:left; border-radius:6px 0 0 0;">Lot Size</th>
+                  <th style="padding:10px 14px; text-align:right;">$/pip</th>
+                  <th style="padding:10px 14px; text-align:right;">10 pips</th>
+                  <th style="padding:10px 14px; text-align:right; border-radius:0 6px 0 0;">50 pips</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:white; border-bottom:1px solid #f0f0f0;">
+                  <td style="padding:10px 14px; font-weight:700; color:var(--gold);">1.00 (Standard)</td>
+                  <td style="padding:10px 14px; text-align:right;">$10.00</td>
+                  <td style="padding:10px 14px; text-align:right;">$100</td>
+                  <td style="padding:10px 14px; text-align:right; color:var(--green); font-weight:700;">$500</td>
+                </tr>
+                <tr style="background:var(--warm-white); border-bottom:1px solid #f0f0f0;">
+                  <td style="padding:10px 14px; font-weight:700;">0.10 (Mini)</td>
+                  <td style="padding:10px 14px; text-align:right;">$1.00</td>
+                  <td style="padding:10px 14px; text-align:right;">$10</td>
+                  <td style="padding:10px 14px; text-align:right;">$50</td>
+                </tr>
+                <tr style="background:white;">
+                  <td style="padding:10px 14px; font-weight:700; color:var(--text-muted);">0.01 (Micro)</td>
+                  <td style="padding:10px 14px; text-align:right;">$0.10</td>
+                  <td style="padding:10px 14px; text-align:right;">$1</td>
+                  <td style="padding:10px 14px; text-align:right;">$5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="info-box" style="margin-top:20px;">
+          <div class="info-box-title">💡 ลุงอัดแนะนำ</div>
+          <p>ก่อนเปิดออเดอร์ทุกครั้ง ให้รู้ก่อนว่า <strong>ถ้า SL โดน จะเสียเงินเท่าไหร่</strong> — ใช้ Position Size Calculator ควบคู่กับ Pip Calculator ครับ จะได้ไม่ตกใจหลังเปิดออเดอร์ 🥇</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK BUTTON -->
+  <div style="text-align:center; margin-top:32px;">
+    <a href="index.html" style="display:inline-flex; align-items:center; gap:8px; font-family:Kanit,sans-serif; font-size:14px; font-weight:600; color:var(--text-muted); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">
+      ← กลับหน้าหลัก ลุงอัด ซัดกราฟ
+    </a>
+  </div>
+
+</div>
+
+<script>
+// ===== TAB SWITCH =====
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', (i===0 && tab==='pos') || (i===1 && tab==='pip'));
+  });
+  document.getElementById('panel-pos').classList.toggle('active', tab==='pos');
+  document.getElementById('panel-pip').classList.toggle('active', tab==='pip');
+}
+
+// ===== RISK TYPE =====
+let riskType = 'pct';
+function setRiskType(type) {
+  riskType = type;
+  document.getElementById('risk-pct-btn').classList.toggle('active', type==='pct');
+  document.getElementById('risk-usd-btn').classList.toggle('active', type==='usd');
+  document.getElementById('risk-pct-wrap').style.display = type==='pct' ? 'block' : 'none';
+  document.getElementById('risk-usd-wrap').style.display = type==='usd' ? 'block' : 'none';
+}
+
+// ===== POSITION SIZE CALCULATOR =====
+function calcPositionSize() {
+  const balance = parseFloat(document.getElementById('pos-balance').value) || 0;
+  const entry   = parseFloat(document.getElementById('pos-entry').value) || 0;
+  const sl      = parseFloat(document.getElementById('pos-sl').value) || 0;
+  const tp      = parseFloat(document.getElementById('pos-tp').value) || 0;
+  const currency = document.getElementById('pos-currency').value;
+
+  // Risk amount
+  let riskUSD = 0;
+  let balanceUSD = balance;
+  if (currency === 'THB') balanceUSD = balance / 35.5;
+
+  if (riskType === 'pct') {
+    const pct = parseFloat(document.getElementById('pos-risk-pct').value) || 1;
+    riskUSD = balanceUSD * (pct / 100);
+  } else {
+    riskUSD = parseFloat(document.getElementById('pos-risk-usd').value) || 0;
+  }
+
+  const slPips = Math.abs(entry - sl) / 0.01;
+  const warning = document.getElementById('pos-warning');
+  const result  = document.getElementById('pos-result');
+
+  if (slPips < 1) {
+    warning.classList.add('show');
+    result.classList.remove('show');
+    return;
+  }
+  warning.classList.remove('show');
+
+  // XAUUSD: 1 lot = $10/pip (pip = $0.01)
+  const pipValuePerLot = 10;
+  const lotSize = riskUSD / (slPips * pipValuePerLot);
+
+  // R:R
+  let rr = '—';
+  if (tp > 0) {
+    const tpPips = Math.abs(tp - entry) / 0.01;
+    rr = '1 : ' + (tpPips / slPips).toFixed(1);
+  }
+
+  document.getElementById('pos-lot').textContent = lotSize.toFixed(2);
+  document.getElementById('pos-risk-amt').textContent = '$' + riskUSD.toFixed(2);
+  document.getElementById('pos-sl-pips').textContent = slPips.toFixed(1) + ' pips';
+  document.getElementById('pos-rr').textContent = rr;
+
+  result.classList.add('show');
+}
+
+// ===== PIP CALCULATOR =====
+document.getElementById('pip-currency').addEventListener('change', function() {
+  document.getElementById('thb-rate-wrap').style.display = this.value === 'THB' ? 'block' : 'none';
+});
+
+function updateLotInfo() {
+  const type = document.getElementById('pip-lottype').value;
+  const map = { standard: 1.00, mini: 0.10, micro: 0.01 };
+  document.getElementById('pip-lot').value = map[type];
+}
+
+function calcPipValue() {
+  const lot      = parseFloat(document.getElementById('pip-lot').value) || 0;
+  const pips     = parseFloat(document.getElementById('pip-pips').value) || 0;
+  const currency = document.getElementById('pip-currency').value;
+  const thbRate  = parseFloat(document.getElementById('pip-thbrate').value) || 35.5;
+
+  // XAUUSD: 1 standard lot = 100 oz, pip = $0.01
+  // pip value per lot = 100 * 0.01 = $1... wait
+  // Actually: 1 standard lot XAUUSD = $10/pip
+  const pipValuePerLot = 10; // USD per pip for 1 standard lot
+  const pipValueUSD = lot * pipValuePerLot;
+  const totalUSD = pipValueUSD * pips;
+
+  let displayVal, displayTotal, symbol;
+  if (currency === 'THB') {
+    displayVal   = (pipValueUSD * thbRate).toFixed(2);
+    displayTotal = '฿' + (totalUSD * thbRate).toFixed(2);
+    symbol = 'THB';
+  } else {
+    displayVal   = pipValueUSD.toFixed(2);
+    displayTotal = '$' + totalUSD.toFixed(2);
+    symbol = 'USD';
+  }
+
+  document.getElementById('pip-val-per').textContent = displayVal;
+  document.getElementById('pip-currency-label').textContent = symbol + '/pip';
+  document.getElementById('pip-total').textContent = displayTotal;
+  document.getElementById('pip-contract').textContent = (lot * 100).toFixed(0) + ' oz';
+  document.getElementById('pip-per-pip').textContent = '$10/pip';
+
+  document.getElementById('pip-result').classList.add('show');
+}
+
+// Auto-calc on load
+calcPositionSize();
+calcPipValue();
+</script>
+</body>
+</html>
