@@ -972,7 +972,7 @@ footer {
 </section>
 
 <!-- SMC DASHBOARD SECTION -->
-<section id="smc" style="padding: 96px 48px; background: var(--bg); border-top: 1px solid var(--border);">
+<section id="smc" style="padding: clamp(48px,8vw,96px) clamp(16px,4vw,48px); background: var(--bg); border-top: 1px solid var(--border);">
   <div style="max-width: 1100px; margin: 0 auto;">
     <div class="reveal" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; flex-wrap:wrap; gap:16px;">
       <div>
@@ -989,7 +989,7 @@ footer {
     </div>
 
     <!-- SMC Cards -->
-    <div id="smcDisplay" style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
+    <div id="smcDisplay" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px,100%), 1fr)); gap:20px;">
 
       <!-- Strong High -->
       <div class="about-card reveal" style="flex-direction:column; gap:10px; border-left:4px solid #16a34a;">
@@ -1366,7 +1366,7 @@ updateDisplay('1M');
 </script>
 
 <!-- TOOLS PRO SECTION -->
-<section id="tools-pro" style="padding: 96px 48px; background: linear-gradient(135deg, #130D0D 0%, #1A0A0A 50%, #0D0808 100%); border-top: 1px solid rgba(201,168,76,0.25);">
+<section id="tools-pro" style="padding: clamp(48px,8vw,96px) clamp(16px,4vw,48px); background: linear-gradient(135deg, #130D0D 0%, #1A0A0A 50%, #0D0808 100%); border-top: 1px solid rgba(201,168,76,0.25);">
   <div style="max-width: 1100px; margin: 0 auto;">
 
     <div class="reveal" style="text-align:center; margin-bottom:52px;">
@@ -1377,7 +1377,7 @@ updateDisplay('1M');
       </p>
     </div>
 
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(280px,100%), 1fr)); gap:24px;">
 
       <!-- Indicator -->
       <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(184,151,42,0.2); border-radius:16px; padding:28px; display:flex; flex-direction:column; gap:16px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(184,151,42,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
@@ -1464,14 +1464,14 @@ updateDisplay('1M');
 </section>
 
 <!-- TOOLS SECTION -->
-<section id="tools" style="padding: 96px 48px; background: var(--bg); border-top: 1px solid var(--border);">
+<section id="tools" style="padding: clamp(48px,8vw,96px) clamp(16px,4vw,48px); background: var(--bg); border-top: 1px solid var(--border);">
   <div style="max-width: 1100px; margin: 0 auto;">
     <div class="reveal">
       <div class="section-label">เครื่องมือเทรด</div>
       <h2 class="section-title">ลุงใช้อะไร ก็แชร์ให้หมด 🛠️</h2>
       <p class="section-sub">เครื่องมือที่ลุงอัดใช้จริงทุกวัน คัดมาแล้วว่าดี ใช้งานได้จริง</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px,100%), 1fr)); gap:20px; margin-top:40px;">
       <a href="https://www.tradingview.com/pricing/?share_your_love=kraingkriwittayaphom" target="_blank" style="text-decoration:none;">
       <div class="about-card reveal" style="transition-delay:0.1s; flex-direction:column; gap:14px; cursor:pointer;">
         <div style="font-size:40px;">📊</div>
@@ -1553,9 +1553,9 @@ updateDisplay('1M');
 </section>
 
 <!-- LEARN SECTION -->
-<section id="learn" style="padding: 96px 48px; background: linear-gradient(135deg, #130D0D 0%, #0A0808 100%); border-top: 1px solid rgba(201,168,76,0.2);">
+<section id="learn" style="padding: clamp(48px,8vw,96px) clamp(16px,4vw,48px); background: linear-gradient(135deg, #130D0D 0%, #0A0808 100%); border-top: 1px solid rgba(201,168,76,0.2);">
   <div style="max-width: 1100px; margin: 0 auto;">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(320px,100%), 1fr)); gap:80px; align-items:center;">
       <div class="reveal">
         <div class="section-label">เรียนกับลุงอัด</div>
         <h2 class="section-title">เรียนแล้ว<br><span style="color:var(--gold)">เทรดได้จริง 👴</span></h2>
@@ -1619,14 +1619,14 @@ updateDisplay('1M');
 </section>
 
 <!-- SOCIAL / CONTACT SECTION -->
-<section id="contact" style="padding: 80px 48px; background: var(--bg-alt); border-top: 1px solid var(--border);">
+<section id="contact" style="padding: clamp(40px,6vw,80px) clamp(16px,4vw,48px); background: var(--bg-alt); border-top: 1px solid var(--border);">
   <div style="max-width: 1100px; margin: 0 auto; text-align:center;">
     <div class="reveal">
       <div class="section-label" style="justify-content:center;">ช่องทางติดต่อ</div>
       <h2 class="section-title">ติดตามลุงอัดได้ทุกช่องทาง 📲</h2>
       <p class="section-sub" style="margin: 0 auto 40px; text-align:center;">ลุงอัดอยู่ครบทุกแพลตฟอร์ม ทักมาหาได้เลยครับ</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:16px; max-width:900px; margin:0 auto;" class="reveal">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(150px,100%), 1fr)); gap:16px; max-width:900px; margin:0 auto;" class="reveal">
 
       <!-- Facebook -->
       <a href="https://m.me/1013555458507886" target="_blank" style="text-decoration:none;">
