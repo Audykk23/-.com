@@ -127,7 +127,15 @@ nav {
   color: var(--gold);
   letter-spacing: 0.5px;
 }
-.nav-logo span { color: var(--text-main); }
+.nav-cta {
+  background: var(--gold);
+  color: #fff !important;
+  padding: 9px 22px;
+  border-radius: 4px;
+  font-weight: 600 !important;
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
 .nav-links {
   display: flex;
   gap: 36px;
@@ -143,15 +151,81 @@ nav {
   letter-spacing: 0.3px;
 }
 .nav-links a:hover { color: var(--gold); }
-.nav-cta {
-  background: var(--gold);
-  color: #fff !important;
-  padding: 9px 22px;
-  border-radius: 4px;
-  font-weight: 600 !important;
-  transition: background 0.2s, transform 0.2s !important;
+/* ===== HAMBURGER & MOBILE MENU ===== */
+.nav-mobile-right {
+  display: none;
+  align-items: center;
+  gap: 10px;
 }
-.nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+.hamburger {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 40px; height: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px;
+}
+.hamburger span {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--text-main);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 65px; left: 0; right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  flex-direction: column;
+  padding: 16px 20px 24px;
+  gap: 4px;
+  z-index: 99;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.mobile-menu.open { display: flex; animation: slideDown 0.25s ease; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mobile-menu a {
+  font-family: 'Kanit', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-sub);
+  text-decoration: none;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .mobile-cta {
+  margin-top: 12px;
+  background: var(--gold);
+  color: white !important;
+  text-align: center;
+  padding: 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .nav-mobile-right { display: flex; }
+}
+
 
 /* ===== HERO ===== */
 .hero {
@@ -926,7 +1000,24 @@ footer {
     <li><a href="#cta" class="nav-cta">ทักมาหาลุง 💬</a></li>
     <li><button id="darkToggle" onclick="toggleDark()" title="Dark Mode" style="background:transparent; border:1px solid var(--border); border-radius:50%; width:36px; height:36px; font-size:16px; cursor:pointer; color:var(--text-main); display:flex; align-items:center; justify-content:center; transition:border-color 0.2s;">🌙</button></li>
   </ul>
+
+  <!-- Mobile right side -->
+  <div class="nav-mobile-right">
+    <button id="darkToggleMobile" onclick="toggleDark()" title="Dark Mode" style="background:transparent; border:1px solid var(--border); border-radius:50%; width:36px; height:36px; font-size:16px; cursor:pointer; color:var(--text-main); display:flex; align-items:center; justify-content:center;">🌙</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="เมนู">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="#about" onclick="closeMobileMenu()">เกี่ยวกับลุง</a>
+  <a href="#tools-pro" onclick="closeMobileMenu()">Tools & คอร์ส</a>
+  <a href="#tools" onclick="closeMobileMenu()">เครื่องมือเทรด</a>
+  <a href="#contact" onclick="closeMobileMenu()">ติดต่อ</a>
+  <a href="#learn" onclick="closeMobileMenu()">เรียนกับลุง</a>
+  <a href="#cta" class="mobile-cta" onclick="closeMobileMenu()">ทักมาหาลุง 💬</a>
 
 <!-- HERO -->
 <section class="hero">
@@ -1921,16 +2012,28 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 <script>
+// ===== HAMBURGER MENU =====
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
 // ===== DARK MODE =====
 function toggleDark() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   if (isDark) {
     document.documentElement.removeAttribute('data-theme');
-    document.getElementById('darkToggle').textContent = '🌙';
+    document.querySelectorAll('#darkToggle, #darkToggleMobile').forEach(b => { if(b) b.textContent = '🌙'; });
     localStorage.setItem('theme', 'light');
   } else {
     document.documentElement.setAttribute('data-theme', 'dark');
-    document.getElementById('darkToggle').textContent = '☀️';
+    document.querySelectorAll('#darkToggle, #darkToggleMobile').forEach(b => { if(b) b.textContent = '☀️'; });
     localStorage.setItem('theme', 'dark');
   }
 }
@@ -1940,8 +2043,7 @@ function toggleDark() {
   const saved = localStorage.getItem('theme');
   if (saved === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    const btn = document.getElementById('darkToggle');
-    if (btn) btn.textContent = '☀️';
+    document.querySelectorAll('#darkToggle, #darkToggleMobile').forEach(b => { if(b) b.textContent = '☀️'; });
   }
 })();
 
