@@ -1062,6 +1062,8 @@ footer {
 </div>
 
 <!-- Admin Trigger (hidden button bottom right) -->
+<button id="darkToggle" onclick="toggleDark()" title="Dark Mode">🌙</button>
+
 <button onclick="openAdmin()" style="position:fixed; bottom:24px; right:24px; z-index:100; background:var(--text-main); color:var(--gold); border:1px solid rgba(184,151,42,0.3); border-radius:50%; width:48px; height:48px; font-size:20px; cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,0.3);" title="Admin">⚙️</button>
 
 <style>
@@ -1710,5 +1712,32 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+
+<script>
+// ===== DARK MODE =====
+function toggleDark() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    document.getElementById('darkToggle').textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('darkToggle').textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+// Load saved theme
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    const btn = document.getElementById('darkToggle');
+    if (btn) btn.textContent = '☀️';
+  }
+})();
+</script>
+
 </body>
 </html>
