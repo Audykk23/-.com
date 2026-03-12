@@ -182,19 +182,26 @@ nav {
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-menu {
-  display: none;
+  display: block;
   position: fixed;
-  top: 65px; left: 0; right: 0;
-  background: var(--nav-bg);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  top: 0; right: 0; bottom: 0;
+  width: 75%;
+  max-width: 280px;
+  background: var(--off-white);
+  border-left: 1px solid var(--border);
   flex-direction: column;
-  padding: 16px 20px 24px;
-  gap: 4px;
+  padding: 80px 0 24px;
   z-index: 99;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
 }
-.mobile-menu.open { display: flex; animation: slideDown 0.25s ease; }
+.mobile-menu.open {
+  transform: translateX(0);
+  display: block;
+  animation: none;
+}
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -205,14 +212,15 @@ nav {
   font-weight: 500;
   color: var(--text-sub);
   text-decoration: none;
-  padding: 12px 8px;
+  padding: 16px 24px;
   border-bottom: 1px solid var(--border);
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s;
+  display: block;
 }
 .mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu a:hover { color: var(--gold); background: rgba(184,151,42,0.05); }
 .mobile-menu .mobile-cta {
-  margin-top: 12px;
+  margin: 16px 20px 0;
   background: var(--gold);
   color: white !important;
   text-align: center;
@@ -220,11 +228,18 @@ nav {
   border-radius: 6px;
   font-weight: 700;
   border: none;
+  display: block;
 }
 
-@media (max-width: 768px) {
-  .nav-mobile-right { display: flex; }
+/* Drawer overlay */
+#drawerOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 98;
 }
+#drawerOverlay.open { display: block; }
 
 
 /* ===== HERO ===== */
@@ -1285,7 +1300,10 @@ footer {
 <!-- Admin trigger hidden: triple-click footer copyright text -->
 <button onclick="openAdmin()" id="adminTrigger" style="position:fixed; bottom:-100px; right:24px; z-index:100; opacity:0; pointer-events:none; width:1px; height:1px;" title="Admin">⚙️</button>
 
-<!-- FLOATING CONTACT BUTTON -->
+<!-- Mobile Menu Overlay dim -->
+
+<div id="drawerOverlay" onclick="closeMobileMenu()"></div>
+
 <div id="contactFloat" style="position:fixed; bottom:24px; right:24px; z-index:200; display:flex; flex-direction:column; align-items:flex-end; gap:12px;">
 
   <!-- Popup cards -->
@@ -2016,15 +2034,33 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('hamburger');
-  menu.classList.toggle('open');
-  btn.classList.toggle('open');
+  const overlay = document.getElementById('drawerOverlay');
+  const isOpen = menu.classList.contains('open');
+  if (isOpen) {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('open');
+  } else {
+    menu.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('open');
+  }
 }
 function closeMobileMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
 }
 
-// ===== DARK MODE =====
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const hamburger = document.getElementById('hamburger');
+  if (menu && hamburger && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+    closeMobileMenu();
+  }
+});
+
 function toggleDark() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   if (isDark) {
