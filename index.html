@@ -976,21 +976,51 @@ footer {
     <!-- Admin Form (hidden until login) -->
     <div id="adminForm" style="display:none; padding:0 28px 28px;">
       
-      <!-- TF Tabs -->
-      <div style="display:flex; gap:8px; margin-bottom:24px;">
-        <button onclick="setAdminTF('1M')" class="tf-btn tf-active" id="admin-btn-1M">1M</button>
-        <button onclick="setAdminTF('5M')" class="tf-btn" id="admin-btn-5M">5M</button>
-        <button onclick="setAdminTF('15M')" class="tf-btn" id="admin-btn-15M">15M</button>
+      <!-- Main Tabs -->
+      <div style="display:flex; gap:8px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:16px;">
+        <button onclick="setAdminMode('smc')" class="tf-btn tf-active" id="mode-smc">📊 SMC Levels</button>
+        <button onclick="setAdminMode('social')" class="tf-btn" id="mode-social">📱 โซเชียล</button>
       </div>
 
-      <div id="adminFields">
-        <!-- Fields injected by JS -->
+      <!-- SMC Panel -->
+      <div id="panel-smc">
+        <div style="display:flex; gap:8px; margin-bottom:20px;">
+          <button onclick="setAdminTF('1M')" class="tf-btn tf-active" id="admin-btn-1M">1M</button>
+          <button onclick="setAdminTF('5M')" class="tf-btn" id="admin-btn-5M">5M</button>
+          <button onclick="setAdminTF('15M')" class="tf-btn" id="admin-btn-15M">15M</button>
+        </div>
+        <div id="adminFields"></div>
+        <button onclick="saveData()" style="width:100%; background:var(--gold); color:white; border:none; padding:14px; border-radius:6px; font-family:Kanit,sans-serif; font-size:16px; font-weight:700; cursor:pointer; margin-top:8px;">
+          💾 บันทึก SMC
+        </button>
+        <div id="saveMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึกสำเร็จแล้วครับ!</div>
       </div>
 
-      <button onclick="saveData()" style="width:100%; background:var(--gold); color:white; border:none; padding:14px; border-radius:6px; font-family:Kanit,sans-serif; font-size:16px; font-weight:700; cursor:pointer; margin-top:8px;">
-        💾 บันทึกข้อมูล
-      </button>
-      <div id="saveMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึกสำเร็จแล้วครับ!</div>
+      <!-- Social Panel -->
+      <div id="panel-social" style="display:none;">
+        <div style="background:#f9f9f7; border-radius:8px; padding:16px; margin-bottom:16px;">
+          <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--gold); margin-bottom:12px;">📱 แก้ลิงก์โซเชียล</div>
+          
+          <label class="admin-label">📘 Facebook URL</label>
+          <input class="admin-input" id="social-facebook" type="url" placeholder="https://facebook.com/...">
+          
+          <label class="admin-label">💚 Line OA URL</label>
+          <input class="admin-input" id="social-line" type="url" placeholder="https://line.me/R/ti/p/...">
+          
+          <label class="admin-label">🔴 YouTube URL</label>
+          <input class="admin-input" id="social-youtube" type="url" placeholder="https://youtube.com/@...">
+          
+          <label class="admin-label">⬛ TikTok URL</label>
+          <input class="admin-input" id="social-tiktok" type="url" placeholder="https://tiktok.com/@...">
+          
+          <label class="admin-label">📸 Instagram URL</label>
+          <input class="admin-input" id="social-instagram" type="url" placeholder="https://instagram.com/...">
+        </div>
+        <button onclick="saveSocial()" style="width:100%; background:var(--gold); color:white; border:none; padding:14px; border-radius:6px; font-family:Kanit,sans-serif; font-size:16px; font-weight:700; cursor:pointer;">
+          💾 บันทึกลิงก์โซเชียล
+        </button>
+        <div id="saveSocialMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึกลิงก์สำเร็จแล้วครับ!</div>
+      </div>
     </div>
   </div>
 </div>
@@ -1166,8 +1196,65 @@ function saveData() {
   setTimeout(() => document.getElementById('saveMsg').style.display = 'none', 3000);
 }
 
+// ===== ADMIN MODE =====
+let adminMode = 'smc';
+function setAdminMode(mode) {
+  adminMode = mode;
+  ['smc','social'].forEach(m => {
+    document.getElementById('mode-' + m)?.classList.remove('tf-active');
+    document.getElementById('panel-' + m).style.display = 'none';
+  });
+  document.getElementById('mode-' + mode)?.classList.add('tf-active');
+  document.getElementById('panel-' + mode).style.display = 'block';
+  if (mode === 'social') loadSocialFields();
+}
+
+// ===== SOCIAL LINKS =====
+let socialLinks = {
+  facebook: 'https://facebook.com/',
+  line: 'https://line.me/',
+  youtube: 'https://youtube.com/',
+  tiktok: 'https://tiktok.com/',
+  instagram: 'https://instagram.com/'
+};
+
+function loadSocialData() {
+  const saved = localStorage.getItem('socialLinks');
+  if (saved) socialLinks = JSON.parse(saved);
+  applySocialLinks();
+}
+
+function applySocialLinks() {
+  const map = {
+    facebook: 0, line: 1, youtube: 2, tiktok: 3, instagram: 4
+  };
+  const cards = document.querySelectorAll('#contact a');
+  Object.keys(map).forEach(k => {
+    if (cards[map[k]] && socialLinks[k]) cards[map[k]].href = socialLinks[k];
+  });
+}
+
+function loadSocialFields() {
+  ['facebook','line','youtube','tiktok','instagram'].forEach(k => {
+    const el = document.getElementById('social-' + k);
+    if (el) el.value = socialLinks[k] || '';
+  });
+}
+
+function saveSocial() {
+  ['facebook','line','youtube','tiktok','instagram'].forEach(k => {
+    const el = document.getElementById('social-' + k);
+    if (el && el.value) socialLinks[k] = el.value;
+  });
+  localStorage.setItem('socialLinks', JSON.stringify(socialLinks));
+  applySocialLinks();
+  document.getElementById('saveSocialMsg').style.display = 'block';
+  setTimeout(() => document.getElementById('saveSocialMsg').style.display = 'none', 3000);
+}
+
 // Init
 loadData();
+loadSocialData();
 updateDisplay('1M');
 </script>
 
