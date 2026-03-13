@@ -1146,6 +1146,7 @@ footer {
       <div style="display:flex; gap:8px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:16px;">
         <button onclick="setAdminMode('smc')" class="tf-btn tf-active" id="mode-smc">📊 SMC Levels</button>
         <button onclick="setAdminMode('social')" class="tf-btn" id="mode-social">📱 โซเชียล</button>
+        <button onclick="setAdminMode('broker')" class="tf-btn" id="mode-broker">🏦 Broker</button>
       </div>
 
       <!-- SMC Panel -->
@@ -1186,6 +1187,33 @@ footer {
           💾 บันทึกลิงก์โซเชียล
         </button>
         <div id="saveSocialMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึกลิงก์สำเร็จแล้วครับ!</div>
+      </div>
+
+      <!-- Broker Panel -->
+      <div id="panel-broker" style="display:none;">
+        <div style="background:#f9f9f7; border-radius:8px; padding:16px; margin-bottom:16px;">
+          <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--gold); margin-bottom:4px;">🏦 แก้ลิงก์ Broker ที่แนะนำ</div>
+          <div style="font-family:Sarabun,sans-serif; font-size:12px; color:var(--text-muted); margin-bottom:12px;">ลิงก์นี้จะอัปเดตทั้งปุ่ม IB Banner และการ์ด Broker ในส่วน Tools พร้อมกัน</div>
+
+          <label class="admin-label">🔗 Broker URL (ลิงก์ IB / Affiliate)</label>
+          <input class="admin-input" id="broker-url" type="url" placeholder="https://trader.eterwealthpro.com/signup?token=...">
+
+          <label class="admin-label">🏷️ ชื่อ Broker (แสดงในการ์ด)</label>
+          <input class="admin-input" id="broker-name" type="text" placeholder="เช่น Etern Wealth Pro">
+
+          <label class="admin-label">📝 คำอธิบาย Broker</label>
+          <input class="admin-input" id="broker-desc" type="text" placeholder="เช่น Broker ที่ลุงใช้จริง spread ต่ำ ฝาก-ถอนไว">
+        </div>
+
+        <div style="background:rgba(184,151,42,0.08); border:1px solid rgba(184,151,42,0.2); border-radius:8px; padding:12px 16px; margin-bottom:16px;">
+          <div style="font-family:Kanit,sans-serif; font-size:12px; color:var(--text-muted);">🔍 ลิงก์ปัจจุบัน:</div>
+          <div id="broker-current-url" style="font-family:Sarabun,sans-serif; font-size:12px; color:var(--gold); word-break:break-all; margin-top:4px;">—</div>
+        </div>
+
+        <button onclick="saveBroker()" style="width:100%; background:var(--gold); color:white; border:none; padding:14px; border-radius:6px; font-family:Kanit,sans-serif; font-size:16px; font-weight:700; cursor:pointer;">
+          💾 บันทึกลิงก์ Broker
+        </button>
+        <div id="saveBrokerMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึก Broker สำเร็จแล้วครับ!</div>
       </div>
     </div>
   </div>
@@ -1368,13 +1396,14 @@ function saveData() {
 let adminMode = 'smc';
 function setAdminMode(mode) {
   adminMode = mode;
-  ['smc','social'].forEach(m => {
+  ['smc','social','broker'].forEach(m => {
     document.getElementById('mode-' + m)?.classList.remove('tf-active');
     document.getElementById('panel-' + m).style.display = 'none';
   });
   document.getElementById('mode-' + mode)?.classList.add('tf-active');
   document.getElementById('panel-' + mode).style.display = 'block';
   if (mode === 'social') loadSocialFields();
+  if (mode === 'broker') loadBrokerFields();
 }
 
 // ===== SOCIAL LINKS =====
@@ -1420,9 +1449,66 @@ function saveSocial() {
   setTimeout(() => document.getElementById('saveSocialMsg').style.display = 'none', 3000);
 }
 
+// ===== BROKER LINK =====
+let brokerData = {
+  url: 'https://trader.eterwealthpro.com/signup?token=cjoeubabnj0791l',
+  name: 'Broker ที่แนะนำ 🔗',
+  desc: 'Broker ที่ลุงใช้จริง regulated ปลอดภัย spread ต่ำ ฝาก-ถอนไว คลิกสมัครได้เลย!'
+};
+
+function loadBrokerData() {
+  const saved = localStorage.getItem('brokerData');
+  if (saved) brokerData = JSON.parse(saved);
+  applyBrokerLinks();
+}
+
+function applyBrokerLinks() {
+  // Update IB Banner button
+  const ibBtn = document.getElementById('broker-ib-btn');
+  if (ibBtn) ibBtn.href = brokerData.url;
+
+  // Update Tools section card link
+  const toolsLink = document.getElementById('broker-tools-link');
+  if (toolsLink) toolsLink.href = brokerData.url;
+
+  // Update card title & desc
+  const cardTitle = document.querySelector('#broker-tools-link .about-card-title');
+  const cardDesc = document.querySelector('#broker-tools-link .about-card-desc');
+  if (cardTitle) cardTitle.textContent = brokerData.name;
+  if (cardDesc) cardDesc.textContent = brokerData.desc;
+}
+
+function loadBrokerFields() {
+  const urlEl = document.getElementById('broker-url');
+  const nameEl = document.getElementById('broker-name');
+  const descEl = document.getElementById('broker-desc');
+  const currentEl = document.getElementById('broker-current-url');
+  if (urlEl) urlEl.value = brokerData.url || '';
+  if (nameEl) nameEl.value = brokerData.name || '';
+  if (descEl) descEl.value = brokerData.desc || '';
+  if (currentEl) currentEl.textContent = brokerData.url || '—';
+}
+
+function saveBroker() {
+  const urlEl = document.getElementById('broker-url');
+  const nameEl = document.getElementById('broker-name');
+  const descEl = document.getElementById('broker-desc');
+  if (urlEl && urlEl.value) brokerData.url = urlEl.value;
+  if (nameEl && nameEl.value) brokerData.name = nameEl.value;
+  if (descEl && descEl.value) brokerData.desc = descEl.value;
+  localStorage.setItem('brokerData', JSON.stringify(brokerData));
+  applyBrokerLinks();
+  // Update current url display
+  const currentEl = document.getElementById('broker-current-url');
+  if (currentEl) currentEl.textContent = brokerData.url;
+  document.getElementById('saveBrokerMsg').style.display = 'block';
+  setTimeout(() => document.getElementById('saveBrokerMsg').style.display = 'none', 3000);
+}
+
 // Init
 loadData();
 loadSocialData();
+loadBrokerData();
 updateDisplay('1M');
 </script>
 
@@ -1518,7 +1604,7 @@ updateDisplay('1M');
           <div style="font-size:13px; color:rgba(255,255,255,0.45); font-family:Sarabun,sans-serif; margin-top:2px;">สมัคร Broker ผ่านลิงก์ลุงอัด — ได้รับการ support และ bonus พิเศษจากลุง</div>
         </div>
       </div>
-      <a href="https://trader.eterwealthpro.com/signup?token=cjoeubabnj0791l" target="_blank" class="btn-gold" style="font-size:14px; padding:11px 24px; white-space:nowrap;">เปิดพอร์ตเลย →</a>
+      <a id="broker-ib-btn" href="https://trader.eterwealthpro.com/signup?token=cjoeubabnj0791l" target="_blank" class="btn-gold" style="font-size:14px; padding:11px 24px; white-space:nowrap;">เปิดพอร์ตเลย →</a>
     </div>
 
   </div>
@@ -1583,7 +1669,7 @@ updateDisplay('1M');
         </div>
       </div>
       </a>
-      <a href="https://trader.eterwealthpro.com/signup?token=cjoeubabnj0791l" target="_blank" style="text-decoration:none;">
+      <a id="broker-tools-link" href="https://trader.eterwealthpro.com/signup?token=cjoeubabnj0791l" target="_blank" style="text-decoration:none;">
       <div class="about-card reveal" style="transition-delay:0.5s; flex-direction:column; gap:14px; cursor:pointer; border:1px solid rgba(184,151,42,0.3);">
         <div style="font-size:40px;">🏦</div>
         <div>
