@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIB Sales Toolkit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#F2F5F4;--surf:#FFFFFF;--ink:#0E2E33;--mute:#5B7074;--line:#D5DEDC;--acc:#0F7B6C;--acc2:#D9961A;--soft:#E3EFEC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1A1C;--surf:#132427;--ink:#E4EEEC;--mute:#8FA5A8;--line:#27403F;--acc:#3CC2AA;--acc2:#F0B84A;--soft:#18332F}}
+:root[data-theme="dark"]{--bg:#0D1A1C;--surf:#132427;--ink:#E4EEEC;--mute:#8FA5A8;--line:#27403F;--acc:#3CC2AA;--acc2:#F0B84A;--soft:#18332F}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 "IBM Plex Sans Thai",system-ui,sans-serif;padding:24px 16px 48px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:20px}
+h1{font-size:26px;margin:0;text-wrap:balance}h2{font-size:18px;margin:0 0 4px}
+.sub{color:var(--mute);margin:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tabs button{font:inherit;font-weight:500;background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;color:var(--mute);cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--acc)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:20px}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:14px;align-content:start}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:10px}
+legend{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+label{display:grid;grid-template-columns:1fr 110px;align-items:center;gap:10px;font-size:14px}
+label small{display:block;color:var(--mute);font-size:12px}
+input,select,textarea{font:500 14px "IBM Plex Mono",monospace;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:7px 9px;width:100%}
+select,textarea{font-family:"IBM Plex Sans Thai",sans-serif}
+.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.hero{padding:18px;border-radius:10px;background:var(--soft)}
+.hero .big{font:500 clamp(30px,6vw,44px)/1.1 "IBM Plex Mono",monospace;color:var(--acc)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.kpi span{display:block;font-size:12px;color:var(--mute)}.kpi b{font:500 20px "IBM Plex Mono",monospace}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:7px 4px;border-bottom:1px solid var(--line);text-align:right}td:first-child,th:first-child{text-align:left}th{font-size:12px;color:var(--mute);font-weight:500}
+.chart{overflow-x:auto}svg text{fill:var(--mute);font:11px "IBM Plex Mono",monospace}
+.note{font-size:12px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surf);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--acc);color:var(--surf);border-color:var(--acc)}
+.script{border-left:3px solid var(--acc2);padding:12px 14px;background:var(--bg);border-radius:0 8px 8px 0;white-space:pre-wrap}
+.act{font:inherit;font-weight:500;background:var(--acc);color:var(--surf);border:0;border-radius:6px;padding:8px 14px;cursor:pointer}
+.ghost{background:none;color:var(--acc);border:1px solid var(--acc)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+</style>
+
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="wrap">
+  <header><h1>MIB Sales Toolkit</h1><p class="sub">คำนวณรายได้ · วางแผนย้อนกลับจากเป้า · สคริปต์ตอบข้อโต้แย้งลูกค้า — ใช้ได้ทันทีระหว่างคุยกับลูกค้า</p></header>
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-t="sim">Income Simulator</button>
+    <button role="tab" aria-selected="false" data-t="plan">Business Planner</button>
+    <button role="tab" aria-selected="false" data-t="ai">Sales Script</button>
+  </nav>
+
+  <!-- SIM -->
+  <section id="sim" class="grid">
+    <div class="panel">
+      <fieldset><legend>ลูกค้าตรง</legend>
+        <label>ลูกค้าเทรดจริง (คน)<input id="s_cl" type="number" value="40" min="0"></label>
+        <label>Lot เฉลี่ย / คน / เดือน<input id="s_lot" type="number" value="8" step="0.5" min="0"></label>
+        <label>Rebate ($/lot)<input id="s_rb" type="number" value="8" step="0.5" min="0"></label>
+      </fieldset>
+      <fieldset><legend>IB ใต้สาย</legend>
+        <label>จำนวน IB<input id="s_ib" type="number" value="5" min="0"></label>
+        <label>ลูกค้าเฉลี่ย / IB<input id="s_ibc" type="number" value="15" min="0"></label>
+        <label>Override ($/lot)<small>ส่วนต่างที่ MIB ได้</small><input id="s_ov" type="number" value="2" step="0.5" min="0"></label>
+      </fieldset>
+      <fieldset><legend>การเติบโต</legend>
+        <label>Lead / เดือน<input id="s_ld" type="number" value="60" min="0"></label>
+        <label>Conversion (%)<input id="s_cv" type="number" value="10" step="1" min="0" max="100"></label>
+        <label>ลูกค้าหาย / เดือน (%)<input id="s_ch" type="number" value="5" step="1" min="0" max="100"></label>
+        <label>อัตราแลกเปลี่ยน (฿/$)<input id="s_fx" type="number" value="33" step="0.1" min="0"></label>
+      </fieldset>
+    </div>
+    <div class="panel">
+      <div class="hero"><div class="note">รายได้ต่อเดือน (ตอนนี้)</div><div class="big num" id="r_thb">–</div><div class="note num" id="r_usd"></div></div>
+      <div class="kpis">
+        <div class="kpi"><span>จากลูกค้าตรง</span><b id="r_d">–</b></div>
+        <div class="kpi"><span>จาก IB ใต้สาย</span><b id="r_o">–</b></div>
+        <div class="kpi"><span>Volume รวม / เดือน</span><b id="r_v">–</b></div>
+        <div class="kpi"><span>รายได้ต่อลูกค้า 1 คน</span><b id="r_pc">–</b></div>
+      </div>
+      <div><h2>ประมาณการ 12 เดือน</h2><p class="note">ลูกค้าใหม่ = Lead × Conversion, หักอัตราลูกค้าหาย · IB ใต้สายคงที่</p></div>
+      <div class="chart" id="chart"></div>
+      <div class="kpis">
+        <div class="kpi"><span>ลูกค้าตรง เดือนที่ 12</span><b id="r_c12">–</b></div>
+        <div class="kpi"><span>รายได้ เดือนที่ 12</span><b id="r_m12">–</b></div>
+        <div class="kpi"><span>รวม 12 เดือน</span><b id="r_y">–</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section id="plan" class="grid" hidden>
+    <div class="panel">
+      <fieldset><legend>เป้าหมาย</legend>
+        <label>เป้ารายได้ (฿/เดือน)<input id="p_tg" type="number" value="300000" step="10000" min="0"></label>
+        <label>ภายใน (เดือน)<input id="p_m" type="number" value="6" min="1"></label>
+        <label>สัดส่วนจากลูกค้าตรง (%)<input id="p_sh" type="number" value="60" min="0" max="100"></label>
+      </fieldset>
+      <fieldset><legend>สมมติฐาน</legend>
+        <label>Lot / คน / เดือน<input id="p_lot" type="number" value="8" step="0.5" min="0.1"></label>
+        <label>Rebate ($/lot)<input id="p_rb" type="number" value="8" step="0.5" min="0.1"></label>
+        <label>Override ($/lot)<input id="p_ov" type="number" value="2" step="0.5" min="0.1"></label>
+        <label>ลูกค้าเฉลี่ย / IB<input id="p_ibc" type="number" value="15" min="1"></label>
+        <label>ลูกค้าที่มีอยู่แล้ว<input id="p_ex" type="number" value="20" min="0"></label>
+        <label>Conversion Lead→ลูกค้า (%)<input id="p_cv" type="number" value="10" min="0.1"></label>
+        <label>Conversion Lead→IB (%)<input id="p_icv" type="number" value="3" min="0.1"></label>
+        <label>อัตราแลกเปลี่ยน (฿/$)<input id="p_fx" type="number" value="33" step="0.1" min="0.1"></label>
+      </fieldset>
+    </div>
+    <div class="panel">
+      <div class="hero"><div class="note">ต้องหา Lead ต่อเดือน</div><div class="big num" id="q_ld">–</div><div class="note" id="q_ldn"></div></div>
+      <div class="kpis">
+        <div class="kpi"><span>ลูกค้าตรงที่ต้องมี</span><b id="q_cl">–</b></div>
+        <div class="kpi"><span>IB ใต้สายที่ต้องมี</span><b id="q_ib">–</b></div>
+        <div class="kpi"><span>Volume รวม (lot/เดือน)</span><b id="q_v">–</b></div>
+        <div class="kpi"><span>ลูกค้าใหม่ / เดือน</span><b id="q_nc">–</b></div>
+      </div>
+      <table><thead><tr><th>ส่วน</th><th>เป้า ฿</th><th>Lot / เดือน</th><th>จำนวน</th></tr></thead><tbody id="q_tb"></tbody></table>
+      <div><h2>แผนรายสัปดาห์</h2><p class="note" id="q_wk"></p></div>
+    </div>
+  </section>
+
+  <!-- AI -->
+  <section id="ai" class="grid" hidden>
+    <div class="panel">
+      <fieldset><legend>ลูกค้าพูดว่า</legend><div class="chips" id="objs"></div></fieldset>
+      <fieldset><legend>โทนการตอบ</legend>
+        <select id="tone"><option value="f">เป็นกันเอง (แชท LINE)</option><option value="p">มืออาชีพ</option><option value="s">สั้น กระชับ</option></select>
+      </fieldset>
+      <fieldset><legend>ข้อมูลประกอบ (ไม่บังคับ)</legend>
+        <label>ชื่อลูกค้า<input id="c_name" value="คุณเอ" style="font-family:inherit"></label>
+        <label>Lot / เดือนของลูกค้า<input id="c_lot" type="number" value="10"></label>
+        <label>Rebate ของเรา ($/lot)<input id="c_rb" type="number" value="8"></label>
+      </fieldset>
+    </div>
+    <div class="panel">
+      <div><h2 id="a_h">คำตอบแนะนำ</h2><p class="note" id="a_why"></p></div>
+      <div class="script" id="a_txt"></div>
+      <div class="row"><button class="act" id="copy">คัดลอกข้อความ</button><button class="act ghost" id="alt">ขอเวอร์ชันอื่น</button><span class="note" id="toast" aria-live="polite"></span></div>
+      <div><h2>คำถามเปิดต่อ</h2><p class="script" id="a_q" style="border-color:var(--acc)"></p></div>
+      <p class="note">สคริปต์ทำงานในหน้านี้ทั้งหมด ไม่เชื่อมระบบภายนอก — ตัวเลขดึงจากข้อมูลที่กรอกไว้ด้านซ้าย ควรปรับให้ตรงเงื่อนไขจริงของโบรกเกอร์ก่อนส่ง และไม่ควรรับประกันผลกำไรกับลูกค้า</p>
+    </div>
+  </section>
+</div>
+
+<script>
+const $=id=>document.getElementById(id), v=id=>+$(id).value||0;
+const thb=n=>'฿'+Math.round(n).toLocaleString('th-TH'), fmt=(n,d=0)=>n.toLocaleString('en-US',{maximumFractionDigits:d});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));['sim','plan','ai'].forEach(s=>$(s).hidden=s!==b.dataset.t)});
+
+function sim(){
+  const fx=v('s_fx'),lot=v('s_lot'),rb=v('s_rb');
+  const dUsd=v('s_cl')*lot*rb, oUsd=v('s_ib')*v('s_ibc')*lot*v('s_ov'), t=dUsd+oUsd;
+  $('r_thb').textContent=thb(t*fx); $('r_usd').textContent='$'+fmt(t)+' / เดือน';
+  $('r_d').textContent=thb(dUsd*fx); $('r_o').textContent=thb(oUsd*fx);
+  $('r_v').textContent=fmt(v('s_cl')*lot+v('s_ib')*v('s_ibc')*lot)+' lot'; $('r_pc').textContent=thb(lot*rb*fx);
+  let c=v('s_cl'),arr=[],sum=0; const nc=v('s_ld')*v('s_cv')/100, ch=v('s_ch')/100;
+  for(let m=1;m<=12;m++){c=c*(1-ch)+nc; const inc=(c*lot*rb+oUsd)*fx; arr.push(inc); sum+=inc}
+  $('r_c12').textContent=fmt(c)+' คน'; $('r_m12').textContent=thb(arr[11]); $('r_y').textContent=thb(sum);
+  const W=640,H=200,L=56,B=24,max=Math.max(...arr,1)*1.1,bw=(W-L-10)/12;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:460px">`;
+  for(let i=0;i<=4;i++){const y=H-B-(H-B-10)*i/4;s+=`<line x1="${L}" x2="${W}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${L-6}" y="${y+4}" text-anchor="end">${fmt(max*i/4/1000)}k</text>`}
+  arr.forEach((a,i)=>{const h=(H-B-10)*a/max,x=L+i*bw+4;s+=`<rect x="${x}" y="${H-B-h}" width="${bw-8}" height="${h}" rx="3" fill="${i==11?'var(--acc2)':'var(--acc)'}"/><text x="${x+(bw-8)/2}" y="${H-6}" text-anchor="middle">M${i+1}</text>`});
+  $('chart').innerHTML=s+'</svg>';
+}
+function plan(){
+  const fx=v('p_fx'),lot=v('p_lot'),tg=v('p_tg'),sh=v('p_sh')/100,m=Math.max(1,v('p_m'));
+  const dT=tg*sh,oT=tg-dT;
+  const cl=Math.ceil(dT/fx/(lot*v('p_rb'))), ibCl=Math.ceil(oT/fx/(lot*v('p_ov'))), ib=Math.ceil(ibCl/v('p_ibc'));
+  const needCl=Math.max(0,cl-v('p_ex')), nc=needCl/m, ldC=nc/(v('p_cv')/100), ldI=(ib/m)/(v('p_icv')/100), ld=Math.ceil(ldC+ldI);
+  $('q_ld').textContent=fmt(ld)+' ราย'; $('q_ldn').textContent=`${fmt(Math.ceil(ldC))} สำหรับลูกค้าตรง + ${fmt(Math.ceil(ldI))} สำหรับสรรหา IB · ต่อเนื่อง ${m} เดือน`;
+  $('q_cl').textContent=fmt(cl)+' คน'; $('q_ib').textContent=fmt(ib)+' คน'; $('q_v').textContent=fmt(cl*lot+ibCl*lot);
+  $('q_nc').textContent=fmt(Math.ceil(nc))+' คน';
+  $('q_tb').innerHTML=`<tr><td>ลูกค้าตรง</td><td class="num">${thb(dT)}</td><td class="num">${fmt(cl*lot)}</td><td class="num">${fmt(cl)} คน</td></tr><tr><td>IB ใต้สาย</td><td class="num">${thb(oT)}</td><td class="num">${fmt(ibCl*lot)}</td><td class="num">${fmt(ib)} IB · ${fmt(ibCl)} ลูกค้า</td></tr>`;
+  $('q_wk').textContent=`สัปดาห์ละ ~${fmt(Math.ceil(ld/4.3))} Lead → ปิดลูกค้าใหม่ ~${fmt(nc/4.3,1)} คน และ IB ใหม่ ~${fmt(ib/m/4.3,1)} คน · ถ้าตัวเลขสูงเกินไป ลองขยายเวลา เพิ่ม lot เฉลี่ย หรือเพิ่มสัดส่วน IB`;
+}
+
+const O={
+ think:{l:'ขอคิดดูก่อน',why:'มักแปลว่ายังมีข้อกังวลที่ไม่ได้พูด — หาให้เจอแทนการกดดัน',
+  f:[`ได้เลยครับ{n} ไม่รีบเลย 😊 ขอถามนิดนึงครับ ส่วนไหนที่อยากคิดเพิ่ม — เรื่องโบรก เรื่องเงินทุน หรือเรื่องถอนเงิน? ผมจะได้ส่งข้อมูลตรงจุดให้ ไม่ต้องไปหาเองครับ`,`เข้าใจครับ{n} ตัดสินใจเรื่องเงินต้องชัวร์ก่อน ผมสรุปให้สั้น ๆ: เทรด {lot} lot/เดือน ได้ rebate คืนประมาณ {rbm} ต่อเดือน ลองเก็บไว้เทียบนะครับ แล้วพรุ่งนี้ผมทักไปถามว่ามีคำถามอะไรเพิ่มไหม โอเคไหมครับ`],
+  p:[`ยินดีครับ{n} เพื่อให้การพิจารณาง่ายขึ้น ขอทราบว่าประเด็นใดที่ต้องการข้อมูลเพิ่มเติม ทั้งเรื่องความน่าเชื่อถือของโบรกเกอร์ เงื่อนไข rebate หรือขั้นตอนฝาก-ถอน ผมจะจัดเตรียมเอกสารให้ครบครับ`],
+  s:[`ได้ครับ{n} ติดเรื่องไหนอยู่ครับ? ผมส่งข้อมูลตรงจุดให้ได้เลย`],
+  q:'ถ้าเรื่องนั้นเคลียร์แล้ว มีอะไรอื่นที่ทำให้ยังไม่เริ่มไหมครับ?'},
+ rebate:{l:'โบรกอื่นให้ rebate เยอะกว่า',why:'เปลี่ยนจากราคาต่อ lot เป็นต้นทุนรวม + บริการ',
+  f:[`จริงครับ{n} rebate ต่อ lot สำคัญ แต่ลองดูต้นทุนรวมด้วยนะครับ — spread, ค่าคอม, slippage และความเร็วถอนเงิน บางที่ rebate สูงแต่ spread กว้างกว่า ผลสุทธิกลับน้อยกว่า ที่ {lot} lot/เดือน ของเราคืนให้ {rbm} ส่งตัวเลขของอีกที่มาเทียบได้เลยครับ ผมช่วยคำนวณให้แบบตรงไปตรงมา`,`ขอบคุณที่บอกตรง ๆ ครับ{n} นอกจาก rebate แล้วที่นี่มีผมคอยดูแลส่วนตัว ถอนติดขัดทักได้ทันที ลองให้ผมเทียบต้นทุนสุทธิให้ดูก่อนไหมครับ ถ้าอีกที่คุ้มกว่าจริง ผมบอกตรง ๆ ครับ`],
+  p:[`เข้าใจครับ{n} ขอเสนอให้เปรียบเทียบจากต้นทุนสุทธิต่อ lot (spread + commission − rebate) แทนตัวเลข rebate เพียงอย่างเดียว หากส่งเงื่อนไขของอีกโบรกเกอร์มา ผมจะจัดทำตารางเปรียบเทียบให้ครับ`],
+  s:[`ลองเทียบต้นทุนสุทธิไหมครับ{n}? spread+ค่าคอม−rebate ส่งตัวเลขมา ผมคำนวณให้เลย`],
+  q:'ปกติคุณเทรดคู่เงินไหนเป็นหลักครับ? ผมจะได้เทียบ spread ให้ตรงคู่'},
+ withdraw:{l:'กลัวถอนเงินไม่ได้',why:'ความกลัวที่มีเหตุผล — ตอบด้วยหลักฐานและให้ทดลองเอง',
+  f:[`เป็นคำถามที่ควรถามครับ{n} 👍 แนะนำเริ่มแบบนี้: ฝากจำนวนน้อยก่อน เทรดนิดหน่อย แล้วลองถอนดูเอง จะได้เห็นกับตาว่าใช้เวลาเท่าไร ผมช่วยดูทุกขั้นตอน และส่งข้อมูลใบอนุญาต/หน่วยงานกำกับของโบรกให้ตรวจสอบได้ครับ`],
+  p:[`ขอบคุณที่สอบถามครับ{n} ผมจะส่งข้อมูลใบอนุญาตและหน่วยงานกำกับดูแลให้ตรวจสอบได้ด้วยตนเอง พร้อมแนะนำให้ทดลองฝาก-ถอนด้วยจำนวนเล็กน้อยก่อน เพื่อยืนยันขั้นตอนและระยะเวลาจริงครับ`],
+  s:[`ลองฝากน้อย ๆ แล้วถอนดูก่อนไหมครับ{n}? เห็นเองชัดสุด ผมช่วยดูให้ทุกขั้นตอน`],
+  q:'เคยมีประสบการณ์ถอนเงินไม่ได้จากที่ไหนมาก่อนไหมครับ?'},
+ notyet:{l:'ยังไม่อยากฝาก',why:'ลดขั้นตอนแรกให้เล็กลง — เปิดบัญชีก่อน ฝากทีหลัง',
+  f:[`ไม่เป็นไรเลยครับ{n} เปิดบัญชีไว้ก่อนก็ได้ ไม่มีค่าใช้จ่าย ลองใช้บัญชีทดลองดูระบบ ถ้าพร้อมเมื่อไรค่อยฝาก ผมส่งลิงก์ให้เลยนะครับ`,`เข้าใจครับ{n} ขอถามว่ารออะไรอยู่ครับ — รอเงินก้อน รอดูตลาด หรือยังไม่มั่นใจตัวโบรก? ผมจะได้ช่วยเตรียมให้พร้อมตอนถึงเวลาครับ`],
+  p:[`ยินดีครับ{n} แนะนำให้เปิดบัญชีและยืนยันตัวตนไว้ล่วงหน้า ซึ่งไม่มีค่าใช้จ่าย เมื่อพร้อมจะสามารถเริ่มได้ทันที ระหว่างนี้สามารถใช้บัญชีทดลองได้ครับ`],
+  s:[`เปิดบัญชีไว้ก่อนได้ครับ{n} ฟรี พร้อมเมื่อไรค่อยฝาก ส่งลิงก์ให้ไหมครับ?`],
+  q:'ถ้าจะเริ่ม คิดว่าช่วงไหนสะดวกที่สุดครับ?'},
+ pricey:{l:'ทุนยังน้อย',why:'ทำให้เริ่มได้ด้วยความเสี่ยงที่รับได้',
+  f:[`ทุนน้อยเริ่มได้ครับ{n} แนะนำเริ่มขนาด lot เล็ก คุมความเสี่ยงต่อไม้ไม่เกิน 1–2% ของพอร์ต ค่อย ๆ โตไป ผมช่วยวางแผนขนาดไม้ให้ได้ครับ`],
+  p:[`สามารถเริ่มด้วยเงินทุนจำนวนน้อยได้ครับ{n} โดยใช้ขนาดสัญญาเล็กและจำกัดความเสี่ยงต่อการเทรดแต่ละครั้ง ผมยินดีช่วยวางแผนบริหารเงินทุนให้ครับ`],
+  s:[`เริ่มทุนน้อยได้ครับ{n} ใช้ lot เล็ก คุมเสี่ยง ผมช่วยวางแผนให้`],
+  q:'ตั้งงบเริ่มต้นไว้ประมาณเท่าไรครับ?'},
+ ib:{l:'สนใจเป็น IB แต่ไม่มีลูกค้า',why:'สำหรับชวน IB ใต้สาย — เริ่มจากเครือข่ายเดิม',
+  f:[`ไม่ต้องมีลูกค้าก่อนครับ{n} เริ่มจากเพื่อนที่เทรดอยู่แล้ว 3–5 คนก็พอ ถ้าเทรดคนละ {lot} lot/เดือน รายได้ก็เริ่มเดินแล้ว ผมมีสื่อและสคริปต์ให้ใช้ พร้อมช่วยปิดลูกค้าให้ช่วงแรกครับ`],
+  p:[`การเริ่มต้นเป็น IB ไม่จำเป็นต้องมีฐานลูกค้าล่วงหน้าครับ{n} เราจะสนับสนุนสื่อการตลาด สคริปต์ และช่วยดูแลการปิดการขายช่วงแรก เริ่มจากเครือข่ายที่มีอยู่ได้ทันทีครับ`],
+  s:[`เริ่มจากเพื่อน 3–5 คนก็ได้ครับ{n} ผมมีสื่อ+ช่วยปิดให้`],
+  q:'รอบตัวมีคนที่เทรดอยู่แล้วประมาณกี่คนครับ?'}
+};
+let cur='think',alt=0;
+$('objs').innerHTML=Object.entries(O).map(([k,o])=>`<button data-k="${k}" aria-pressed="${k==cur}">${o.l}</button>`).join('');
+$('objs').onclick=e=>{const b=e.target.closest('button');if(!b)return;cur=b.dataset.k;alt=0;$('objs').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));ai()};
+function ai(){
+  const o=O[cur],list=o[$('tone').value],n=$('c_name').value.trim(),lot=v('c_lot'),rbm='$'+fmt(lot*v('c_rb'));
+  const t=list[alt%list.length].replace(/\{n\}/g,n?' '+n:'').replace(/\{lot\}/g,fmt(lot)).replace(/\{rbm\}/g,rbm);
+  $('a_h').textContent='ตอบ: “'+o.l+'”'; $('a_why').textContent='แนวคิด: '+o.why; $('a_txt').textContent=t; $('a_q').textContent=o.q;
+  $('alt').hidden=list.length<2;
+}
+$('alt').onclick=()=>{alt++;ai()};
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('a_txt').textContent+'\n\n'+$('a_q').textContent);$('toast').textContent='คัดลอกแล้ว'}catch(e){$('toast').textContent='คัดลอกไม่ได้ — เลือกข้อความแล้วกด Ctrl+C'}};
+['tone','c_name','c_lot','c_rb'].forEach(i=>$(i).oninput=ai);
+document.querySelectorAll('#sim input').forEach(i=>i.oninput=sim);
+document.querySelectorAll('#plan input').forEach(i=>i.oninput=plan);
+sim();plan();ai();
+</script>
+
+</body>
+</html>
