@@ -2,299 +2,343 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MIB Sales Toolkit</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="ลุงอัด ซัดกราฟ — วิเคราะห์ทองคำ XAUUSD ทุกวัน สอนเทรดฟรี แผนเทรด เครื่องมือ และพาร์ทเนอร์ IB">
+<meta property="og:title" content="ลุงอัด ซัดกราฟ">
+<meta property="og:image" content="og-image.jpg">
+<title>ลุงอัด ซัดกราฟ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&family=Sarabun:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-:root{color-scheme:dark;--bg:#0A0A0C;--surf:#141417;--ink:#EDE9E0;--mute:#9A968C;--line:#2C2C33;--acc:#FF3B45;--acc2:#D9A93A;--soft:#1E0E11;--red:#E30613}
+:root{--bg:#0A0A0C;--s1:#141417;--s2:#1D1D22;--line:#2C2C33;--ink:#EDE9E0;--mute:#9A968C;--gold:#E30613;--gold2:#FF4D57;--up:#3FB67A;--dn:#F2994A}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Sarabun,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:Kanit,sans-serif;line-height:1.2;margin:0;text-wrap:balance}
+.w{max-width:1120px;margin:0 auto;padding-inline:16px}
+.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px Kanit,sans-serif;padding:12px 20px;border-radius:8px;border:1px solid var(--line);color:var(--ink)}
+.btn.p{background:var(--gold);color:#FFFFFF}
+.btn:hover{filter:brightness(1.1)}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.eyebrow{font:600 12px Kanit;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(10,10,12,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;gap:24px;height:62px}
+.logo{font:700 20px Kanit}.logo span{color:var(--gold)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0 0 0 auto;padding:0;font:400 15px Kanit;color:var(--mute)}
+nav ul a:hover{color:var(--ink)}
+nav .btn{padding:8px 14px;font-size:14px}
+@media(max-width:820px){nav ul{display:none}nav .btn{margin-left:auto}}
+/* ticker */
+.tv-single{min-height:70px}.tick{min-height:46px;border-bottom:1px solid var(--line);background:var(--s1);font-size:13px;color:var(--mute);overflow:hidden;white-space:nowrap}
+.tick .w{display:flex;gap:28px;padding-block:7px;overflow-x:auto}
+.up{color:var(--up)}.dn{color:var(--dn)}
+/* hero */
+.hero{padding-block:56px 40px}
+.hero .w{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.hero .w{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(32px,4.6vw,50px);font-weight:700}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:var(--mute);max-width:52ch;font-size:17px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.proof{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px}
+.proof b{display:block;font:700 26px Kanit;color:var(--ink)}.proof span{font-size:13px;color:var(--mute)}
+/* outlook card */
+.ol{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ol-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.live{font:600 12px Kanit;color:var(--up);display:flex;align-items:center;gap:6px}.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--up)}
+.ol-p{padding:18px;display:grid;gap:14px}
+.px{font:500 34px "IBM Plex Mono",monospace}
+.bias{display:inline-block;font:600 13px Kanit;padding:3px 10px;border-radius:999px;background:rgba(63,182,122,.15);color:var(--up)}
+.lv{display:grid;gap:6px;font-size:14px}
+.lv div{display:flex;justify-content:space-between;padding:7px 10px;border-radius:6px;background:var(--s2)}
+.lv .r{box-shadow:inset 3px 0 var(--dn)}.lv .s{box-shadow:inset 3px 0 var(--up)}
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px}
+.plan div{border:1px solid var(--line);border-radius:8px;padding:10px}.plan b{font-family:Kanit}
+.ol-f{padding:12px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--mute);display:flex;justify-content:space-between}
+.ol-f a{color:var(--gold2)}
+/* sections */
+section.sec{padding-block:64px;border-top:1px solid var(--line)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.sh h2{font-size:clamp(26px,3.6vw,36px);margin-top:6px}
+.sh p{color:var(--mute);margin:6px 0 0;max-width:56ch}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.tool{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:10px;align-content:start;transition:border-color .2s}
+.tool:hover{border-color:var(--gold)}
+.tool .tag{font:600 11px Kanit;letter-spacing:.08em;color:var(--gold2);text-transform:uppercase}
+.tool h3{font-size:19px}.tool p{margin:0;color:var(--mute);font-size:15px}
+.tool .go{font:600 14px Kanit;color:var(--gold2);margin-top:4px}
+.tool.new{background:linear-gradient(160deg,#2A0D10,var(--s1) 60%);border-color:#5C1419}
+/* archive */
+.arch{display:grid;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.arch a{display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--s1)}
+.arch a:last-child{border-bottom:0}.arch a:hover{background:var(--s2)}
+.arch .d{color:var(--mute);font-size:13px}
+.res{font:600 12px Kanit;padding:3px 10px;border-radius:999px}
+.res.w{background:rgba(63,182,122,.15);color:var(--up)}.res.l{background:rgba(242,153,74,.15);color:var(--dn)}.res.n{background:var(--s2);color:var(--mute)}
+@media(max-width:560px){.arch a{grid-template-columns:1fr auto}.arch .d{grid-column:1/-1}}
+/* course */
+.course{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:820px){.course{grid-template-columns:1fr}}
+.steps{display:grid;gap:12px;counter-reset:s}
+.steps div{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--s1)}
+.steps div:before{counter-increment:s;content:counter(s);font:700 20px Kanit;color:var(--gold2)}
+.steps b{font-family:Kanit;display:block}.steps span{color:var(--mute);font-size:14px}
+/* cta */
+.cta{background:var(--s1);border:1px solid #5C1419;border-radius:16px;padding:40px 28px;text-align:center;display:grid;gap:16px;justify-items:center}
+.cta h2{font-size:clamp(26px,4vw,40px)}.cta p{color:var(--mute);margin:0}
+.soc{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.soc a{font:400 14px Kanit;padding:8px 14px;border:1px solid var(--line);border-radius:999px;color:var(--mute)}.soc a:hover{color:var(--ink);border-color:var(--mute)}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--mute);font-size:13px}
+footer .risk{max-width:80ch;margin:0 0 12px}
+.demo{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:14px;background:var(--gold);color:#FFFFFF;font:600 12px Kanit;padding:6px 12px;border-radius:999px;z-index:10}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
+.hero{position:relative;overflow:hidden;padding-block:72px 64px;background:radial-gradient(70% 90% at 75% 45%,#3A0508 0%,#1A0305 40%,var(--bg) 75%)}
+.hero .w{grid-template-columns:1fr 1fr}
+.olwrap{max-width:560px}
+.stage{position:relative;height:440px;perspective:900px}
+.stage>*{position:absolute;transition:transform .25s ease-out}
+.glow{inset:15% 5% 5% 5%;background:radial-gradient(closest-side,rgba(227,6,19,.45),transparent);filter:blur(30px);animation:pulse 5s ease-in-out infinite}
+.mark{left:50%;top:14%;transform:translateX(-50%);font:700 clamp(84px,11vw,150px)/1 Kanit,sans-serif;white-space:nowrap;animation:float 6s ease-in-out infinite}
+.mark span{display:block}
+.m-back{position:absolute;inset:0;color:#8A0009;transform:translate(8px,8px);filter:blur(1px)}
+.m-front{position:relative;background:linear-gradient(180deg,#FFFFFF 0%,#FFFFFF 55%,#E9E4E4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 2px rgba(255,255,255,.6)) drop-shadow(0 0 24px rgba(227,6,19,.8))}
+.ped{left:50%;bottom:8%;width:74%;height:70px;transform:translateX(-50%)}
+.ped i{position:absolute;inset:0;border-radius:50%;background:repeating-linear-gradient(90deg,#E30613 0 10px,#8A0009 10px 16px);box-shadow:0 -6px 0 #FF3D47 inset,0 20px 60px rgba(227,6,19,.5)}
+.ped:after{content:"";position:absolute;left:8%;right:8%;top:-10px;height:26px;border-radius:50%;background:#1A0204;box-shadow:0 0 0 2px #E30613}
+.bar{left:44%;bottom:20%;width:118px;height:46px;border-radius:6px;background:linear-gradient(160deg,#FFE7A0,#D8A93A 45%,#8C6414);box-shadow:0 10px 30px rgba(0,0,0,.6),inset 0 2px 0 #FFF4C9;display:grid;place-items:center;transform:rotate(-12deg);animation:float 7s ease-in-out infinite reverse}
+.bar b{font:700 15px Kanit;color:#6B4A0C;letter-spacing:.15em}
+.coin{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font:700 26px Kanit;color:#fff;background:radial-gradient(circle at 35% 30%,#FF5A63,#E30613 45%,#6E0008);box-shadow:0 0 0 4px #9C000B inset,0 12px 30px rgba(227,6,19,.45)}
+.c1{left:6%;top:48%;animation:bob 5s ease-in-out infinite}
+.c2{right:4%;top:10%;width:52px;height:52px;font-size:22px;animation:bob 6s ease-in-out -2s infinite}
+.c3{right:12%;top:58%;width:44px;height:44px;font-size:16px;background:radial-gradient(circle at 35% 30%,#FFE7A0,#D8A93A 50%,#7A5510);color:#5A3D05;box-shadow:0 10px 24px rgba(0,0,0,.5);animation:bob 4.5s ease-in-out -1s infinite}
+.spark{width:4px;height:4px;border-radius:50%;background:#FF6B73;box-shadow:0 0 10px #FF3D47;animation:twk 3s ease-in-out infinite}
+.s1{left:18%;top:12%}.s2{right:26%;top:40%;animation-delay:-1s}.s3{left:30%;bottom:34%;animation-delay:-2s}
+@keyframes float{50%{translate:0 -14px}}
+@keyframes bob{50%{translate:0 -18px;rotate:10deg}}
+@keyframes pulse{50%{opacity:.6}}
+@keyframes twk{50%{opacity:.2;scale:.5}}
 
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:15px/1.6 Sarabun,system-ui,sans-serif;padding:24px 16px 48px}
-.wrap{max-width:1080px;margin:0 auto;display:grid;gap:20px}
-h1{font-size:26px;margin:0;text-wrap:balance}h2{font-size:18px;margin:0 0 4px}
-.sub{color:var(--mute);margin:0}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
-.tabs button{font:inherit;font-weight:500;background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;color:var(--mute);cursor:pointer}
-.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--acc)}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:20px}
-@media (max-width:760px){.grid{grid-template-columns:1fr}}
-.panel{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:14px;align-content:start}
-fieldset{border:0;padding:0;margin:0;display:grid;gap:10px}
-legend{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
-label{display:grid;grid-template-columns:1fr 110px;align-items:center;gap:10px;font-size:14px}
-label small{display:block;color:var(--mute);font-size:12px}
-input,select,textarea{font:500 14px "IBM Plex Mono",monospace;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:7px 9px;width:100%}
-select,textarea{font-family:Kanit,sans-serif}
-.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
-.hero{padding:18px;border-radius:10px;background:var(--soft)}
-.hero .big{font:500 clamp(30px,6vw,44px)/1.1 "IBM Plex Mono",monospace;color:var(--acc)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.kpi{border:1px solid var(--line);border-radius:8px;padding:10px 12px}
-.kpi span{display:block;font-size:12px;color:var(--mute)}.kpi b{font:500 20px "IBM Plex Mono",monospace}
-table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:7px 4px;border-bottom:1px solid var(--line);text-align:right}td:first-child,th:first-child{text-align:left}th{font-size:12px;color:var(--mute);font-weight:500}
-.chart{overflow-x:auto}svg text{fill:var(--mute);font:11px "IBM Plex Mono",monospace}
-.note{font-size:12px;color:var(--mute)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surf);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
-.chips button[aria-pressed="true"]{background:var(--acc);color:var(--surf);border-color:var(--acc)}
-.script{border-left:3px solid var(--acc2);padding:12px 14px;background:var(--bg);border-radius:0 8px 8px 0;white-space:pre-wrap}
-.act{font:inherit;font-weight:500;background:var(--acc);color:var(--surf);border:0;border-radius:6px;padding:8px 14px;cursor:pointer}
-.ghost{background:none;color:var(--acc);border:1px solid var(--acc)}
-.row{display:flex;gap:8px;flex-wrap:wrap}
+.fx{inset:0;width:100%;height:100%;pointer-events:none}
+.ptag{left:50%;bottom:36%;transform:translateX(-50%);display:flex;align-items:baseline;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(10,10,12,.75);border:1px solid #5C1419;backdrop-filter:blur(6px);white-space:nowrap;transition:box-shadow .4s,border-color .4s}
+.ptag span{font:600 11px Kanit;letter-spacing:.1em;color:var(--mute)}
+.ptag b{font-size:18px;color:#fff}.ptag em{font:500 12px "IBM Plex Mono",monospace;font-style:normal}
+.ptag.up{border-color:var(--up);box-shadow:0 0 18px rgba(63,182,122,.5)}.ptag.dn{border-color:#FF4D57;box-shadow:0 0 18px rgba(227,6,19,.6)}
+.stage .glow{animation:inFade .8s ease-out both,pulse 5s ease-in-out .8s infinite}
+.stage .ped{animation:inRise .8s cubic-bezier(.2,.8,.2,1) .1s both}
+.stage .mark{animation:inDrop 1s cubic-bezier(.2,1.3,.4,1) .45s both,float 6s ease-in-out 1.5s infinite}
+.stage .bar{animation:inPop .6s cubic-bezier(.2,1.5,.4,1) .9s both,float 7s ease-in-out 1.5s infinite reverse}
+.stage .ptag{animation:inFade .6s ease-out 1.2s both}
+.stage .c1{animation:inPop .6s cubic-bezier(.2,1.6,.4,1) 1s both,bob 5s ease-in-out 1.6s infinite}
+.stage .c2{animation:inPop .6s cubic-bezier(.2,1.6,.4,1) 1.15s both,bob 6s ease-in-out 1.8s infinite}
+.stage .c3{animation:inPop .6s cubic-bezier(.2,1.6,.4,1) 1.3s both,bob 4.5s ease-in-out 1.9s infinite}
+@keyframes inFade{from{opacity:0}}
+@keyframes inRise{from{opacity:0;scale:.6}}
+@keyframes inDrop{from{opacity:0;translate:0 -60px;scale:1.15}}
+@keyframes inPop{from{opacity:0;scale:0}}
+@media(max-width:860px){.hero .w{grid-template-columns:1fr}.stage{height:320px;order:-1}.mark{font-size:84px}}
+@media(prefers-reduced-motion:reduce){.stage *{animation:none!important}}
+.veil{position:relative}
+.veil .lv{filter:blur(3px);opacity:.55;user-select:none}
+.unlock{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:6px;text-align:center;background:radial-gradient(closest-side,rgba(10,10,12,.85),rgba(10,10,12,.35))}
+.unlock b{font:700 20px Kanit}.unlock span{font-size:13px;color:var(--mute);margin-bottom:6px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.pc{display:grid;gap:4px;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--s1)}.pc b{font:600 17px Kanit}.pc span{color:var(--mute);font-size:14px}
 
-.acc-h{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
-.acc-sum{text-align:right}.acc-sum b{display:block;font:500 26px "IBM Plex Mono",monospace;color:var(--acc)}
-.acc-wrap{overflow-x:auto}
-.acc-t{min-width:1000px}.acc-t input{width:64px}.acc-t input.sm{width:70px;text-align:left;font-family:Kanit,sans-serif}.acc-t tfoot td{border-bottom:0;padding-top:10px}.acc-t td{padding:6px 4px}.acc-t td:first-child{text-align:left}
-.acc-t input{text-align:right}.acc-t input.nm{width:100px;text-align:left;font-family:Kanit,sans-serif}
-.acc-t input.tx{width:180px;text-align:left;font-family:Kanit,sans-serif}
-#s_rb[readonly]{background:var(--soft);color:var(--acc)}
-.cmp{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:14px}@media(max-width:860px){.cmp{grid-template-columns:1fr}}
-.side{border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:10px;align-content:start}
-.side.new{border-color:var(--acc);background:var(--soft)}.side.diff{background:var(--bg)}
-.tag2{font:600 12px Kanit,sans-serif;letter-spacing:.06em;color:var(--mute)}
-.side .res b{display:block;font:500 26px "IBM Plex Mono",monospace}.side.new .res b{color:var(--acc)}
-.side label{grid-template-columns:1fr 180px}.side select{font-size:14px}.brk{font-family:"IBM Plex Mono",monospace;font-size:12px}
-details.rbt summary{cursor:pointer;color:var(--acc);font-weight:500}details.rbt{display:grid;gap:10px}
-.acc-t{min-width:640px}.acc-t input{width:70px;text-align:right}
-.inc{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:12px}
-.inc-g{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:14px;align-items:end}@media(max-width:760px){.inc-g{grid-template-columns:1fr}}
-.inc-g label{grid-template-columns:1fr 130px}
-.inc-r{background:var(--soft);border-radius:10px;padding:10px 14px}.inc-r b{display:block;font:500 26px "IBM Plex Mono",monospace;color:var(--acc)}
-.lvl tr.on td{background:var(--soft);font-weight:600}
-
-/* ธีมแดงดำเดียวกับหน้าแรก */
-body{background:radial-gradient(60% 40% at 85% 0%,#2A0508,transparent 70%),var(--bg)}
-h1,h2,.tabs button,legend{font-family:Kanit,sans-serif}
-.act,.cfab,.cin button,.m.u,.chips button[aria-pressed="true"]{background:var(--red)!important;color:#fff!important}
-.cfab{box-shadow:0 10px 26px rgba(227,6,19,.4)}
-.tabs button[aria-selected="true"]{border-color:var(--red)}
-.hero,.side.new,.inc-r{background:linear-gradient(160deg,#2A0D10,var(--soft))!important;border-color:#5C1419}
-.side.new{border:1px solid var(--red)}
-input,select,textarea{background:#0F0F12;border-color:var(--line);color:var(--ink)}
-input:focus,select:focus,textarea:focus{border-color:var(--red)}
-#s_rb[readonly]{background:#1E0E11}
-.panel{background:var(--surf)}
-.chd{background:#1D1D22!important}
-.disc{border:1px solid #5C1419;background:#1E0E11;border-radius:10px;padding:10px 14px;font-size:13px;color:var(--mute)}.disc b{color:var(--ink)}
-.disc2{border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--mute);display:grid;gap:4px}.disc2 p{margin:0;max-width:90ch}.disc2 b{color:var(--ink)}
+/* ลูกเล่นเพิ่ม */
+.bar{overflow:hidden}.bar:after{content:"";position:absolute;inset:-20% auto -20% -60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:sheen 3.5s ease-in-out 2s infinite}
+@keyframes sheen{0%,60%{left:-60%}100%{left:130%}}
+.ped i{background-size:32px 100%;animation:spin 6s linear infinite}
+@keyframes spin{to{background-position:32px 0}}
+.mark{transform-style:preserve-3d}.mark .m-front,.mark .m-back{transition:transform .2s ease-out}
+.tool{transition:border-color .2s,transform .25s,box-shadow .25s}
+.tool:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(227,6,19,.18)}
+.btn.p{position:relative;overflow:hidden;transition:transform .15s,box-shadow .2s}
+.btn.p:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(227,6,19,.45)}
+.btn.p:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.35),transparent 70%);transform:translateX(-120%);transition:transform .6s}
+.btn.p:hover:before{transform:translateX(120%)}
+.flyc{position:fixed;z-index:50;width:22px;height:22px;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 35% 30%,#FFE7A0,#D8A93A 55%,#7A5510);box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;align-items:center;gap:8px;background:#06C755;color:#fff;font:600 15px Kanit;padding:12px 18px;border-radius:999px;box-shadow:0 10px 26px rgba(6,199,85,.4);animation:fabIn .5s ease-out 2s both}
+.fab:before{content:"";width:9px;height:9px;border-radius:50%;background:#fff;animation:ping 1.6s ease-out infinite}
+@keyframes fabIn{from{opacity:0;translate:0 30px}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,255,255,.8)}100%{box-shadow:0 0 0 10px rgba(255,255,255,0)}}
+.rv{transition:opacity .7s ease,translate .7s ease}.rv.pre{opacity:0;translate:0 28px}
+@media(prefers-reduced-motion:reduce){.bar:after,.ped i,.fab,.fab:before{animation:none}.rv.pre{opacity:1;translate:none}}
+.tool .tag{justify-self:start;padding:3px 10px;border:1px solid #5C1419;border-radius:999px;background:rgba(227,6,19,.1);line-height:1.4}
+.tool .go{transition:letter-spacing .25s}.tool:hover .go{letter-spacing:.04em}
+.soc a{display:inline-flex;align-items:center;gap:8px;transition:color .2s,border-color .2s,transform .2s,box-shadow .2s}
+.soc a i{display:grid;width:18px;height:18px;color:var(--c);transition:transform .3s}.soc a i svg{width:100%;height:100%}
+.soc a:hover{color:var(--ink);border-color:var(--c);transform:translateY(-2px);box-shadow:0 8px 20px -8px var(--c)}
+.soc a:hover i{transform:scale(1.2) rotate(-8deg)}
 </style>
 
-<style>body{margin:0}[hidden]{display:none!important}</style>
 </head>
 <body>
-<div class="wrap">
-  <header><h1>MIB Sales Toolkit</h1><p class="sub">คำนวณรายได้ · วางแผนย้อนกลับจากเป้า · ประเภทบัญชีและ rebate</p></header>
-  <div class="disc" role="note"><b>เครื่องมือประมาณการเท่านั้น</b> ตัวเลขทั้งหมดคำนวณจากสมมติฐานที่ผู้ใช้กรอก ไม่ใช่การรับประกันรายได้หรือผลตอบแทน รายได้จริงขึ้นกับวอลุ่มการเทรดจริงของลูกค้า เงื่อนไขของโบรกเกอร์ อัตราแลกเปลี่ยน และปัจจัยอื่น</div>
+<nav><div class="w">
+  <a class="logo" href="#">ลุงอัด <span>ซัดกราฟ</span></a>
+  <ul><li><a href="#outlook">วิเคราะห์วันนี้</a></li><li><a href="#tools">เครื่องมือ</a></li><li><a href="#learn">เรียนฟรี</a></li><li><a href="#partner">พาร์ทเนอร์ IB</a></li></ul>
+  <a class="btn p" href="https://line.me/R/ti/p/@370dhnry">ทักไลน์หาลุง</a>
+</div></nav>
 
-  <nav class="tabs" role="tablist">
-    <button role="tab" aria-selected="true" data-t="sim">Income Simulator</button>
-    <button role="tab" aria-selected="false" data-t="plan">Business Planner</button>
-  </nav>
+<div class="tick"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{"symbols":[{"proName":"OANDA:XAUUSD","title":"ทองคำ"},{"proName":"OANDA:XAGUSD","title":"Silver"},{"proName":"FX:EURUSD","title":"EUR/USD"},{"proName":"FX:USDJPY","title":"USD/JPY"},{"proName":"FX:GBPUSD","title":"GBP/USD"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"NASDAQ:NVDA","title":"Nvidia"},{"proName":"NASDAQ:AAPL","title":"Apple"},{"proName":"NASDAQ:MSFT","title":"Microsoft"},{"proName":"NASDAQ:GOOGL","title":"Google"},{"proName":"NASDAQ:AMZN","title":"Amazon"},{"proName":"NASDAQ:META","title":"Meta"},{"proName":"NASDAQ:TSLA","title":"Tesla"}],"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"th_TH"}
+</script></div></div>
 
-  <!-- SIM -->
-  <section id="sim" class="grid">
-    <div class="panel acc" style="grid-column:1/-1">
-      <div><h2>เทียบประมาณการรายได้: ที่เก่า vs ที่ลุง</h2><p class="note">เลือกประเภทบัญชีและมาร์คอัพ แล้วดูว่า MIB ได้เพิ่มเท่าไรต่อเดือน · วอลุ่มดึงจากช่องลูกค้าด้านล่าง</p></div>
-      <div class="cmp">
-        <div class="side old"><div class="tag2">ที่เก่า</div>
-          <label>Rebate ที่ได้อยู่ ($/lot)<input id="o_rb" type="number" value="5" step="0.5" min="0"></label>
-          <label><span>โบนัส/Incentive ที่เก่า ($)<small>ถ้าไม่มีใส่ 0</small></span><input id="o_inc" type="number" value="0" step="100" min="0"></label>
-          <div class="res"><span class="note">ประมาณการรายได้</span><b class="num" id="o_m">–</b><span class="note num" id="o_y"></span></div>
+<header class="hero"><div class="w">
+  <div>
+    <div class="eyebrow">เทรดทองคำ XAUUSD · ประสบการณ์ 10+ ปี</div>
+    <h1 style="margin-top:12px">เทรดทองแบบ<em>มีแผน</em><br>ไม่ใช่เทรดตามอารมณ์</h1>
+    <p>ลุงวิเคราะห์ทองทุกเช้า บอกแนวต้าน แนวรับ และแผนเข้า-ออกแบบสถานการณ์ พร้อมแจกเครื่องมือที่ลุงใช้เองทุกวัน</p>
+    <div class="row"><a class="btn p" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">ทักไลน์หาลุง</a><a class="btn" href="#tools">ใช้เครื่องมือฟรี</a></div>
+    <div class="proof"><div><b class="mono">10+ ปี</b><span>เทรดทองจริง</span></div><div><b class="mono">ทุกวัน</b><span>อัปเดตแผนเทรด</span></div><div><b class="mono">5</b><span>ช่องทางติดตาม</span></div></div>
+  </div>
+  <div class="stage" id="stage" aria-hidden="true">
+    <canvas class="fx" id="fx"></canvas>
+    <div class="glow"></div>
+    <div class="mark" data-d="14"><span class="m-back">ลุงอัด</span><span class="m-front">ลุงอัด</span></div>
+    <div class="ped" data-d="6"><i></i></div>
+    <div class="bar" data-d="10"><b>XAU</b></div>
+    <div class="ptag" id="tag" data-d="8"><span>XAUUSD</span><b class="mono" id="tagp">…</b><em id="tagc"></em></div>
+    <div class="coin c1" data-d="26">฿</div>
+    <div class="coin c2" data-d="34">$</div>
+    <div class="coin c3" data-d="20">Au</div>
+    <div class="spark s1"></div><div class="spark s2"></div><div class="spark s3"></div>
+  </div>
+</div></header>
+
+<section class="sec" id="outlook"><div class="w"><div class="sh"><div><div class="eyebrow">วิเคราะห์วันนี้</div><h2>แผนเทรดทองประจำวัน</h2><p>ราคาทองสด และแผนเทรดที่ลุงส่งให้ทางไลน์ทุกเช้า</p></div></div><div class="olwrap">
+  <article class="ol lock" aria-label="ขอแผนเทรดวันนี้">
+    <div class="ol-h"><b style="font-family:Kanit">แผนเทรดทองวันนี้</b><span class="live">ลุงอัปเดตทุกเช้า</span></div>
+    <div class="ol-p">
+      <div class="tv-single"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+      <script src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {"symbol":"OANDA:XAUUSD","width":"100%","colorTheme":"dark","isTransparent":true,"locale":"th_TH"}
+      </script></div></div>
+      <div class="veil">
+        <div class="lv mono" aria-hidden="true">
+          <div class="r"><span>แนวต้าน 2</span><span>•,•••</span></div>
+          <div class="r"><span>แนวต้าน 1</span><span>•,•••</span></div>
+          <div class="s"><span>แนวรับ 1</span><span>•,•••</span></div>
+          <div class="s"><span>แนวรับ 2</span><span>•,•••</span></div>
         </div>
-        <div class="side new"><div class="tag2">ที่ลุง</div>
-          <label>ประเภทบัญชี<select id="n_acc"></select></label>
-          <label><span>มาร์คอัพ<small>ยิ่งสูง MIB ได้มาก แต่ลูกค้าจ่ายสเปรดเพิ่ม</small></span><select id="n_mk"></select></label>
-          <label>สินค้าที่ลูกค้าเทรด<select id="n_pd"><option value="metal">Metal (ทองคำ)</option><option value="forex">Forex</option><option value="cfd">CFD</option><option value="stocks">Stocks</option><option value="dow">Dow</option></select></label>
-          <div class="brk note" id="n_brk"></div>
-          <div class="res"><span class="note">ประมาณการรายได้ (rebate + incentive)</span><b class="num" id="n_m">–</b><span class="note num" id="n_y"></span></div>
-        </div>
-        <div class="side diff"><div class="tag2">ส่วนต่าง</div>
-          <div class="res"><span class="note">ส่วนต่างโดยประมาณ</span><b class="num" id="d_m">–</b><span class="note num" id="d_y"></span></div>
-          <p class="note" id="d_note"></p>
+        <div class="unlock">
+          <b>รับแผนเทรดวันนี้ฟรี</b>
+          <span>แนวรับ-แนวต้าน · จุดเข้า Buy/Sell · TP/SL</span>
+          <a class="btn p" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">ขอแผนเทรดทางไลน์</a>
         </div>
       </div>
-      <details class="rbt"><summary>ตาราง Rebate ต่อ lot และตั้งค่ามาร์คอัพ</summary>
-        <div class="acc-wrap"><table class="acc-t"><thead><tr><th>ประเภทบัญชี</th><th>Forex $</th><th>Metal $</th><th>CFD $</th><th>Stocks $</th><th>Dow $</th><th>ระดับมาร์คอัพ</th></tr></thead><tbody id="acc_tb"></tbody></table></div>
-        <label style="max-width:460px"><span>มาร์คอัพ 1 ระดับ = MIB ได้เพิ่ม ($/lot)<small>ค่าตั้งต้น: 1 point ทอง = $1/lot (สมมติ ตรวจกับเงื่อนไขจริง)</small></span><input id="mk_usd" type="number" value="1" step="0.1" min="0"></label>
-      </details>
-      <div class="inc">
-        <div><h2>IB Support Incentive</h2><p class="note">โบนัสจาก Net Deposit ของลูกค้า · ต้องเทรดครบ lot ขั้นต่ำของแต่ละ Level ถ้าไม่ครบจะลดลงไปใช้ Level ที่ทำได้</p></div>
-        <div class="inc-g">
-          <label>Net Deposit (USD)<input id="i_nd" type="number" value="100000" step="5000" min="0"></label>
-          <label><span>Lot ที่เทรดได้<small>ในรอบเดียวกัน</small></span><input id="i_lot" type="number" value="600" step="10" min="0"></label>
-          <div class="inc-r"><span class="note" id="i_lv">–</span><b class="num" id="i_usd">–</b><span class="note num" id="i_thb"></span></div>
-        </div>
-        <p class="note" id="i_why"></p>
-        <p class="note">Incentive เป็นโปรโมชันของโบรกเกอร์ มีเงื่อนไข ระยะเวลา และการพิจารณาตามที่โบรกเกอร์กำหนด อาจเปลี่ยนแปลงหรือยกเลิกได้ ผลคำนวณนี้ไม่ใช่การยืนยันสิทธิ์</p>
-        <div class="acc-wrap"><table class="acc-t lvl"><thead><tr><th>Level</th><th>Net Deposit (USD)</th><th>Lot ขั้นต่ำ (% ของ ND)</th><th>Incentive (% ของ ND)</th><th>ที่ ND นี้ต้องเทรด</th><th>สถานะ</th></tr></thead><tbody id="i_tb"></tbody></table></div>
-      </div>
     </div>
-    <div class="panel">
-      <fieldset><legend>ลูกค้าตรง</legend>
-        <label>ลูกค้าเทรดจริง (คน)<input id="s_cl" type="number" value="40" min="0"></label>
-        <label>Lot เฉลี่ย / คน / เดือน<input id="s_lot" type="number" value="8" step="0.5" min="0"></label>
-        <label><span>Rebate ที่ลุง ($/lot)<small>จากบัญชีและมาร์คอัพที่เลือก</small></span><input id="s_rb" type="number" value="8" step="0.01" min="0" readonly></label>
-      </fieldset>
-      <fieldset><legend>IB ใต้สาย</legend>
-        <label>จำนวน IB<input id="s_ib" type="number" value="5" min="0"></label>
-        <label>ลูกค้าเฉลี่ย / IB<input id="s_ibc" type="number" value="15" min="0"></label>
-        <label><span>Override ($/lot)<small>ส่วนต่างที่ MIB ได้</small></span><input id="s_ov" type="number" value="2" step="0.5" min="0"></label>
-      </fieldset>
-      <fieldset><legend>การเติบโต</legend>
-        <label>Lead / เดือน<input id="s_ld" type="number" value="60" min="0"></label>
-        <label>Conversion (%)<input id="s_cv" type="number" value="10" step="1" min="0" max="100"></label>
-        <label>ลูกค้าหาย / เดือน (%)<input id="s_ch" type="number" value="5" step="1" min="0" max="100"></label>
-        <label>อัตราแลกเปลี่ยน (฿/$)<input id="s_fx" type="number" value="33" step="0.1" min="0"></label>
-      </fieldset>
-    </div>
-    <div class="panel">
-      <div class="hero"><div class="note">ประมาณการรายได้ต่อเดือน*</div><div class="big num" id="r_thb">–</div><div class="note num" id="r_usd"></div></div>
-      <div class="kpis">
-        <div class="kpi"><span>จากลูกค้าตรง</span><b id="r_d">–</b></div>
-        <div class="kpi"><span>จาก IB ใต้สาย</span><b id="r_o">–</b></div>
-        <div class="kpi"><span>Volume รวม / เดือน</span><b id="r_v">–</b></div>
-        <div class="kpi"><span>รายได้ต่อลูกค้า 1 คน</span><b id="r_pc">–</b></div>
-      </div>
-      <div><h2>ประมาณการ 12 เดือน (สมมติฐาน)</h2><p class="note">ลูกค้าใหม่ = Lead × Conversion, หักอัตราลูกค้าหาย · IB ใต้สายคงที่</p></div>
-      <div class="chart" id="chart"></div>
-      <div class="kpis">
-        <div class="kpi"><span>ลูกค้าตรง เดือนที่ 12</span><b id="r_c12">–</b></div>
-        <div class="kpi"><span>รายได้ เดือนที่ 12</span><b id="r_m12">–</b></div>
-        <div class="kpi"><span>รวม 12 เดือน</span><b id="r_y">–</b></div>
-      </div>
-    </div>
-  </section>
+    <div class="ol-f"><span>ไม่ใช่คำแนะนำการลงทุน</span><span>ทักมาพิมพ์ว่า “ขอแผน”</span></div>
+  </article>
+</div></div></section>
 
-  <!-- PLAN -->
-  <section id="plan" class="grid" hidden>
-    <div class="panel">
-      <fieldset><legend>เป้าหมาย</legend>
-        <label>เป้ารายได้ (฿/เดือน)<input id="p_tg" type="number" value="300000" step="10000" min="0"></label>
-        <label>ภายใน (เดือน)<input id="p_m" type="number" value="6" min="1"></label>
-        <label>สัดส่วนจากลูกค้าตรง (%)<input id="p_sh" type="number" value="60" min="0" max="100"></label>
-      </fieldset>
-      <fieldset><legend>สมมติฐาน</legend>
-        <label>Lot / คน / เดือน<input id="p_lot" type="number" value="8" step="0.5" min="0.1"></label>
-        <label>Rebate ($/lot)<input id="p_rb" type="number" value="8" step="0.5" min="0.1"></label>
-        <label>Override ($/lot)<input id="p_ov" type="number" value="2" step="0.5" min="0.1"></label>
-        <label>ลูกค้าเฉลี่ย / IB<input id="p_ibc" type="number" value="15" min="1"></label>
-        <label>ลูกค้าที่มีอยู่แล้ว<input id="p_ex" type="number" value="20" min="0"></label>
-        <label>Conversion Lead→ลูกค้า (%)<input id="p_cv" type="number" value="10" min="0.1"></label>
-        <label>Conversion Lead→IB (%)<input id="p_icv" type="number" value="3" min="0.1"></label>
-        <label>อัตราแลกเปลี่ยน (฿/$)<input id="p_fx" type="number" value="33" step="0.1" min="0.1"></label>
-      </fieldset>
-    </div>
-    <div class="panel">
-      <div class="hero"><div class="note">ต้องหา Lead ต่อเดือน (ประมาณการ)</div><div class="big num" id="q_ld">–</div><div class="note" id="q_ldn"></div></div>
-      <div class="kpis">
-        <div class="kpi"><span>ลูกค้าตรงที่ต้องมี</span><b id="q_cl">–</b></div>
-        <div class="kpi"><span>IB ใต้สายที่ต้องมี</span><b id="q_ib">–</b></div>
-        <div class="kpi"><span>Volume รวม (lot/เดือน)</span><b id="q_v">–</b></div>
-        <div class="kpi"><span>ลูกค้าใหม่ / เดือน</span><b id="q_nc">–</b></div>
-      </div>
-      <table><thead><tr><th>ส่วน</th><th>เป้า ฿</th><th>Lot / เดือน</th><th>จำนวน</th></tr></thead><tbody id="q_tb"></tbody></table>
-      <div><h2>แผนรายสัปดาห์</h2><p class="note" id="q_wk"></p></div>
-    </div>
-  </section>
+<section class="sec" id="tools"><div class="w">
+  <div class="sh"><div><div class="eyebrow">เครื่องมือ</div><h2>ลุงใช้อะไร ก็แชร์ให้หมด</h2><p>เปิดใช้ได้ทันที ไม่ต้องสมัคร</p></div></div>
+  <div class="tools">
+    <a class="tool" href="calculator.html"><span class="tag">ฟรี</span><h3>คำนวณ Lot & ความเสี่ยง</h3><p>ใส่ทุนกับ SL แล้วรู้ทันทีว่าควรออกกี่ lot</p><span class="go">เปิดเครื่องคำนวณ →</span></a>
+    <a class="tool new" href="mib.html"><span class="tag">ใหม่ · สำหรับ IB</span><h3>MIB Sales Toolkit</h3><p>จำลองรายได้ IB วางแผนย้อนจากเป้า และสคริปต์ตอบลูกค้า</p><span class="go">เปิดเครื่องมือ →</span></a>
+    <a class="tool" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener"><span class="tag">ฟรี</span><h3>Indicator & EA</h3><p>อินดิเคเตอร์ที่ลุงใช้จริง ทักไลน์ขอได้ฟรี</p><span class="go">ขอทางไลน์ →</span></a>
+    <a class="tool" href="https://client.mhmarkets.com/signup?partnerCode=3LB8WTIL" target="_blank" rel="noopener"><span class="tag">โบรกที่ลุงใช้</span><h3>เปิดบัญชีเทรด</h3><p>เปิดบัญชีผ่านลิงก์ลุง ทักถามขั้นตอนได้ตลอด</p><span class="go">เปิดบัญชี →</span></a>
+    <a class="tool" href="https://www.forexfactory.com/calendar" target="_blank" rel="noopener"><span class="tag">ลิงก์</span><h3>ปฏิทินข่าวเศรษฐกิจ</h3><p>เช็กข่าวแรงก่อนเข้าออเดอร์ทุกครั้ง</p><span class="go">ดูปฏิทิน →</span></a>
+  </div>
+</div></section>
 
 
-  <footer class="disc2">
-    <p><b>ข้อจำกัดความรับผิดชอบ</b></p>
-    <p>* ผลลัพธ์ในหน้านี้เป็นการประมาณการเพื่อใช้วางแผนเท่านั้น ไม่ใช่คำมั่นสัญญา ข้อเสนอ หรือการรับประกันรายได้ ค่าคอมมิชชัน rebate หรือ incentive ใด ๆ</p>
-    <p>อัตรา rebate มาร์คอัพ และเงื่อนไขโปรโมชันอ้างอิงข้อมูล ณ วันที่จัดทำ อาจเปลี่ยนแปลงได้โดยไม่แจ้งล่วงหน้า ให้ยึดเงื่อนไขจริงตามสัญญาพาร์ทเนอร์และประกาศของโบรกเกอร์</p>
-    <p>รายได้ของ IB/MIB ขึ้นกับการเทรดของลูกค้า ซึ่งไม่แน่นอน การซื้อขายทองคำ ฟอเร็กซ์ และ CFD มีความเสี่ยงสูง ลูกค้าอาจสูญเสียเงินทุนทั้งหมด ห้ามใช้ตัวเลขจากหน้านี้เพื่อชักชวนลูกค้าว่าจะได้กำไร</p>
-  </footer>
-</div>
+
+<section class="sec" id="learn"><div class="w course">
+  <div><div class="eyebrow">เรียนฟรี</div><h2 style="font-size:clamp(26px,3.6vw,36px);margin-top:6px">ลุงสอนฟรี<br>ไม่มีคอร์สขาย</h2><p style="color:var(--mute)">ระบบเดียวกับที่ลุงใช้เทรดทองทุกวัน สอนผ่านกลุ่มไลน์และไลฟ์ ตั้งแต่เริ่มต้นจนวางแผนเทรดเองได้</p><a class="btn p" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">ขอเข้ากลุ่มเรียนฟรี</a></div>
+  <div class="steps">
+    <div><p style="margin:0"><b>อ่านโครงสร้างราคาทอง</b><span>แนวรับ-แนวต้านที่ใช้ได้จริง</span></p></div>
+    <div><p style="margin:0"><b>วางแผนแบบสถานการณ์</b><span>ถ้า A ทำอะไร ถ้า B ทำอะไร</span></p></div>
+    <div><p style="margin:0"><b>บริหารเงินและความเสี่ยง</b><span>ขนาด lot, SL, และการหยุดเทรด</span></p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="partner"><div class="w">
+  <div class="sh"><div><div class="eyebrow">พาร์ทเนอร์ IB</div><h2>มีเพื่อนที่เทรดอยู่แล้ว? มาสร้างรายได้ด้วยกัน</h2><p>แนะนำคนรู้จักมาเทรด รับ rebate ทุก lot ที่เขาเทรด ลุงช่วยดูแลลูกค้าและปิดการขายให้ช่วงแรก</p></div></div>
+  <div class="pgrid">
+    <div class="pc"><b>ไม่ต้องมีลูกค้าก่อน</b><span>เริ่มจากคนรอบตัว 3–5 คนก็พอ</span></div>
+    <div class="pc"><b>รายได้ทุกเดือน</b><span>ได้ rebate ตาม lot ที่ลูกค้าเทรดจริง</span></div>
+    <div class="pc"><b>มีสื่อและสคริปต์ให้</b><span>รูป โพสต์ และคำตอบลูกค้า พร้อมใช้</span></div>
+    <div class="pc"><b>ขยายทีมได้</b><span>สร้าง IB ใต้สาย รับส่วนต่างเพิ่ม</span></div>
+  </div>
+  <div class="row" style="margin-top:22px"><a class="btn p" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">สนใจเป็นพาร์ทเนอร์</a><a class="btn" href="mib.html">คำนวณรายได้ IB</a></div>
+</div></section>
+
+<section class="sec" id="contact"><div class="w">
+  <div class="cta"><div class="eyebrow">เริ่มได้วันนี้</div><h2>ได้เวลาเทรดทองแบบมีระบบ</h2><p>เรียนฟรี ขอแผนเทรด เปิดบัญชี หรือสนใจเป็นพาร์ทเนอร์ ทักลุงได้ทุกเรื่อง</p>
+    <a class="btn p" href="https://line.me/R/ti/p/@370dhnry">ทักไลน์หาลุง</a>
+    <div class="soc"><a href="https://m.me/1013555458507886" target="_blank" rel="noopener" style="--c:#0084FF"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.4 3.7 7.1V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 12.3-2.5-2.7-4.9 2.7 5.4-5.7 2.6 2.7 4.8-2.7-5.4 5.7z"/></svg></i>Messenger</a><a href="https://www.youtube.com/@%E0%B8%A5%E0%B8%B8%E0%B8%87%E0%B8%AD%E0%B8%B1%E0%B8%94-%E0%B8%8B%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%9F" target="_blank" rel="noopener" style="--c:#FF0000"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9v6l5-3z" fill="#141417"/></svg></i>YouTube</a><a href="https://tiktok.com/" target="_blank" rel="noopener" style="--c:#25F4EE"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h3c.2 1.9 1.6 3.4 3.5 3.6v3c-1.3 0-2.5-.4-3.5-1v6.2A5.8 5.8 0 1 1 11 9v3.1a2.8 2.8 0 1 0 3 2.7V3z"/></svg></i>TikTok</a><a href="https://instagram.com/" target="_blank" rel="noopener" style="--c:#E4405F"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg></i>Instagram</a></div>
+  </div>
+</div></section>
+
+<footer><div class="w">
+  <p class="risk">คำเตือน: การเทรดทองคำและ CFD มีความเสี่ยงสูง อาจสูญเสียเงินทุนทั้งหมด บทวิเคราะห์ในเว็บนี้เป็นมุมมองส่วนตัว ไม่ใช่คำแนะนำการลงทุน ลุงอาจได้รับค่าตอบแทนจากโบรกเกอร์เมื่อเปิดบัญชีผ่านลิงก์ในเว็บนี้</p>
+  © 2026 ลุงอัด ซัดกราฟ
+</div></footer>
+
+
 
 <script>
-const $=id=>document.getElementById(id), v=id=>+$(id).value||0;
-const thb=n=>'฿'+Math.round(n).toLocaleString('th-TH'), fmt=(n,d=0)=>n.toLocaleString('en-US',{maximumFractionDigits:d});
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));['sim','plan'].forEach(s=>$(s).hidden=s!==b.dataset.t)});
-
-function sim(){
-  const fx=v('s_fx'),lot=v('s_lot'),rb=v('s_rb');
-  const dUsd=v('s_cl')*lot*rb, oUsd=v('s_ib')*v('s_ibc')*lot*v('s_ov'), t=dUsd+oUsd;
-  $('r_thb').textContent=thb(t*fx); $('r_usd').textContent='$'+fmt(t)+' / เดือน';
-  $('r_d').textContent=thb(dUsd*fx); $('r_o').textContent=thb(oUsd*fx);
-  $('r_v').textContent=fmt(v('s_cl')*lot+v('s_ib')*v('s_ibc')*lot)+' lot'; $('r_pc').textContent=thb(lot*rb*fx);
-  let c=v('s_cl'),arr=[],sum=0; const nc=v('s_ld')*v('s_cv')/100, ch=v('s_ch')/100;
-  for(let m=1;m<=12;m++){c=c*(1-ch)+nc; const inc=(c*lot*rb+oUsd)*fx; arr.push(inc); sum+=inc}
-  $('r_c12').textContent=fmt(c)+' คน'; $('r_m12').textContent=thb(arr[11]); $('r_y').textContent=thb(sum);
-  const W=640,H=200,L=56,B=24,max=Math.max(...arr,1)*1.1,bw=(W-L-10)/12;
-  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:460px">`;
-  for(let i=0;i<=4;i++){const y=H-B-(H-B-10)*i/4;s+=`<line x1="${L}" x2="${W}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${L-6}" y="${y+4}" text-anchor="end">${fmt(max*i/4/1000)}k</text>`}
-  arr.forEach((a,i)=>{const h=(H-B-10)*a/max,x=L+i*bw+4;s+=`<rect x="${x}" y="${H-B-h}" width="${bw-8}" height="${h}" rx="3" fill="${i==11?'var(--acc2)':'var(--acc)'}"/><text x="${x+(bw-8)/2}" y="${H-6}" text-anchor="middle">M${i+1}</text>`});
-  $('chart').innerHTML=s+'</svg>';
-}
-function plan(){
-  const fx=v('p_fx'),lot=v('p_lot'),tg=v('p_tg'),sh=v('p_sh')/100,m=Math.max(1,v('p_m'));
-  const dT=tg*sh,oT=tg-dT;
-  const cl=Math.ceil(dT/fx/(lot*v('p_rb'))), ibCl=Math.ceil(oT/fx/(lot*v('p_ov'))), ib=Math.ceil(ibCl/v('p_ibc'));
-  const needCl=Math.max(0,cl-v('p_ex')), nc=needCl/m, ldC=nc/(v('p_cv')/100), ldI=(ib/m)/(v('p_icv')/100), ld=Math.ceil(ldC+ldI);
-  $('q_ld').textContent=fmt(ld)+' ราย'; $('q_ldn').textContent=`${fmt(Math.ceil(ldC))} สำหรับลูกค้าตรง + ${fmt(Math.ceil(ldI))} สำหรับสรรหา IB · ต่อเนื่อง ${m} เดือน`;
-  $('q_cl').textContent=fmt(cl)+' คน'; $('q_ib').textContent=fmt(ib)+' คน'; $('q_v').textContent=fmt(cl*lot+ibCl*lot);
-  $('q_nc').textContent=fmt(Math.ceil(nc))+' คน';
-  $('q_tb').innerHTML=`<tr><td>ลูกค้าตรง</td><td class="num">${thb(dT)}</td><td class="num">${fmt(cl*lot)}</td><td class="num">${fmt(cl)} คน</td></tr><tr><td>IB ใต้สาย</td><td class="num">${thb(oT)}</td><td class="num">${fmt(ibCl*lot)}</td><td class="num">${fmt(ib)} IB · ${fmt(ibCl)} ลูกค้า</td></tr>`;
-  $('q_wk').textContent=`สัปดาห์ละ ~${fmt(Math.ceil(ld/4.3))} Lead → ปิดลูกค้าใหม่ ~${fmt(nc/4.3,1)} คน และ IB ใหม่ ~${fmt(ib/m/4.3,1)} คน · ถ้าตัวเลขสูงเกินไป ลองขยายเวลา เพิ่ม lot เฉลี่ย หรือเพิ่มสัดส่วน IB`;
-}
-
-document.querySelectorAll('#sim input').forEach(i=>i.oninput=sim);
-document.querySelectorAll('#plan input').forEach(i=>i.oninput=plan);
-sim();plan();
-/* ===== ประเภทบัญชี (แก้ค่าเริ่มต้นตรงนี้ให้ตรงเงื่อนไขจริง) ===== */
-const PRODUCTS=['forex','metal','cfd','stocks','dow'];
-/* Rebate ($/lot) จากหน้า Rebate Setting + ระดับมาร์คอัพที่มีในระบบ */
-const ACCOUNTS=[
- {name:'Standard',     forex:10,  metal:20,  cfd:10, stocks:10, dow:1, mk:[0,5,10,15,20,25,30]},
- {name:'ECN',          forex:1,   metal:1,   cfd:1,  stocks:1,  dow:0, mk:[0,7,11]},
- {name:'Prime',        forex:0,   metal:0,   cfd:0,  stocks:0,  dow:0, mk:[0,5,10,15,20,25,30]},
- {name:'Standard Cent',forex:0.1, metal:0.2, cfd:0,  stocks:0,  dow:0, mk:[0]},
-];
-const fmtB=n=>'฿'+Math.round(n).toLocaleString('th-TH');
-function accRender(){$('acc_tb').innerHTML=ACCOUNTS.map((a,i)=>'<tr><td>'+a.name+'</td>'+PRODUCTS.map(k=>`<td><input type="number" step="0.1" data-i="${i}" data-k="${k}" value="${a[k]}" aria-label="${a.name} ${k}"></td>`).join('')+'<td class="note">'+(a.mk.length>1?a.mk.filter(x=>x).join(', '):'ไม่มี')+'</td></tr>').join('');
- $('n_acc').innerHTML=ACCOUNTS.map((a,i)=>`<option value="${i}">${a.name}</option>`).join('');mkOpts()}
-function mkOpts(){const a=ACCOUNTS[$('n_acc').value||0];$('n_mk').innerHTML=a.mk.map(m=>`<option value="${m}">${m?a.name.replace(' Cent','')+m+' (+'+m+')':'ไม่มีมาร์คอัพ'}</option>`).join('');$('n_mk').disabled=a.mk.length<2}
-function volume(){return v('s_cl')*v('s_lot')}
-
-/* ===== IB Support Incentive (ตาราง 3.1 Level Requirements) ===== */
-const LEVELS=[{lv:1,min:10000,max:50000,lot:.004,inc:.02},{lv:2,min:50000,max:100000,lot:.005,inc:.025},{lv:3,min:100000,max:200000,lot:.006,inc:.03},{lv:4,min:200000,max:300000,lot:.01,inc:.04},{lv:5,min:300000,max:500000,lot:.017,inc:.045}];
-const pc=x=>(+(x*100).toFixed(2))+'%';
-function incCalc(){const nd=v('i_nd'),lots=v('i_lot'),fx=v('s_fx');
- const tier=nd<10000?0:(LEVELS.find(L=>nd<=L.max)||LEVELS[4]).lv;
- let got=null;for(let i=tier-1;i>=0;i--){if(lots>=nd*LEVELS[i].lot){got=LEVELS[i];break}}
- const usd=got?nd*got.inc:0;
- $('i_tb').innerHTML=LEVELS.map(L=>{const need=nd*L.lot,st=L.lv>tier?'—':(got&&L.lv===got.lv?'✓ ได้ Level นี้':(lots>=need?'ผ่าน':'lot ไม่ถึง'));
-  return `<tr${got&&L.lv===got.lv?' class="on"':''}><td>${L.lv}</td><td>${L.min.toLocaleString()} – ${L.max.toLocaleString()}</td><td>${pc(L.lot)}</td><td>${pc(L.inc)}</td><td class="num">${L.lv>tier?'—':Math.ceil(need).toLocaleString()+' lot'}</td><td>${st}</td></tr>`}).join('');
- $('i_lv').textContent=got?`ประมาณการ: เข้าเงื่อนไข Level ${got.lv} · ${pc(got.inc)} ของ ND`:'ยังไม่ได้ Incentive';
- $('i_usd').textContent='$'+Math.round(usd).toLocaleString();$('i_thb').textContent=fmtB(usd*fx);
- $('i_why').textContent=nd<10000?'Net Deposit ต่ำกว่า $10,000 ยังไม่เข้าเงื่อนไขโปรโมชัน':
-  !got?`ต้องเทรดอย่างน้อย ${Math.ceil(nd*LEVELS[0].lot).toLocaleString()} lot (0.4% ของ ND) ถึงจะได้ Level 1`:
-  got.lv<tier?`ND อยู่ช่วง Level ${tier} แต่ lot ไม่ถึง ${Math.ceil(nd*LEVELS[tier-1].lot).toLocaleString()} lot จึงลดเป็น Level ${got.lv} · เทรดเพิ่มอีก ${Math.ceil(nd*LEVELS[tier-1].lot-lots).toLocaleString()} lot จะได้ ${pc(LEVELS[tier-1].inc)} = $${Math.round(nd*LEVELS[tier-1].inc).toLocaleString()}`:
-  `ได้ Level สูงสุดตาม Net Deposit แล้ว`+(nd>500000?' (ND เกิน $500,000 คิดที่ Level 5 — ตรวจเงื่อนไขจริงอีกครั้ง)':'');
- return usd}
-function accCalc(){const a=ACCOUNTS[$('n_acc').value||0],pd=$('n_pd').value,mk=+$('n_mk').value||0,fx=v('s_fx'),vol=volume();
- const base=+a[pd]||0,mkI=mk*v('mk_usd'),per=base+mkI,oper=v('o_rb');
- $('n_brk').textContent=`Rebate $${base} + มาร์คอัพ $${mkI.toFixed(2)} = $${per.toFixed(2)} / lot × ${vol.toLocaleString()} lot`+(incCalc()?` + Incentive $${Math.round(incCalc()).toLocaleString()}`:'');
- const incU=incCalc(),om=oper*vol*fx+v('o_inc')*fx,nm=per*vol*fx+incU*fx,d=nm-om;
- $('o_m').textContent=fmtB(om);$('o_y').textContent='rebate/เดือน + โบนัส';
- $('n_m').textContent=fmtB(nm);$('n_y').textContent='rebate/เดือน + incentive';
- $('d_m').textContent=(d>=0?'+':'')+fmtB(d);$('d_y').textContent='rebate ต่อปีได้เพิ่ม '+fmtB((per-oper)*vol*fx*12);
- $('d_m').style.color=d>=0?'#3FB67A':'#F2994A';
- $('d_note').textContent=oper?`ที่ลุงได้ ${(per/oper*100).toFixed(0)}% ของที่เก่า ต่อ lot`:'';
- $('s_rb').value=per.toFixed(2);if($('p_rb'))$('p_rb').value=per.toFixed(2);sim();plan()}
-$('acc_tb').addEventListener('input',e=>{const t=e.target,i=t.dataset.i;if(i==null)return;ACCOUNTS[i][t.dataset.k]=+t.value;accCalc()});
-$('n_acc').onchange=()=>{mkOpts();accCalc()};['n_mk','n_pd'].forEach(i=>$(i).onchange=accCalc);['o_rb','o_inc','i_nd','i_lot','mk_usd','s_cl','s_lot','s_fx'].forEach(i=>$(i).addEventListener('input',accCalc));
-accRender();accCalc();
-
+(()=>{const st=document.getElementById('stage');if(!st||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const els=[...st.querySelectorAll('[data-d]')];
+st.parentElement.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+ els.forEach(el=>{const d=+el.dataset.d;el.style.translate=`${-x*d}px ${-y*d}px`})});})();
+</script>
+<script>
+/* กราฟแท่งเทียนด้านหลัง + ฝุ่นทองลอยขึ้น */
+(()=>{const c=document.getElementById('fx');if(!c)return;const x=c.getContext('2d'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W,H,dpr=Math.min(2,devicePixelRatio||1),cs=[],ps=[],t=0,last=0;
+function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+function seed(){cs=[];let p=.55;for(let i=0;i<40;i++){const o=p;p=Math.min(.85,Math.max(.2,p+(Math.random()-.47)*.08));cs.push({o,c:p,h:Math.min(o,p)-Math.random()*.03,l:Math.max(o,p)+Math.random()*.03})}}
+function dust(){ps.push({x:W*(.2+Math.random()*.6),y:H*.86,v:.3+Math.random()*.7,r:.6+Math.random()*1.6,a:1,w:Math.random()*6.28})}
+size();seed();addEventListener('resize',size);
+function frame(ts){const dt=Math.min(50,ts-last);last=ts;t+=dt;x.clearRect(0,0,W,H);
+ const n=cs.length,bw=W/n,show=rm?n:Math.min(n,t/90);
+ for(let i=0;i<show;i++){const k=cs[i],cx=i*bw+bw/2,up=k.c<k.o,y1=H*k.h,y2=H*k.l,a=.16+.1*(i/n);
+  x.strokeStyle=x.fillStyle=up?`rgba(255,255,255,${a*.8})`:`rgba(227,6,19,${a*1.6})`;
+  x.beginPath();x.moveTo(cx,y1);x.lineTo(cx,y2);x.stroke();
+  const top=H*Math.min(k.o,k.c),hh=Math.max(2,H*Math.abs(k.o-k.c));x.fillRect(cx-bw*.3,top,bw*.6,hh)}
+ if(!rm&&t>90*n+2500){cs.shift();const p=cs[cs.length-1].c,q=Math.min(.85,Math.max(.2,p+(Math.random()-.47)*.08));cs.push({o:p,c:q,h:Math.min(p,q)-Math.random()*.03,l:Math.max(p,q)+Math.random()*.03});t=90*n+1700}
+ if(!rm&&Math.random()<.35)dust();
+ ps=ps.filter(p=>p.a>0);ps.forEach(p=>{p.y-=p.v;p.w+=.03;p.x+=Math.sin(p.w)*.3;p.a-=.004;x.fillStyle=`rgba(255,${190+Math.random()*40|0},90,${p.a*.8})`;x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill()});
+ if(!rm)requestAnimationFrame(frame)}
+requestAnimationFrame(frame)})();
+/* ราคาทองสดบนฐาน (อัปเดตทุก 30 วินาที) */
+(()=>{const tg=document.getElementById('tag'),tp=document.getElementById('tagp'),tc=document.getElementById('tagc');let prev=null,base=null;
+async function get(){try{const r=await fetch('https://api.gold-api.com/price/XAU');if(!r.ok)throw 0;const d=await r.json(),p=+d.price;if(!p)throw 0;
+ if(base===null)base=p;tp.textContent=p.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+ const ch=p-base;tc.textContent=(ch>=0?'▲':'▼')+Math.abs(ch).toFixed(2);tc.style.color=ch>=0?'var(--up)':'#FF4D57';
+ if(prev!==null&&p!==prev){tg.classList.remove('up','dn');void tg.offsetWidth;tg.classList.add(p>prev?'up':'dn');setTimeout(()=>tg.classList.remove('up','dn'),1200)}prev=p}
+ catch(e){if(prev===null)tg.hidden=true}}
+get();setInterval(get,30000)})();
+</script>
+<a class="fab" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">ทักไลน์ลุง</a>
+<script>
+(()=>{const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ตัว "ลุงอัด" เอียง 3D ตามเมาส์ */
+const st=document.getElementById('stage'),mk=st&&st.querySelector('.m-front'),mb=st&&st.querySelector('.m-back');
+if(st&&!rm)st.parentElement.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+ mk.style.transform=`rotateY(${x*22}deg) rotateX(${-y*16}deg)`;mb.style.transform=`translate(${8-x*14}px,${8-y*14}px) rotateY(${x*22}deg) rotateX(${-y*16}deg)`});
+/* เหรียญทองพุ่งตอนกดปุ่มแดง */
+document.querySelectorAll('.btn.p,.fab').forEach(b=>b.addEventListener('click',e=>{if(rm)return;const r=b.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+ for(let i=0;i<12;i++){const c=document.createElement('i');c.className='flyc';c.style.left=cx-11+'px';c.style.top=cy-11+'px';document.body.appendChild(c);
+  const a=Math.random()*Math.PI*2,d=60+Math.random()*90;c.animate([{transform:'translate(0,0) scale(.6)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d-60}px) scale(1) rotate(${Math.random()*360}deg)`,opacity:1,offset:.6},{transform:`translate(${Math.cos(a)*d*1.2}px,${Math.sin(a)*d+120}px) scale(.8)`,opacity:0}],{duration:900+Math.random()*300,easing:'cubic-bezier(.2,.7,.4,1)'}).onfinish=()=>c.remove()}}));
+/* นับเลขขึ้น 10+ ปี / 5 */
+document.querySelectorAll('.proof b').forEach(el=>{const m=el.textContent.match(/^(\d+)(.*)$/);if(!m||rm)return;const n=+m[1],rest=m[2];let t0=null;
+ const step=ts=>{t0??=ts;const p=Math.min(1,(ts-t0)/1200);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+rest;if(p<1)requestAnimationFrame(step)};setTimeout(()=>requestAnimationFrame(step),900)});
+/* ส่วนต่าง ๆ ค่อย ๆ โผล่ตอนเลื่อนลง (เฉพาะส่วนที่อยู่ใต้จอ) */
+if(!rm&&'IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{threshold:.12});
+ document.querySelectorAll('section.sec .sh, section.sec .tool, section.sec .pc, section.sec .steps>div, .cta, .olwrap').forEach((el,i)=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('rv','pre');el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)}})}
+})();
 </script>
 
-
 <style>
-.cfab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;font:600 15px Kanit,sans-serif;background:var(--acc);color:var(--surf);border:0;border-radius:999px;padding:12px 18px;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.25)}
-.cbox{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:31;width:min(400px,calc(100vw - 32px));height:min(600px,calc(100vh - 100px));display:flex;flex-direction:column;background:var(--surf);border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.3);overflow:hidden}
+[hidden]{display:none!important}
+.cfab,.cbox{--acc:var(--gold);--surf:#fff;--soft:var(--s2)}
+.cfab{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;font:600 15px Kanit,sans-serif;background:var(--acc);color:var(--surf);border:0;border-radius:999px;padding:12px 18px;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.cbox{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:31;background:var(--s1)!important;width:min(400px,calc(100vw - 32px));height:min(600px,calc(100vh - 100px));display:flex;flex-direction:column;background:var(--surf);border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.3);overflow:hidden}
 .chd{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
 .chd b{font-size:15px}.chd small{display:block;color:var(--mute);font-size:12px}
 .chd button{background:none;border:0;font-size:22px;color:var(--mute);cursor:pointer;line-height:1}
@@ -305,22 +349,22 @@ accRender();accCalc();
 .m.a .cp{display:block;margin-top:6px;font:500 12px Kanit,sans-serif;background:none;border:0;color:var(--acc);cursor:pointer;padding:0}
 .m.t{color:var(--mute);font-style:italic}
 .cq{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 10px}
-.cq button{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+.cq button{font:inherit;color:var(--ink)!important;font-size:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
 .cin{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
-.cin textarea{flex:1;resize:none;height:44px;font:14px Kanit,sans-serif;padding:10px}
+.cin textarea{flex:1;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;outline-color:var(--gold);resize:none;height:44px;font:14px Kanit,sans-serif;padding:10px}
 .cin button{font:600 14px Kanit,sans-serif;background:var(--acc);color:var(--surf);border:0;border-radius:8px;padding:0 16px;cursor:pointer}
 .cin button:disabled{opacity:.5}
 </style>
 <button class="cfab" id="cfab" aria-label="เปิดแชทถามลุงอัด">ถามลุงอัด (AI)</button>
 <section class="cbox" id="cbox" hidden aria-label="แชท AI">
-  <div class="chd"><div><b>ถามลุงอัด</b><small>AI ผู้ช่วยของลุง · เรื่องทีม IB รายได้ และการเทรด</small></div><button id="cx" aria-label="ปิด">×</button></div>
-  <div class="clog" id="clog"><div class="m a">ว่าไงหลาน มีอะไรอยากถามลุงเรื่องทีม IB หาลูกค้า หรือเรื่องเทรด ถามมาได้เลย
+  <div class="chd"><div><b>ถามลุงอัด</b><small>AI ผู้ช่วยของลุง · ถามเรื่องเทรดทอง เปิดบัญชี หรือเป็นพาร์ทเนอร์</small></div><button id="cx" aria-label="ปิด">×</button></div>
+  <div class="clog" id="clog"><div class="m a">ว่าไงหลาน อยากถามลุงเรื่องเทรดทอง เริ่มต้นยังไง หรือสนใจเป็นพาร์ทเนอร์ IB ถามมาได้เลย
 (ลุงเป็น AI ผู้ช่วยนะ เรื่องบัญชีหรือเงื่อนไขจริง ทักไลน์ลุงโดยตรง)</div></div>
   <div class="cq" id="cq">
-    <button>ลุง เพิ่งเริ่มเป็น IB ควรทำอะไรก่อน</button>
-    <button>อยากได้ 300,000/เดือน ต้องทำยังไง</button>
-    <button>หา IB ใต้สายเพิ่มยังไงดี</button>
-    <button>ลูกค้าเทรดน้อย กระตุ้นยังไง</button>
+    <button>มือใหม่ เริ่มเทรดทองยังไงดี</button>
+    <button>ทุนน้อยเทรดได้ไหม</button>
+    <button>เป็นพาร์ทเนอร์ IB ได้อะไรบ้าง</button>
+    <button>ขอแผนเทรดวันนี้</button>
   </div>
   <form class="cin" id="cf"><textarea id="ct" placeholder="พิมพ์คำถามถึงลุง…" aria-label="ข้อความ"></textarea><button id="cs">ส่ง</button></form>
 </section>
@@ -331,14 +375,14 @@ const WORKER_URL = "https://lungad-chat.kraingkriwittayaphom.workers.dev";
 const $=id=>document.getElementById(id), hist=[];
 const open=v=>{$('cbox').hidden=!v;$('cfab').hidden=v;if(v)$('ct').focus()};
 $('cfab').onclick=()=>open(true);$('cx').onclick=()=>open(false);
-function ctx(){const g=id=>{const e=$(id);return e?e.value:''};
+function ctx(){if(!document.getElementById('s_cl'))return 'ผู้ใช้อยู่หน้าแรกของเว็บ (ผู้สนใจทั่วไป อาจเป็นมือใหม่ ลูกค้าเทรด หรือคนที่สนใจเป็น IB) ลิงก์ไลน์ลุง: https://line.me/R/ti/p/@370dhnry';const g=id=>{const e=$(id);return e?e.value:''};
  return `ลูกค้าตรง ${g('s_cl')} คน, lot/คน/เดือน ${g('s_lot')}, rebate $${g('s_rb')}/lot, IB ใต้สาย ${g('s_ib')} คน, ลูกค้าต่อ IB ${g('s_ibc')}, override $${g('s_ov')}/lot, lead/เดือน ${g('s_ld')}, conversion ${g('s_cv')}%, อัตราแลกเปลี่ยน ${g('s_fx')} บาท/$, รายได้ที่เครื่องคำนวณแสดง ${($('r_thb')||{}).textContent||'-'}/เดือน · เป้าในแท็บวางแผน ${g('p_tg')} บาท/เดือน`}
 function md(t){return t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/^\s*[\*\-]\s+/gm,'• ').replace(/^#+\s*/gm,'').replace(/\*/g,'')}
 function add(role,text){const d=document.createElement('div');d.className='m '+(role==='user'?'u':'a');if(role==='assistant')d.innerHTML=md(text);else d.textContent=text;
  if(role==='assistant'){const b=document.createElement('button');b.className='cp';b.type='button';b.textContent='คัดลอก';b.onclick=async()=>{try{await navigator.clipboard.writeText(text.replace(/\*\*/g,''));b.textContent='คัดลอกแล้ว'}catch(e){b.textContent='คัดลอกไม่ได้'}};d.appendChild(b)}
  $('clog').appendChild(d);$('clog').scrollTop=1e9;return d}
 async function send(text){text=text.trim();if(!text)return;$('ct').value='';add('user',text);hist.push({role:'user',content:text});
- if(!WORKER_URL){add('assistant','ยังไม่ได้เชื่อมต่อ AI — ให้ใส่ลิงก์ Cloudflare Worker ในช่อง WORKER_URL ของไฟล์ mib.html');return}
+ if(!WORKER_URL){add('assistant','ตอนนี้ลุง AI ยังไม่พร้อม ทักไลน์ลุงโดยตรงก่อนนะ');return}
  const t=document.createElement('div');t.className='m a t';t.textContent='ลุงกำลังพิมพ์…';$('clog').appendChild(t);$('cs').disabled=true;
  try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:hist,context:ctx()})});
   let d;try{d=await r.json()}catch(x){throw 'ตอบกลับไม่ใช่ JSON (HTTP '+r.status+') — โค้ด Worker อาจยังไม่ได้ Deploy'}t.remove();if(!r.ok||!d.reply)throw ('HTTP '+r.status+' '+(d.error||'')+(d.status?' / AI '+d.status:''));add('assistant',d.reply);hist.push({role:'assistant',content:d.reply})}
