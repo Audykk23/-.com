@@ -366,7 +366,7 @@ async function send(text){text=text.trim();if(!text)return;$('ct').value='';add(
  const t=document.createElement('div');t.className='m a t';t.textContent='ลุงกำลังพิมพ์…';$('clog').appendChild(t);$('cs').disabled=true;
  try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:hist,context:ctx()})});
   let d;try{d=await r.json()}catch(x){throw 'ตอบกลับไม่ใช่ JSON (HTTP '+r.status+') — โค้ด Worker อาจยังไม่ได้ Deploy'}t.remove();if(!r.ok||!d.reply)throw ('HTTP '+r.status+' '+(d.error||'')+(d.status?' / AI '+d.status:''));add('assistant',d.reply);hist.push({role:'assistant',content:d.reply})}
- catch(e){t.remove();hist.pop();console.warn('lungad-chat',e);add('assistant','ตอนนี้ลุง AI ตอบไม่ได้ ลองใหม่อีกที หรือทักไลน์ลุงโดยตรงได้เลย\n[รหัสปัญหา: '+(e&&e.message||e)+']')}
+ catch(e){t.remove();hist.pop();console.warn('lungad-chat',e);const m=String(e&&e.message||e);add('assistant',/503|429|high demand/i.test(m)?'ตอนนี้มีคนถามลุงเยอะมาก รอสักครู่แล้วกดส่งใหม่อีกทีนะหลาน หรือทักไลน์ลุงโดยตรงก็ได้':'ตอนนี้ลุง AI ตอบไม่ได้ ลองใหม่อีกที หรือทักไลน์ลุงโดยตรงได้เลย\n[รหัสปัญหา: '+m+']')}
  finally{$('cs').disabled=false}}
 $('cf').onsubmit=e=>{e.preventDefault();send($('ct').value)};
 $('ct').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send($('ct').value)}};
