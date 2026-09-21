@@ -86,6 +86,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--red)}
 .guide dl{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:8px 16px;margin:4px 0;font-size:14px}
 .guide dt{font-weight:600;color:var(--ink)}.guide dd{margin:0;color:var(--mute)}
 @media(max-width:600px){.guide dl{grid-template-columns:1fr}.guide dd{margin-bottom:6px}}
+.vol{display:grid;grid-template-columns:1fr 1fr .8fr;gap:14px;align-items:end;padding:12px 14px;border:1px dashed var(--line);border-radius:10px}
+.vol label{grid-template-columns:1fr 110px}.vol .vol-t{grid-template-columns:1fr 120px}.vol-t input{border-color:var(--red)}
+@media(max-width:760px){.vol{grid-template-columns:1fr}}
 </style>
 
 <style>body{margin:0}[hidden]{display:none!important}</style>
@@ -103,7 +106,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--red)}
   <!-- SIM -->
   <section id="sim" class="grid">
     <div class="panel acc" style="grid-column:1/-1">
-      <div><h2>เทียบประมาณการรายได้: ที่เก่า vs ที่ลุง</h2><p class="note">เลือกประเภทบัญชีและมาร์คอัพ แล้วดูว่า MIB ได้เพิ่มเท่าไรต่อเดือน · วอลุ่มดึงจากช่องลูกค้าด้านล่าง</p></div>
+      <div><h2>เทียบประมาณการรายได้: ที่เก่า vs ที่ลุง</h2><p class="note">ใส่วอลุ่มของ MIB แล้วเลือกประเภทบัญชีและมาร์คอัพ เพื่อดูว่าได้ต่างกันเท่าไรต่อเดือน</p></div>
+      <div class="vol"><label>ลูกค้าที่เทรด (คน)<input id="c_cl" type="number" min="0" step="1"></label><label><span>Lot เฉลี่ย / คน / เดือน<small>ดูจากรายงานเดิมของ MIB</small></span><input id="c_lot" type="number" min="0" step="0.5"></label><label class="vol-t"><span>Lot รวม / เดือน<small>ใส่ตรงนี้ได้เลย ถ้ารู้ยอดรวม</small></span><input id="c_tot" type="number" min="0" step="1"></label></div>
       <div class="cmp">
         <div class="side old"><div class="tag2">ที่เก่า</div>
           <label>Rebate ที่ได้อยู่ ($/lot)<input id="o_rb" type="number" value="5" step="0.5" min="0"></label>
@@ -281,7 +285,7 @@ const fmtB=n=>'฿'+Math.round(n).toLocaleString('th-TH');
 function accRender(){$('acc_tb').innerHTML=ACCOUNTS.map((a,i)=>'<tr><td>'+a.name+'</td>'+PRODUCTS.map(k=>`<td><input type="number" step="0.1" data-i="${i}" data-k="${k}" value="${a[k]}" aria-label="${a.name} ${k}"></td>`).join('')+'<td class="note">'+(a.mk.length>1?a.mk.filter(x=>x).join(', '):'ไม่มี')+'</td></tr>').join('');
  $('n_acc').innerHTML=ACCOUNTS.map((a,i)=>`<option value="${i}">${a.name}</option>`).join('');mkOpts()}
 function mkOpts(){const a=ACCOUNTS[$('n_acc').value||0];$('n_mk').innerHTML=a.mk.map(m=>`<option value="${m}">${m?a.name.replace(' Cent','')+m+' (+'+m+')':'ไม่มีมาร์คอัพ'}</option>`).join('');$('n_mk').disabled=a.mk.length<2}
-function volume(){return v('s_cl')*v('s_lot')}
+function volume(){const x=v('s_cl')*v('s_lot');const t=$('c_tot');if(t&&document.activeElement!==t)t.value=+x.toFixed(2);return x}
 
 /* ===== IB Support Incentive (ตาราง 3.1 Level Requirements) ===== */
 const LEVELS=[{lv:1,min:10000,max:50000,lot:.004,inc:.02},{lv:2,min:50000,max:100000,lot:.005,inc:.025},{lv:3,min:100000,max:200000,lot:.006,inc:.03},{lv:4,min:200000,max:300000,lot:.01,inc:.04},{lv:5,min:300000,max:500000,lot:.017,inc:.045}];
@@ -312,6 +316,13 @@ function accCalc(){const a=ACCOUNTS[$('n_acc').value||0],pd=$('n_pd').value,mk=+
 $('acc_tb').addEventListener('input',e=>{const t=e.target,i=t.dataset.i;if(i==null)return;ACCOUNTS[i][t.dataset.k]=+t.value;accCalc()});
 $('n_acc').onchange=()=>{mkOpts();accCalc()};['n_mk','n_pd'].forEach(i=>$(i).onchange=accCalc);['o_rb','o_inc','i_nd','i_lot','mk_usd','s_cl','s_lot','s_fx'].forEach(i=>$(i).addEventListener('input',accCalc));
 accRender();accCalc();
+/* ช่องวอลุ่มในกล่องเทียบ ผูกกับช่องลูกค้าด้านล่าง */
+$('c_cl').value=$('s_cl').value;$('c_lot').value=$('s_lot').value;
+$('c_cl').addEventListener('input',()=>{$('s_cl').value=$('c_cl').value;sim();accCalc()});
+$('c_lot').addEventListener('input',()=>{$('s_lot').value=$('c_lot').value;sim();accCalc()});
+['s_cl','s_lot'].forEach(i=>$(i).addEventListener('input',()=>{$('c_cl').value=$('s_cl').value;$('c_lot').value=$('s_lot').value}));
+$('c_tot').addEventListener('input',()=>{let cl=v('c_cl');if(!cl){cl=1;$('c_cl').value=1;$('s_cl').value=1}const avg=+(v('c_tot')/cl).toFixed(2);$('c_lot').value=avg;$('s_lot').value=avg;sim();accCalc()});
+
 
 </script>
 
