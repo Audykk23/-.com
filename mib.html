@@ -272,8 +272,9 @@ const open=v=>{$('cbox').hidden=!v;$('cfab').hidden=v;if(v)$('ct').focus()};
 $('cfab').onclick=()=>open(true);$('cx').onclick=()=>open(false);
 function ctx(){const g=id=>{const e=$(id);return e?e.value:''};
  return `ลูกค้าตรง ${g('s_cl')} คน, lot/คน/เดือน ${g('s_lot')}, rebate $${g('s_rb')}/lot, IB ใต้สาย ${g('s_ib')} คน, ลูกค้าต่อ IB ${g('s_ibc')}, override $${g('s_ov')}/lot, lead/เดือน ${g('s_ld')}, conversion ${g('s_cv')}%, อัตราแลกเปลี่ยน ${g('s_fx')} บาท/$, รายได้ที่เครื่องคำนวณแสดง ${($('r_thb')||{}).textContent||'-'}/เดือน · เป้าในแท็บวางแผน ${g('p_tg')} บาท/เดือน`}
-function add(role,text){const d=document.createElement('div');d.className='m '+(role==='user'?'u':'a');d.textContent=text;
- if(role==='assistant'){const b=document.createElement('button');b.className='cp';b.type='button';b.textContent='คัดลอก';b.onclick=async()=>{try{await navigator.clipboard.writeText(text);b.textContent='คัดลอกแล้ว'}catch(e){b.textContent='คัดลอกไม่ได้'}};d.appendChild(b)}
+function md(t){return t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/^\s*[\*\-]\s+/gm,'• ').replace(/^#+\s*/gm,'').replace(/\*/g,'')}
+function add(role,text){const d=document.createElement('div');d.className='m '+(role==='user'?'u':'a');if(role==='assistant')d.innerHTML=md(text);else d.textContent=text;
+ if(role==='assistant'){const b=document.createElement('button');b.className='cp';b.type='button';b.textContent='คัดลอก';b.onclick=async()=>{try{await navigator.clipboard.writeText(text.replace(/\*\*/g,''));b.textContent='คัดลอกแล้ว'}catch(e){b.textContent='คัดลอกไม่ได้'}};d.appendChild(b)}
  $('clog').appendChild(d);$('clog').scrollTop=1e9;return d}
 async function send(text){text=text.trim();if(!text)return;$('ct').value='';add('user',text);hist.push({role:'user',content:text});
  if(!WORKER_URL){add('assistant','ยังไม่ได้เชื่อมต่อ AI — ให้ใส่ลิงก์ Cloudflare Worker ในช่อง WORKER_URL ของไฟล์ mib.html');return}
