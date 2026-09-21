@@ -1,2060 +1,337 @@
-<!DOCTYPE html>
-<html lang="th" prefix="og: https://ogp.me/ns#">
+<!doctype html>
+<html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<!-- ===== PRIMARY SEO ===== -->
-<title>ลุงอัด ซัดกราฟ | สอนเทรดทอง XAUUSD จากประสบการณ์จริง 10+ ปี</title>
-<meta name="description" content="ลุงอัด ซัดกราฟ — เทรดเดอร์ทอง XAUUSD ประสบการณ์ 10+ ปี แชร์วิเคราะห์ทุกวัน ไม่ขายฝัน Tools Indicator EA และคอร์สสอนเทรดทองจากของจริง ทดลองใช้ฟรีก่อนตัดสินใจ">
-<meta name="keywords" content="เทรดทอง, XAUUSD, สอนเทรดทอง, วิเคราะห์ทอง, indicator ทอง, EA XAUUSD, SMC trading, Price Action, position size calculator, เรียนเทรดทอง, ลุงอัด ซัดกราฟ, broker ทอง, เทรดทอง มือใหม่, gold trader thailand">
-<meta name="author" content="ลุงอัด ซัดกราฟ">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<meta name="theme-color" content="#C9A84C">
-<link rel="canonical" href="https://xn--72c0azc7au3b.com/">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://xn--72c0azc7au3b.com/">
-<meta property="og:site_name" content="ลุงอัด ซัดกราฟ">
-<meta property="og:locale" content="th_TH">
-<meta property="og:title" content="ลุงอัด ซัดกราฟ | สอนเทรดทอง XAUUSD จากประสบการณ์จริง">
-<meta property="og:description" content="เทรดทอง XAUUSD มากกว่า 10 ปี แชร์วิเคราะห์กราฟทุกวัน Tools Indicator EA คอร์สสอนเทรดทอง ทดลองใช้ฟรีก่อน ไม่มีขายฝัน ลุงตอบเอง">
-<meta property="og:image" content="https://xn--72c0azc7au3b.com/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ลุงอัด ซัดกราฟ — เทรดเดอร์ทอง XAUUSD">
-<meta property="og:image:type" content="image/jpeg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@lungad_satgraph">
-<meta name="twitter:creator" content="@lungad_satgraph">
-<meta name="twitter:title" content="ลุงอัด ซัดกราฟ | สอนเทรดทอง XAUUSD">
-<meta name="twitter:description" content="เทรดทอง XAUUSD 10+ ปี แชร์วิเคราะห์กราฟทุกวัน Tools Indicator EA คอร์สสอนเทรดทอง ทดลองใช้ฟรี">
-<meta name="twitter:image" content="https://xn--72c0azc7au3b.com/og-image.jpg">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://xn--72c0azc7au3b.com/#person",
-      "name": "ลุงอัด ซัดกราฟ",
-      "url": "https://xn--72c0azc7au3b.com",
-      "description": "เทรดเดอร์ทอง XAUUSD ประสบการณ์มากกว่า 10 ปี สอนเทรดทองจากกราฟจริง ออเดอร์จริง",
-      "sameAs": [
-        "https://tiktok.com/@lungad_satgraph",
-        "https://facebook.com/lungadsatgraph"
-      ],
-      "knowsAbout": ["XAUUSD", "Gold Trading", "SMC Trading", "Forex", "Technical Analysis", "Price Action"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://xn--72c0azc7au3b.com/#website",
-      "url": "https://xn--72c0azc7au3b.com",
-      "name": "ลุงอัด ซัดกราฟ",
-      "description": "สอนเทรดทอง XAUUSD จากประสบการณ์จริง",
-      "inLanguage": "th",
-      "publisher": { "@id": "https://xn--72c0azc7au3b.com/#person" }
-    }
-  ]
-}
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Kanit:wght@300;400;600;700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="ลุงอัด ซัดกราฟ — วิเคราะห์ทองคำ XAUUSD ทุกวัน สอนเทรดฟรี แผนเทรด เครื่องมือ และพาร์ทเนอร์ IB">
+<meta property="og:title" content="ลุงอัด ซัดกราฟ">
+<meta property="og:image" content="og-image.jpg">
+<title>ลุงอัด ซัดกราฟ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&family=Sarabun:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-:root {
-  --gold: #C9A84C;
-  --gold-light: #E2C06A;
-  --gold-pale: #2A1F0A;
-  --gold-shine: #FFE680;
-  --red: #C0392B;
-  --red-light: #E74C3C;
-  --red-bright: #FF4444;
-  --bg: #0A0808;
-  --bg-alt: #130D0D;
-  --bg-card: #1A1010;
-  --off-white: #0A0808;
-  --warm-white: #130D0D;
-  --text-main: #F5EDE0;
-  --text-sub: #D4B8A0;
-  --text-muted: #7A6555;
-  --border: rgba(201,168,76,0.2);
-  --nav-bg: rgba(10,8,8,0.96);
-}
+:root{--bg:#0A0A0C;--s1:#141417;--s2:#1D1D22;--line:#2C2C33;--ink:#EDE9E0;--mute:#9A968C;--gold:#E30613;--gold2:#FF4D57;--up:#3FB67A;--dn:#F2994A}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Sarabun,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:Kanit,sans-serif;line-height:1.2;margin:0;text-wrap:balance}
+.w{max-width:1120px;margin:0 auto;padding-inline:16px}
+.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px Kanit,sans-serif;padding:12px 20px;border-radius:8px;border:1px solid var(--line);color:var(--ink)}
+.btn.p{background:var(--gold);color:#FFFFFF}
+.btn:hover{filter:brightness(1.1)}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.eyebrow{font:600 12px Kanit;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(10,10,12,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;gap:24px;height:62px}
+.logo{font:700 20px Kanit}.logo span{color:var(--gold)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0 0 0 auto;padding:0;font:400 15px Kanit;color:var(--mute)}
+nav ul a:hover{color:var(--ink)}
+nav .btn{padding:8px 14px;font-size:14px}
+@media(max-width:820px){nav ul{display:none}nav .btn{margin-left:auto}}
+/* ticker */
+.tv-single{min-height:70px}.tick{min-height:46px;border-bottom:1px solid var(--line);background:var(--s1);font-size:13px;color:var(--mute);overflow:hidden;white-space:nowrap}
+.tick .w{display:flex;gap:28px;padding-block:7px;overflow-x:auto}
+.up{color:var(--up)}.dn{color:var(--dn)}
+/* hero */
+.hero{padding-block:56px 40px}
+.hero .w{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.hero .w{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(32px,4.6vw,50px);font-weight:700}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:var(--mute);max-width:52ch;font-size:17px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.proof{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px}
+.proof b{display:block;font:700 26px Kanit;color:var(--ink)}.proof span{font-size:13px;color:var(--mute)}
+/* outlook card */
+.ol{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ol-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.live{font:600 12px Kanit;color:var(--up);display:flex;align-items:center;gap:6px}.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--up)}
+.ol-p{padding:18px;display:grid;gap:14px}
+.px{font:500 34px "IBM Plex Mono",monospace}
+.bias{display:inline-block;font:600 13px Kanit;padding:3px 10px;border-radius:999px;background:rgba(63,182,122,.15);color:var(--up)}
+.lv{display:grid;gap:6px;font-size:14px}
+.lv div{display:flex;justify-content:space-between;padding:7px 10px;border-radius:6px;background:var(--s2)}
+.lv .r{box-shadow:inset 3px 0 var(--dn)}.lv .s{box-shadow:inset 3px 0 var(--up)}
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px}
+.plan div{border:1px solid var(--line);border-radius:8px;padding:10px}.plan b{font-family:Kanit}
+.ol-f{padding:12px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--mute);display:flex;justify-content:space-between}
+.ol-f a{color:var(--gold2)}
+/* sections */
+section.sec{padding-block:64px;border-top:1px solid var(--line)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.sh h2{font-size:clamp(26px,3.6vw,36px);margin-top:6px}
+.sh p{color:var(--mute);margin:6px 0 0;max-width:56ch}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.tool{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:10px;align-content:start;transition:border-color .2s}
+.tool:hover{border-color:var(--gold)}
+.tool .tag{font:600 11px Kanit;letter-spacing:.08em;color:var(--gold2);text-transform:uppercase}
+.tool h3{font-size:19px}.tool p{margin:0;color:var(--mute);font-size:15px}
+.tool .go{font:600 14px Kanit;color:var(--gold2);margin-top:4px}
+.tool.new{background:linear-gradient(160deg,#2A0D10,var(--s1) 60%);border-color:#5C1419}
+/* archive */
+.arch{display:grid;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.arch a{display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--s1)}
+.arch a:last-child{border-bottom:0}.arch a:hover{background:var(--s2)}
+.arch .d{color:var(--mute);font-size:13px}
+.res{font:600 12px Kanit;padding:3px 10px;border-radius:999px}
+.res.w{background:rgba(63,182,122,.15);color:var(--up)}.res.l{background:rgba(242,153,74,.15);color:var(--dn)}.res.n{background:var(--s2);color:var(--mute)}
+@media(max-width:560px){.arch a{grid-template-columns:1fr auto}.arch .d{grid-column:1/-1}}
+/* course */
+.course{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:820px){.course{grid-template-columns:1fr}}
+.steps{display:grid;gap:12px;counter-reset:s}
+.steps div{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--s1)}
+.steps div:before{counter-increment:s;content:counter(s);font:700 20px Kanit;color:var(--gold2)}
+.steps b{font-family:Kanit;display:block}.steps span{color:var(--mute);font-size:14px}
+/* cta */
+.cta{background:var(--s1);border:1px solid #5C1419;border-radius:16px;padding:40px 28px;text-align:center;display:grid;gap:16px;justify-items:center}
+.cta h2{font-size:clamp(26px,4vw,40px)}.cta p{color:var(--mute);margin:0}
+.soc{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.soc a{font:400 14px Kanit;padding:8px 14px;border:1px solid var(--line);border-radius:999px;color:var(--mute)}.soc a:hover{color:var(--ink);border-color:var(--mute)}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--mute);font-size:13px}
+footer .risk{max-width:80ch;margin:0 0 12px}
+.demo{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:14px;background:var(--gold);color:#FFFFFF;font:600 12px Kanit;padding:6px 12px;border-radius:999px;z-index:10}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-[data-theme="light"] {
-  --bg: #FFFDF8;
-  --bg-alt: #FDF5E8;
-  --bg-card: #FFFFFF;
-  --off-white: #FFFDF8;
-  --warm-white: #FDF5E8;
-  --text-main: #1A0A00;
-  --text-sub: #4A1A0A;
-  --text-muted: #9A7060;
-  --border: rgba(192,57,43,0.15);
-  --nav-bg: rgba(255,253,248,0.95);
-  --gold: #B8860B;
-  --gold-light: #C9960C;
-  --red: #C0392B;
-  --red-light: #E74C3C;
-}
+.hero{position:relative;overflow:hidden;padding-block:72px 64px;background:radial-gradient(70% 90% at 75% 45%,#3A0508 0%,#1A0305 40%,var(--bg) 75%)}
+.hero .w{grid-template-columns:1fr 1fr}
+.olwrap{max-width:560px}
+.stage{position:relative;height:440px;perspective:900px}
+.stage>*{position:absolute;transition:transform .25s ease-out}
+.glow{inset:15% 5% 5% 5%;background:radial-gradient(closest-side,rgba(227,6,19,.45),transparent);filter:blur(30px);animation:pulse 5s ease-in-out infinite}
+.mark{left:50%;top:14%;transform:translateX(-50%);font:700 clamp(84px,11vw,150px)/1 Kanit,sans-serif;white-space:nowrap;animation:float 6s ease-in-out infinite}
+.mark span{display:block}
+.m-back{position:absolute;inset:0;color:#8A0009;transform:translate(8px,8px);filter:blur(1px)}
+.m-front{position:relative;background:linear-gradient(180deg,#FFFFFF 0%,#FFFFFF 55%,#E9E4E4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 2px rgba(255,255,255,.6)) drop-shadow(0 0 24px rgba(227,6,19,.8))}
+.ped{left:50%;bottom:8%;width:74%;height:70px;transform:translateX(-50%)}
+.ped i{position:absolute;inset:0;border-radius:50%;background:repeating-linear-gradient(90deg,#E30613 0 10px,#8A0009 10px 16px);box-shadow:0 -6px 0 #FF3D47 inset,0 20px 60px rgba(227,6,19,.5)}
+.ped:after{content:"";position:absolute;left:8%;right:8%;top:-10px;height:26px;border-radius:50%;background:#1A0204;box-shadow:0 0 0 2px #E30613}
+.bar{left:44%;bottom:20%;width:118px;height:46px;border-radius:6px;background:linear-gradient(160deg,#FFE7A0,#D8A93A 45%,#8C6414);box-shadow:0 10px 30px rgba(0,0,0,.6),inset 0 2px 0 #FFF4C9;display:grid;place-items:center;transform:rotate(-12deg);animation:float 7s ease-in-out infinite reverse}
+.bar b{font:700 15px Kanit;color:#6B4A0C;letter-spacing:.15em}
+.coin{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font:700 26px Kanit;color:#fff;background:radial-gradient(circle at 35% 30%,#FF5A63,#E30613 45%,#6E0008);box-shadow:0 0 0 4px #9C000B inset,0 12px 30px rgba(227,6,19,.45)}
+.c1{left:6%;top:48%;animation:bob 5s ease-in-out infinite}
+.c2{right:4%;top:10%;width:52px;height:52px;font-size:22px;animation:bob 6s ease-in-out -2s infinite}
+.c3{right:12%;top:58%;width:44px;height:44px;font-size:16px;background:radial-gradient(circle at 35% 30%,#FFE7A0,#D8A93A 50%,#7A5510);color:#5A3D05;box-shadow:0 10px 24px rgba(0,0,0,.5);animation:bob 4.5s ease-in-out -1s infinite}
+.spark{width:4px;height:4px;border-radius:50%;background:#FF6B73;box-shadow:0 0 10px #FF3D47;animation:twk 3s ease-in-out infinite}
+.s1{left:18%;top:12%}.s2{right:26%;top:40%;animation-delay:-1s}.s3{left:30%;bottom:34%;animation-delay:-2s}
+@keyframes float{50%{translate:0 -14px}}
+@keyframes bob{50%{translate:0 -18px;rotate:10deg}}
+@keyframes pulse{50%{opacity:.6}}
+@keyframes twk{50%{opacity:.2;scale:.5}}
 
-[data-theme="light"] body { background: #FFFDF8; color: #1A0A00; }
-[data-theme="light"] nav { background: rgba(255,253,248,0.96); border-bottom-color: rgba(192,57,43,0.12); }
-[data-theme="light"] .nav-logo { color: #C0392B; }
-[data-theme="light"] .nav-links a { color: #4A1A0A; }
-[data-theme="light"] .nav-links a:hover { color: #C0392B; }
-[data-theme="light"] #mobileMenu { background: #FFFDF8; border-color: rgba(192,57,43,0.15); }
-[data-theme="light"] #mobileMenu a { color: #4A1A0A; border-color: rgba(192,57,43,0.1); }
-[data-theme="light"] #hero, [data-theme="light"] .hero { background: #FFFDF8; }
-[data-theme="light"] #about { background: #FDF5E8 !important; }
-[data-theme="light"] #smc { background: #FFFDF8 !important; }
-[data-theme="light"] #tools { background: #FDF5E8 !important; }
-[data-theme="light"] #contact { background: #FFFDF8 !important; border-color: rgba(192,57,43,0.1) !important; }
-[data-theme="light"] #tools-pro { background: linear-gradient(135deg, #1A0A0A 0%, #2D1010 50%, #1A0808 100%) !important; }
-[data-theme="light"] #learn { background: linear-gradient(135deg, #130D0D 0%, #0A0808 100%) !important; }
-[data-theme="light"] #cta { background: linear-gradient(135deg, #0D0808 0%, #1A0A0A 40%, #130808 100%) !important; }
-[data-theme="light"] .about-card { background: #FFFFFF; border-color: rgba(192,57,43,0.12); }
-[data-theme="light"] .signal-card { background: #FFFFFF; border-color: rgba(192,57,43,0.12); }
-[data-theme="light"] .tag { background: #FFF0EC; border-color: rgba(192,57,43,0.15); color: #C0392B; }
-[data-theme="light"] .tf-btn { background: #FFF0EC; color: #C0392B; border-color: rgba(192,57,43,0.2); }
-[data-theme="light"] .social-card { background: linear-gradient(145deg, #FFFFFF, #FFF8F0); border-color: rgba(192,57,43,0.1); }
-[data-theme="light"] .social-name { color: #1A0A00; }
-[data-theme="light"] .social-handle { color: #9A7060; }
-[data-theme="light"] .hero-title { color: #1A0A00; }
-[data-theme="light"] .hero-desc { color: #4A1A0A; }
-[data-theme="light"] .section-title { color: #1A0A00; }
-[data-theme="light"] .section-sub { color: #4A1A0A; }
-[data-theme="light"] #learn .reveal div[style*="rgba(255,255,255,0.06)"] { background: rgba(192,57,43,0.05) !important; border-color: rgba(192,57,43,0.15) !important; }
-[data-theme="light"] footer { background: #1A0A00; }
-[data-theme="light"] #adminPanel > div { background: #FFFFFF !important; }
-[data-theme="light"] .admin-input { background: #FFF8F0; color: #1A0A00; border-color: rgba(192,57,43,0.2); }
+.fx{inset:0;width:100%;height:100%;pointer-events:none}
+.ptag{left:50%;bottom:36%;transform:translateX(-50%);display:flex;align-items:baseline;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(10,10,12,.75);border:1px solid #5C1419;backdrop-filter:blur(6px);white-space:nowrap;transition:box-shadow .4s,border-color .4s}
+.ptag span{font:600 11px Kanit;letter-spacing:.1em;color:var(--mute)}
+.ptag b{font-size:18px;color:#fff}.ptag em{font:500 12px "IBM Plex Mono",monospace;font-style:normal}
+.ptag.up{border-color:var(--up);box-shadow:0 0 18px rgba(63,182,122,.5)}.ptag.dn{border-color:#FF4D57;box-shadow:0 0 18px rgba(227,6,19,.6)}
+.stage .glow{animation:inFade .8s ease-out both,pulse 5s ease-in-out .8s infinite}
+.stage .ped{animation:inRise .8s cubic-bezier(.2,.8,.2,1) .1s both}
+.stage .mark{animation:inDrop 1s cubic-bezier(.2,1.3,.4,1) .45s both,float 6s ease-in-out 1.5s infinite}
+.stage .bar{animation:inPop .6s cubic-bezier(.2,1.5,.4,1) .9s both,float 7s ease-in-out 1.5s infinite reverse}
+.stage .ptag{animation:inFade .6s ease-out 1.2s both}
+.stage .c1{animation:inPop .6s cubic-bezier(.2,1.6,.4,1) 1s both,bob 5s ease-in-out 1.6s infinite}
+.stage .c2{animation:inPop .6s cubic-bezier(.2,1.6,.4,1) 1.15s both,bob 6s ease-in-out 1.8s infinite}
+.stage .c3{animation:inPop .6s cubic-bezier(.2,1.6,.4,1) 1.3s both,bob 4.5s ease-in-out 1.9s infinite}
+@keyframes inFade{from{opacity:0}}
+@keyframes inRise{from{opacity:0;scale:.6}}
+@keyframes inDrop{from{opacity:0;translate:0 -60px;scale:1.15}}
+@keyframes inPop{from{opacity:0;scale:0}}
+@media(max-width:860px){.hero .w{grid-template-columns:1fr}.stage{height:320px;order:-1}.mark{font-size:84px}}
+@media(prefers-reduced-motion:reduce){.stage *{animation:none!important}}
+.veil{position:relative}
+.veil .lv{filter:blur(3px);opacity:.55;user-select:none}
+.unlock{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:6px;text-align:center;background:radial-gradient(closest-side,rgba(10,10,12,.85),rgba(10,10,12,.35))}
+.unlock b{font:700 20px Kanit}.unlock span{font-size:13px;color:var(--mute);margin-bottom:6px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.pc{display:grid;gap:4px;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--s1)}.pc b{font:600 17px Kanit}.pc span{color:var(--mute);font-size:14px}
 
-/* ===== MARKET OUTLOOK LIGHT MODE ===== */
-[data-theme="light"] #market-outlook { background: #FDF5E8 !important; border-color: rgba(192,57,43,0.15) !important; }
-[data-theme="light"] .mo-scenario-bull { background: rgba(0,180,80,0.05) !important; border-color: rgba(0,180,80,0.3) !important; }
-[data-theme="light"] .mo-scenario-bear { background: rgba(192,57,43,0.05) !important; border-color: rgba(192,57,43,0.3) !important; }
-[data-theme="light"] .mo-item { background: rgba(0,0,0,0.04) !important; }
-[data-theme="light"] .mo-dns { background: rgba(184,134,11,0.08) !important; border-color: rgba(184,134,11,0.4) !important; }
-[data-theme="light"] .mo-price-banner { background: rgba(184,134,11,0.06) !important; }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-html, body { overflow-x: hidden; max-width: 100%; width: 100%; }
-img, video, svg, iframe { max-width: 100%; }
-section, nav, footer, div { max-width: 100%; }
-
-@media (max-width: 768px) {
-  .avatar-ring { width: 240px !important; height: 240px !important; }
-  .cta-glow { width: 300px !important; height: 200px !important; }
-  .hero-grid-lines { display: none; }
-}
-
-body {
-  background: var(--bg);
-  color: var(--text-main);
-  font-family: 'Sarabun', sans-serif;
-  overflow-x: hidden;
-}
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg-alt); }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 16px clamp(16px, 4vw, 48px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--nav-bg);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--gold);
-  letter-spacing: 0.5px;
-}
-.nav-logo span { color: var(--text-main); }
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
-.nav-links a {
-  font-family: 'Kanit', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--text-sub);
-  text-decoration: none;
-  transition: color 0.2s;
-  letter-spacing: 0.3px;
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-cta {
-  background: var(--gold);
-  color: #fff !important;
-  padding: 9px 22px;
-  border-radius: 4px;
-  font-weight: 600 !important;
-  transition: background 0.2s, transform 0.2s !important;
-}
-.nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: clamp(100px, 12vw, 120px) clamp(16px, 4vw, 48px) 80px;
-  position: relative;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,168,76,0.1) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(192,57,43,0.07) 0%, transparent 60%);
-}
-.hero-grid-lines {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(184,151,42,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184,151,42,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-}
-.hero-content {
-  max-width: 560px;
-  position: relative;
-  z-index: 2;
-  animation: fadeUp 0.9s ease both;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Kanit', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 24px;
-  padding: 6px 14px;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  background: rgba(184,151,42,0.06);
-}
-.hero-eyebrow::before {
-  content: '';
-  width: 20px; height: 1px;
-  background: var(--gold);
-}
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(44px, 6vw, 72px);
-  font-weight: 900;
-  line-height: 1.1;
-  color: var(--text-main);
-  margin-bottom: 20px;
-}
-.hero-title .gold { color: var(--gold); }
-.hero-title .line-thin {
-  font-weight: 700;
-  font-style: italic;
-  color: var(--text-sub);
-  font-size: 0.65em;
-  display: block;
-  margin-top: 4px;
-}
-.hero-desc {
-  font-size: 17px;
-  line-height: 1.8;
-  color: var(--text-sub);
-  margin-bottom: 36px;
-  font-weight: 300;
-}
-.hero-desc strong { color: var(--text-main); font-weight: 600; }
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--gold);
-  color: #fff;
-  font-family: 'Kanit', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 4px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 20px rgba(184,151,42,0.3);
-}
-.btn-primary:hover {
-  background: var(--gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(184,151,42,0.4);
-}
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--text-main);
-  font-family: 'Kanit', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 4px;
-  text-decoration: none;
-  border: 1.5px solid rgba(26,24,20,0.2);
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s, transform 0.2s;
-}
-.btn-secondary:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  transform: translateY(-2px);
-}
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  margin-top: 52px;
-  padding-top: 40px;
-  border-top: 1px solid var(--border);
-  animation: fadeUp 0.9s ease 0.3s both;
-}
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: 900;
-  color: var(--gold);
-  line-height: 1;
-}
-.stat-label {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 4px;
-  font-family: 'Kanit', sans-serif;
-}
-.hero-visual {
-  position: absolute;
-  right: 0; top: 0; bottom: 0;
-  width: 45%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  animation: fadeUp 1s ease 0.2s both;
-}
-.avatar-ring {
-  position: relative;
-  width: 340px; height: 340px;
-}
-.ring-outer {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(184,151,42,0.2);
-  animation: spinSlow 20s linear infinite;
-}
-.ring-outer::before, .ring-outer::after {
-  content: '';
-  position: absolute;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--gold);
-  top: 50%; left: 0;
-  transform: translateY(-50%);
-}
-.ring-outer::after { left: auto; right: 0; background: var(--gold-light); }
-@keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.ring-inner {
-  position: absolute;
-  inset: 20px;
-  border-radius: 50%;
-  border: 1px dashed rgba(184,151,42,0.15);
-  animation: spinSlow 30s linear reverse infinite;
-}
-.avatar-center {
-  position: absolute;
-  inset: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--warm-white) 0%, var(--gold-pale) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 100px;
-  box-shadow: 0 0 0 1px rgba(184,151,42,0.2), 0 20px 60px rgba(184,151,42,0.15), inset 0 1px 0 rgba(255,255,255,0.8);
-  flex-direction: column;
-  gap: 0;
-}
-.mufc-badge-hero {
-  position: absolute;
-  bottom: 30px; right: 20px;
-  background: var(--red);
-  color: white;
-  font-family: 'Kanit', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 50px;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 12px rgba(192,57,43,0.3);
-}
-.ticker-badge {
-  position: absolute;
-  top: 30px; left: 10px;
-  background: var(--text-main);
-  color: var(--gold);
-  font-family: 'Kanit', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 7px 16px;
-  border-radius: 50px;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-}
-
-section {
-  padding: clamp(48px, 8vw, 96px) clamp(16px, 4vw, 48px);
-  overflow-x: hidden;
-}
-.section-label {
-  font-family: 'Kanit', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.section-label::after {
-  content: '';
-  flex: 1;
-  max-width: 40px;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.5;
-}
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px, 4vw, 44px);
-  font-weight: 900;
-  color: var(--text-main);
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
-.section-sub {
-  font-size: 16px;
-  color: var(--text-sub);
-  line-height: 1.8;
-  font-weight: 300;
-  max-width: 520px;
-}
-
-#about {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.about-quote {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  font-style: italic;
-  color: var(--text-main);
-  line-height: 1.7;
-  margin: 28px 0;
-  padding-left: 24px;
-  border-left: 3px solid var(--gold);
-}
-.about-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 28px;
-}
-.tag {
-  font-family: 'Kanit', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-sub);
-  padding: 7px 16px;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  background: var(--bg-card);
-}
-.tag.gold { color: var(--gold); border-color: rgba(184,151,42,0.4); background: rgba(184,151,42,0.05); }
-.tag.red { color: var(--red); border-color: rgba(192,57,43,0.2); background: rgba(192,57,43,0.04); }
-.about-cards { display: flex; flex-direction: column; gap: 16px; }
-.about-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 22px 24px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.about-card:hover { box-shadow: 0 8px 30px rgba(184,151,42,0.1); transform: translateY(-2px); }
-.about-card-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
-.about-card-title { font-family: 'Kanit', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
-.about-card-desc { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
-
-#signals { max-width: 1100px; margin: 0 auto; }
-.signals-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
-.live-dot {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'Kanit', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  color: #16a34a;
-  background: rgba(22,163,74,0.08);
-  border: 1px solid rgba(22,163,74,0.2);
-  padding: 6px 14px;
-  border-radius: 50px;
-}
-.live-dot::before {
-  content: '';
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: #16a34a;
-  animation: livePulse 1.5s ease infinite;
-}
-@keyframes livePulse {
-  0% { box-shadow: 0 0 0 0 rgba(22,163,74,0.4); }
-  70% { box-shadow: 0 0 0 6px transparent; }
-  100% { box-shadow: 0 0 0 0 transparent; }
-}
-.signals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.signal-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: box-shadow 0.25s, transform 0.25s;
-}
-.signal-card:hover { box-shadow: 0 12px 40px rgba(184,151,42,0.12); transform: translateY(-3px); }
-.signal-header { padding: 18px 20px 14px; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
-.signal-pair { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--text-main); }
-.signal-direction { font-family: 'Kanit', sans-serif; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 2px; letter-spacing: 0.5px; }
-.signal-direction.buy { background: rgba(22,163,74,0.1); color: #16a34a; border: 1px solid rgba(22,163,74,0.2); }
-.signal-direction.sell { background: rgba(192,57,43,0.08); color: var(--red); border: 1px solid rgba(192,57,43,0.15); }
-.signal-body { padding: 18px 20px; }
-.signal-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.signal-row:last-child { margin-bottom: 0; }
-.signal-key { font-family: 'Kanit', sans-serif; font-size: 12px; color: var(--text-muted); font-weight: 400; }
-.signal-val { font-family: 'Kanit', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-main); }
-.signal-val.green { color: #16a34a; }
-.signal-val.red { color: var(--red); }
-.signal-footer { padding: 12px 20px; background: rgba(184,151,42,0.03); border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); font-family: 'Kanit', sans-serif; display: flex; justify-content: space-between; }
-.signal-footer span { color: var(--gold); font-weight: 600; }
-.signals-note { margin-top: 24px; padding: 16px 20px; background: rgba(184,151,42,0.05); border: 1px solid var(--border); border-radius: 6px; font-size: 13px; color: var(--text-sub); text-align: center; font-family: 'Kanit', sans-serif; }
-.signals-note strong { color: var(--gold); }
-
-#cta {
-  background: linear-gradient(135deg, #0D0808 0%, #1A0A0A 40%, #130808 100%);
-  color: var(--text-main);
-  text-align: center;
-  padding: 100px 48px;
-  position: relative;
-  overflow: hidden;
-}
-.cta-bg-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(184,151,42,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(184,151,42,0.06) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-.cta-glow {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 500px; height: 300px;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(184,151,42,0.15) 0%, transparent 70%);
-}
-.cta-inner { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
-.cta-emoji { font-size: 56px; display: block; margin-bottom: 24px; }
-.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: white; line-height: 1.2; margin-bottom: 16px; }
-.cta-title .gold { color: var(--gold-light); }
-.cta-sub { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 40px; font-weight: 300; }
-.cta-sub strong { color: var(--gold-light); font-weight: 600; }
-.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.btn-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--gold);
-  color: white;
-  font-family: 'Kanit', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 15px 32px;
-  border-radius: 4px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 24px rgba(184,151,42,0.4);
-  letter-spacing: 0.3px;
-}
-.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 36px rgba(184,151,42,0.5); }
-.btn-outline-white {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: white;
-  font-family: 'Kanit', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 15px 32px;
-  border-radius: 4px;
-  text-decoration: none;
-  border: 1.5px solid rgba(255,255,255,0.3);
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, transform 0.2s;
-}
-.btn-outline-white:hover { border-color: var(--gold); background: rgba(184,151,42,0.1); transform: translateY(-2px); }
-.cta-small-note { margin-top: 24px; font-size: 13px; color: rgba(255,255,255,0.35); font-family: 'Kanit', sans-serif; }
-
-footer {
-  background: #080808;
-  padding: 36px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid rgba(184,151,42,0.1);
-}
-.footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--gold); }
-.footer-logo span { color: rgba(255,255,255,0.4); }
-.footer-text { font-size: 12px; color: rgba(255,255,255,0.25); font-family: 'Kanit', sans-serif; text-align: center; }
-.footer-tags { display: flex; gap: 12px; }
-.footer-tag { font-size: 11px; color: rgba(255,255,255,0.3); font-family: 'Kanit', sans-serif; letter-spacing: 0.5px; }
-.footer-tag.g { color: rgba(184,151,42,0.5); }
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ===== MARKET OUTLOOK STYLES ===== */
-#market-outlook {
-  background: var(--bg-alt);
-  border-top: 1px solid rgba(201,168,76,0.3);
-  border-bottom: 1px solid rgba(201,168,76,0.3);
-}
-
-.mo-price-banner {
-  background: rgba(201,168,76,0.06);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 28px;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.mo-price-pill { text-align: center; flex: 1; min-width: 100px; }
-.mo-price-pill .mo-plabel { font-family: 'Kanit', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
-.mo-price-pill .mo-pvalue { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.5px; }
-.mo-price-pill.res .mo-pvalue { color: #E74C3C; }
-.mo-price-pill.key .mo-pvalue { color: var(--gold); animation: moPulse 2s ease-in-out infinite; }
-.mo-price-pill.sup .mo-pvalue { color: #16a34a; }
-@keyframes moPulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
-.mo-divider-v { width: 1px; height: 40px; background: var(--border); flex-shrink: 0; }
-
-.mo-scenarios-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-@media (max-width: 700px) {
-  .mo-scenarios-grid { grid-template-columns: 1fr; }
-  .mo-price-banner { gap: 12px; }
-  .mo-divider-v { display: none; }
-}
-
-.mo-scenario-card {
-  border-radius: 12px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-}
-.mo-scenario-bull {
-  background: rgba(0,180,80,0.05);
-  border: 1.5px solid rgba(22,163,74,0.35);
-}
-.mo-scenario-bear {
-  background: rgba(192,57,43,0.05);
-  border: 1.5px solid rgba(192,57,43,0.35);
-}
-.mo-scenario-num {
-  font-family: 'Kanit', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  opacity: 0.7;
-}
-.mo-scenario-bull .mo-scenario-num { color: #16a34a; }
-.mo-scenario-bear .mo-scenario-num { color: var(--red); }
-.mo-scenario-card.mo-breakout .mo-scenario-num { color: var(--gold); }
-.mo-scenario-title {
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  margin-bottom: 2px;
-}
-.mo-scenario-bull .mo-scenario-title { color: #16a34a; }
-.mo-scenario-bear .mo-scenario-title { color: var(--red); }
-.mo-scenario-card.mo-breakout .mo-scenario-title { color: var(--gold); }
-.mo-scenario-thai {
-  font-family: 'Sarabun', sans-serif;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-bottom: 14px;
-}
-
-.mo-items { display: flex; flex-direction: column; gap: 8px; }
-.mo-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(0,0,0,0.2);
-  border-radius: 7px;
-  padding: 8px 12px;
-}
-.mo-tag {
-  font-family: 'Kanit', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 3px 8px;
-  border-radius: 3px;
-  white-space: nowrap;
-  text-transform: uppercase;
-  flex-shrink: 0;
-}
-.mo-tag-cond { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
-.mo-tag-limit { background: rgba(201,168,76,0.1); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.2); }
-.mo-tag-tp { background: rgba(22,163,74,0.12); color: #4ade80; border: 1px solid rgba(22,163,74,0.25); }
-.mo-tag-warn { background: rgba(234,179,8,0.15); color: #EAB308; border: 1px solid rgba(234,179,8,0.3); }
-.mo-tag-bd { background: rgba(192,57,43,0.15); color: var(--red); border: 1px solid rgba(192,57,43,0.3); }
-.mo-tag-t1 { background: rgba(192,57,43,0.1); color: #ef4444; border: 1px solid rgba(192,57,43,0.2); }
-.mo-tag-t2 { background: rgba(192,57,43,0.08); color: #f87171; border: 1px solid rgba(192,57,43,0.15); }
-.mo-tag-major { background: rgba(139,0,0,0.2); color: #ef4444; border: 1px solid rgba(139,0,0,0.35); }
-.mo-tag-deep { background: rgba(100,0,0,0.25); color: #dc2626; border: 1px solid rgba(100,0,0,0.4); }
-
-.mo-item-desc { flex: 1; line-height: 1.3; }
-.mo-item-desc .mo-en { font-family: 'Kanit', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--text-main); }
-.mo-item-desc .mo-th { font-family: 'Sarabun', sans-serif; font-size: 0.7rem; color: var(--text-muted); }
-.mo-item-price {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 900;
-  flex-shrink: 0;
-  letter-spacing: 0.3px;
-}
-.mo-price-g { color: #16a34a; }
-.mo-price-gold { color: var(--gold); }
-.mo-price-r1 { color: var(--red); }
-.mo-price-r2 { color: #ef4444; }
-.mo-price-r3 { color: #f87171; }
-.mo-price-r4 { color: #dc2626; }
-
-.mo-dns {
-  border-radius: 10px;
-  padding: 14px 18px;
-  background: rgba(201,168,76,0.08);
-  border: 1.5px solid rgba(201,168,76,0.4);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-}
-.mo-dns::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.06) 50%, transparent 100%);
-  animation: moScan 2.5s linear infinite;
-}
-@keyframes moScan { from{transform:translateX(-100%)} to{transform:translateX(100%)} }
-.mo-dns-icon { font-size: 1.6rem; flex-shrink: 0; position: relative; z-index: 1; }
-.mo-dns-content { position: relative; z-index: 1; }
-.mo-dns-en { font-family: 'Kanit', sans-serif; font-size: 1rem; font-weight: 900; letter-spacing: 1.5px; color: var(--gold); line-height: 1.1; }
-.mo-dns-th { font-family: 'Sarabun', sans-serif; font-size: 0.75rem; color: rgba(201,168,76,0.7); margin-top: 2px; }
-.mo-dns-badge {
-  margin-left: auto;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: #000;
-  font-family: 'Kanit', sans-serif;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  padding: 5px 10px;
-  border-radius: 4px;
-  text-align: center;
-  line-height: 1.4;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.mo-sell-focus {
-  border-radius: 10px;
-  padding: 14px 18px;
-  background: rgba(192,57,43,0.07);
-  border: 1.5px solid rgba(192,57,43,0.4);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 12px;
-}
-.mo-sf-icon { font-size: 1.4rem; flex-shrink: 0; }
-.mo-sf-en { font-family: 'Kanit', sans-serif; font-size: 0.95rem; font-weight: 900; letter-spacing: 1px; color: var(--red); }
-.mo-sf-th { font-family: 'Sarabun', sans-serif; font-size: 0.75rem; color: rgba(192,57,43,0.65); }
-.mo-disclaimer { text-align: center; font-family: 'Kanit', sans-serif; font-size: 11px; color: var(--text-muted); margin-top: 8px; }
-
-/* ===== ADMIN PANEL FOR OUTLOOK ===== */
-.mo-admin-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Kanit', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.mo-admin-btn:hover { border-color: var(--gold); color: var(--gold); }
-
-@media (max-width: 768px) {
-  nav { padding: 14px 16px; }
-  .nav-links { display: none !important; }
-  #mobileNav { display: flex !important; }
-  .hero { padding: 90px 16px 50px; }
-  .hero-visual { display: none; }
-  .hero-content { max-width: 100%; }
-  .hero-title { font-size: 40px; }
-  .hero-stats { gap: 20px; flex-wrap: wrap; }
-  section { padding: 60px 16px !important; }
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .signals-grid { grid-template-columns: 1fr; }
-  .signals-header { flex-direction: column; gap: 12px; }
-  #cta { padding: 64px 16px !important; }
-  .cta-buttons { flex-direction: column; align-items: stretch; }
-  .cta-buttons a, .cta-buttons button { width: 100%; justify-content: center; }
-  footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 16px; }
-  .grid-3col { grid-template-columns: 1fr !important; }
-  .grid-learn { grid-template-columns: 1fr !important; gap: 32px !important; }
-  .grid-social { grid-template-columns: repeat(2, 1fr) !important; }
-  #tools-pro [style*="justify-content:space-between"] { flex-direction: column !important; align-items: flex-start !important; }
-  #smc > div > .reveal[style*="justify-content:space-between"] { flex-direction: column !important; align-items: flex-start !important; }
-  #adminPanel > div { margin: 16px !important; }
-}
+/* ลูกเล่นเพิ่ม */
+.bar{overflow:hidden}.bar:after{content:"";position:absolute;inset:-20% auto -20% -60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:sheen 3.5s ease-in-out 2s infinite}
+@keyframes sheen{0%,60%{left:-60%}100%{left:130%}}
+.ped i{background-size:32px 100%;animation:spin 6s linear infinite}
+@keyframes spin{to{background-position:32px 0}}
+.mark{transform-style:preserve-3d}.mark .m-front,.mark .m-back{transition:transform .2s ease-out}
+.tool{transition:border-color .2s,transform .25s,box-shadow .25s}
+.tool:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(227,6,19,.18)}
+.btn.p{position:relative;overflow:hidden;transition:transform .15s,box-shadow .2s}
+.btn.p:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(227,6,19,.45)}
+.btn.p:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.35),transparent 70%);transform:translateX(-120%);transition:transform .6s}
+.btn.p:hover:before{transform:translateX(120%)}
+.flyc{position:fixed;z-index:50;width:22px;height:22px;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 35% 30%,#FFE7A0,#D8A93A 55%,#7A5510);box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;align-items:center;gap:8px;background:#06C755;color:#fff;font:600 15px Kanit;padding:12px 18px;border-radius:999px;box-shadow:0 10px 26px rgba(6,199,85,.4);animation:fabIn .5s ease-out 2s both}
+.fab:before{content:"";width:9px;height:9px;border-radius:50%;background:#fff;animation:ping 1.6s ease-out infinite}
+@keyframes fabIn{from{opacity:0;translate:0 30px}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,255,255,.8)}100%{box-shadow:0 0 0 10px rgba(255,255,255,0)}}
+.rv{transition:opacity .7s ease,translate .7s ease}.rv.pre{opacity:0;translate:0 28px}
+@media(prefers-reduced-motion:reduce){.bar:after,.ped i,.fab,.fab:before{animation:none}.rv.pre{opacity:1;translate:none}}
+.tool .tag{justify-self:start;padding:3px 10px;border:1px solid #5C1419;border-radius:999px;background:rgba(227,6,19,.1);line-height:1.4}
+.tool .go{transition:letter-spacing .25s}.tool:hover .go{letter-spacing:.04em}
+.soc a{display:inline-flex;align-items:center;gap:8px;transition:color .2s,border-color .2s,transform .2s,box-shadow .2s}
+.soc a i{display:grid;width:18px;height:18px;color:var(--c);transition:transform .3s}.soc a i svg{width:100%;height:100%}
+.soc a:hover{color:var(--ink);border-color:var(--c);transform:translateY(-2px);box-shadow:0 8px 20px -8px var(--c)}
+.soc a:hover i{transform:scale(1.2) rotate(-8deg)}
 </style>
+
 </head>
 <body>
+<nav><div class="w">
+  <a class="logo" href="#">ลุงอัด <span>ซัดกราฟ</span></a>
+  <ul><li><a href="#outlook">วิเคราะห์วันนี้</a></li><li><a href="#tools">เครื่องมือ</a></li><li><a href="#learn">เรียนฟรี</a></li><li><a href="#partner">พาร์ทเนอร์ IB</a></li></ul>
+  <a class="btn p" href="https://line.me/R/ti/p/@370dhnry">ทักไลน์หาลุง</a>
+</div></nav>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">ลุงอัด<span> ซัดกราฟ</span></div>
-  <ul class="nav-links">
-    <li><a href="#about">เกี่ยวกับลุง</a></li>
-    <li><a href="#market-outlook">📊 วิเคราะห์วันนี้</a></li>
-    <li><a href="#tools-pro">Tools & คอร์ส</a></li>
-    <li><a href="#tools">เครื่องมือเทรด</a></li>
-    <li><a href="#contact">ติดต่อ</a></li>
-    <li><a href="#learn">เรียนกับลุง</a></li>
-    <li><a href="#cta" class="nav-cta">ทักมาหาลุง 💬</a></li>
-    <li><button id="darkToggle" onclick="toggleDark()" style="background:transparent;border:1px solid var(--border);border-radius:50%;width:34px;height:34px;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;">🌙</button></li>
-  </ul>
-  <div id="mobileNav" style="display:none;align-items:center;gap:8px;">
-    <button id="darkToggleMob" onclick="toggleDark()" style="background:transparent;border:1px solid var(--border);border-radius:50%;width:34px;height:34px;font-size:15px;cursor:pointer;">🌙</button>
-    <button id="hamburger" onclick="toggleMenu()" style="background:transparent;border:1px solid var(--border);border-radius:6px;width:38px;height:38px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px;">
-      <span id="hb1" style="display:block;width:18px;height:2px;background:var(--text-main);border-radius:2px;transition:all 0.3s;"></span>
-      <span id="hb2" style="display:block;width:18px;height:2px;background:var(--text-main);border-radius:2px;transition:all 0.3s;"></span>
-      <span id="hb3" style="display:block;width:18px;height:2px;background:var(--text-main);border-radius:2px;transition:all 0.3s;"></span>
-    </button>
+<div class="tick"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{"symbols":[{"proName":"OANDA:XAUUSD","title":"ทองคำ"},{"proName":"OANDA:XAGUSD","title":"Silver"},{"proName":"OANDA:EURUSD","title":"EUR/USD"},{"proName":"OANDA:USDJPY","title":"USD/JPY"},{"proName":"OANDA:GBPUSD","title":"GBP/USD"},{"proName":"FX_IDC:USDTHB","title":"USD/THB"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"NASDAQ:NVDA","title":"Nvidia"},{"proName":"NASDAQ:AAPL","title":"Apple"},{"proName":"NASDAQ:MSFT","title":"Microsoft"},{"proName":"NASDAQ:GOOGL","title":"Google"},{"proName":"NASDAQ:AMZN","title":"Amazon"},{"proName":"NASDAQ:META","title":"Meta"},{"proName":"NASDAQ:TSLA","title":"Tesla"}],"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"th_TH"}
+</script></div></div>
+
+<header class="hero"><div class="w">
+  <div>
+    <div class="eyebrow">เทรดทองคำ XAUUSD · ประสบการณ์ 10+ ปี</div>
+    <h1 style="margin-top:12px">เทรดทองแบบ<em>มีแผน</em><br>ไม่ใช่เทรดตามอารมณ์</h1>
+    <p>ลุงวิเคราะห์ทองทุกเช้า บอกแนวต้าน แนวรับ และแผนเข้า-ออกแบบสถานการณ์ พร้อมแจกเครื่องมือที่ลุงใช้เองทุกวัน</p>
+    <div class="row"><a class="btn p" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">ทักไลน์หาลุง</a><a class="btn" href="#tools">ใช้เครื่องมือฟรี</a></div>
+    <div class="proof"><div><b class="mono">10+ ปี</b><span>เทรดทองจริง</span></div><div><b class="mono">ทุกวัน</b><span>อัปเดตแผนเทรด</span></div><div><b class="mono">5</b><span>ช่องทางติดตาม</span></div></div>
   </div>
-</nav>
-
-<div id="mobileMenu" style="display:none;position:fixed;top:61px;right:12px;background:var(--off-white);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.12);z-index:99;min-width:180px;overflow:hidden;">
-  <a href="#about" onclick="closeMenu()" style="display:block;padding:14px 20px;font-family:Kanit,sans-serif;font-size:15px;color:var(--text-sub);text-decoration:none;border-bottom:1px solid var(--border);">เกี่ยวกับลุง</a>
-  <a href="#market-outlook" onclick="closeMenu()" style="display:block;padding:14px 20px;font-family:Kanit,sans-serif;font-size:15px;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--border);font-weight:700;">📊 วิเคราะห์วันนี้</a>
-  <a href="#tools-pro" onclick="closeMenu()" style="display:block;padding:14px 20px;font-family:Kanit,sans-serif;font-size:15px;color:var(--text-sub);text-decoration:none;border-bottom:1px solid var(--border);">Tools & คอร์ส</a>
-  <a href="#tools" onclick="closeMenu()" style="display:block;padding:14px 20px;font-family:Kanit,sans-serif;font-size:15px;color:var(--text-sub);text-decoration:none;border-bottom:1px solid var(--border);">เครื่องมือเทรด</a>
-  <a href="#contact" onclick="closeMenu()" style="display:block;padding:14px 20px;font-family:Kanit,sans-serif;font-size:15px;color:var(--text-sub);text-decoration:none;border-bottom:1px solid var(--border);">ติดต่อ</a>
-  <a href="#learn" onclick="closeMenu()" style="display:block;padding:14px 20px;font-family:Kanit,sans-serif;font-size:15px;color:var(--text-sub);text-decoration:none;border-bottom:1px solid var(--border);">เรียนกับลุง</a>
-  <a href="#cta" onclick="closeMenu()" style="display:block;padding:14px 20px;font-family:Kanit,sans-serif;font-size:15px;font-weight:700;color:var(--gold);text-decoration:none;">ทักมาหาลุง 💬</a>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">XAUUSD Gold Trader</div>
-    <h1 class="hero-title">
-      ลุงอัด<br>
-      <span class="gold">ซัดกราฟ</span>
-      <span class="line-thin">ไม่ซัดน้ำลาย</span>
-    </h1>
-    <p class="hero-desc">
-      ใส่เสื้อแมนยูทุกวัน แต่ <strong>ไม่ได้มาสอนบอล</strong> 😅<br>
-      ลุงมาแชร์ทุกอย่างที่ทำให้เทรดทองได้จริง — <strong>วิเคราะห์ XAUUSD</strong><br>
-      Tools ที่ลุงใช้เอง คอร์สที่เรียนแล้วเปลี่ยนได้จริง และ Broker ที่ไว้วางใจได้
-    </p>
-    <div class="hero-actions">
-      <a href="#tools-pro" class="btn-primary">🎁 ทดลองใช้ Tools ฟรี</a>
-      <a href="#market-outlook" class="btn-secondary">📊 วิเคราะห์วันนี้</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">ปีเทรดทอง</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">XAUUSD</div>
-        <div class="stat-label">เฉพาะทองคำ</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">Free</div>
-        <div class="stat-label">ทดลองใช้ก่อน</div>
-      </div>
-    </div>
+  <div class="stage" id="stage" aria-hidden="true">
+    <canvas class="fx" id="fx"></canvas>
+    <div class="glow"></div>
+    <div class="mark" data-d="14"><span class="m-back">ลุงอัด</span><span class="m-front">ลุงอัด</span></div>
+    <div class="ped" data-d="6"><i></i></div>
+    <div class="bar" data-d="10"><b>XAU</b></div>
+    <div class="ptag" id="tag" data-d="8"><span>XAUUSD</span><b class="mono" id="tagp">…</b><em id="tagc"></em></div>
+    <div class="coin c1" data-d="26">฿</div>
+    <div class="coin c2" data-d="34">$</div>
+    <div class="coin c3" data-d="20">Au</div>
+    <div class="spark s1"></div><div class="spark s2"></div><div class="spark s3"></div>
   </div>
-  <div class="hero-visual">
-    <div class="avatar-ring">
-      <div class="ring-outer"></div>
-      <div class="ring-inner"></div>
-      <div class="avatar-center">👴</div>
-      <div class="mufc-badge-hero">🔴 MUFC</div>
-      <div class="ticker-badge">XAU/USD 🥇</div>
+</div></header>
+
+<section class="sec" id="outlook"><div class="w"><div class="sh"><div><div class="eyebrow">วิเคราะห์วันนี้</div><h2>แผนเทรดทองประจำวัน</h2><p>ราคาทองสด และแผนเทรดที่ลุงส่งให้ทางไลน์ทุกเช้า</p></div></div><div class="olwrap">
+  <article class="ol lock" aria-label="ขอแผนเทรดวันนี้">
+    <div class="ol-h"><b style="font-family:Kanit">แผนเทรดทองวันนี้</b><span class="live">ลุงอัปเดตทุกเช้า</span></div>
+    <div class="ol-p">
+      <div class="tv-single"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+      <script src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {"symbol":"OANDA:XAUUSD","width":"100%","colorTheme":"dark","isTransparent":true,"locale":"th_TH"}
+      </script></div></div>
+      <div class="veil">
+        <div class="lv mono" aria-hidden="true">
+          <div class="r"><span>แนวต้าน 2</span><span>•,•••</span></div>
+          <div class="r"><span>แนวต้าน 1</span><span>•,•••</span></div>
+          <div class="s"><span>แนวรับ 1</span><span>•,•••</span></div>
+          <div class="s"><span>แนวรับ 2</span><span>•,•••</span></div>
+        </div>
+        <div class="unlock">
+          <b>รับแผนเทรดวันนี้ฟรี</b>
+          <span>แนวรับ-แนวต้าน · จุดเข้า Buy/Sell · TP/SL</span>
+          <a class="btn p" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">ขอแผนเทรดทางไลน์</a>
+        </div>
+      </div>
     </div>
+    <div class="ol-f"><span>ไม่ใช่คำแนะนำการลงทุน</span><span>ทักมาพิมพ์ว่า “ขอแผน”</span></div>
+  </article>
+</div></div></section>
+
+<section class="sec" id="tools"><div class="w">
+  <div class="sh"><div><div class="eyebrow">เครื่องมือ</div><h2>ลุงใช้อะไร ก็แชร์ให้หมด</h2><p>เปิดใช้ได้ทันที ไม่ต้องสมัคร</p></div></div>
+  <div class="tools">
+    <a class="tool" href="calculator.html"><span class="tag">ฟรี</span><h3>คำนวณ Lot & ความเสี่ยง</h3><p>ใส่ทุนกับ SL แล้วรู้ทันทีว่าควรออกกี่ lot</p><span class="go">เปิดเครื่องคำนวณ →</span></a>
+    <a class="tool new" href="mib.html"><span class="tag">ใหม่ · สำหรับ IB</span><h3>MIB Sales Toolkit</h3><p>จำลองรายได้ IB วางแผนย้อนจากเป้า และสคริปต์ตอบลูกค้า</p><span class="go">เปิดเครื่องมือ →</span></a>
+    <a class="tool" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener"><span class="tag">ฟรี</span><h3>Indicator & EA</h3><p>อินดิเคเตอร์ที่ลุงใช้จริง ทักไลน์ขอได้ฟรี</p><span class="go">ขอทางไลน์ →</span></a>
+    <a class="tool" href="https://client.mhmarkets.com/signup?partnerCode=3LB8WTIL" target="_blank" rel="noopener"><span class="tag">โบรกที่ลุงใช้</span><h3>เปิดบัญชีเทรด</h3><p>เปิดบัญชีผ่านลิงก์ลุง ทักถามขั้นตอนได้ตลอด</p><span class="go">เปิดบัญชี →</span></a>
+    <a class="tool" href="https://www.forexfactory.com/calendar" target="_blank" rel="noopener"><span class="tag">ลิงก์</span><h3>ปฏิทินข่าวเศรษฐกิจ</h3><p>เช็กข่าวแรงก่อนเข้าออเดอร์ทุกครั้ง</p><span class="go">ดูปฏิทิน →</span></a>
   </div>
-</section>
+</div></section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="reveal">
-      <div class="section-label">เกี่ยวกับลุงอัด</div>
-      <h2 class="section-title">เทรดเดอร์ทองคำ<br>ตัวจริง ไม่แต่งตัว</h2>
-      <blockquote class="about-quote">
-        "ลุงไม่ได้แค่สอน — ลุงใช้เองจริงทุกวัน<br>
-        Tools ที่ขาย ลุงใช้เอง คอร์สที่สอน ลุงผ่านมาเองทั้งนั้น"
-      </blockquote>
-      <p class="section-sub">
-        ลุงอัดเทรดทองมากกว่า 10 ปี พัฒนา Tools และระบบเทรดที่ใช้จริงในพอร์ตตัวเอง
-        ทุกอย่างที่แชร์และขาย ลุงผ่านมาด้วยตัวเองทั้งนั้น ไม่มีอะไรที่ลุงไม่ได้ใช้จริง
-      </p>
-      <div class="about-tags">
-        <div class="tag gold">📈 Price Action</div>
-        <div class="tag gold">🎯 Technical Analysis</div>
-        <div class="tag gold">🥇 XAUUSD Only</div>
-        <div class="tag red">🔴 Man United Fan</div>
-        <div class="tag">📅 10+ ปี</div>
-        <div class="tag gold">🎓 มีคอร์สเรียน</div>
-      </div>
-    </div>
-    <div class="about-cards reveal" style="transition-delay:0.2s">
-      <div class="about-card">
-        <div class="about-card-icon">📊</div>
-        <div>
-          <div class="about-card-title">วิเคราะห์กราฟทุกวัน</div>
-          <div class="about-card-desc">โพสต์แนวรับ แนวต้าน และ Bias ก่อนตลาดเปิดทุกเช้า ไม่หายหัว</div>
-        </div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-icon">🎯</div>
-        <div>
-          <div class="about-card-title">บอก Entry / SL / TP ชัดเจน</div>
-          <div class="about-card-desc">ไม่มีคำว่า "น่าจะขึ้น" บอกตรงๆ พร้อมเหตุผล ให้ตัดสินใจเองได้</div>
-        </div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-icon">💬</div>
-        <div>
-          <div class="about-card-title">ทักถามได้ตลอด ลุงตอบเอง</div>
-          <div class="about-card-desc">ไม่มีแอดมิน ไม่มีบอต ลุงอ่านและตอบทุกข้อความด้วยตัวเอง</div>
-        </div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-icon">🛡️</div>
-        <div>
-          <div class="about-card-title">ทดลองใช้ฟรีก่อนตัดสินใจ</div>
-          <div class="about-card-desc">Indicator และ EA ทุกตัว มี Free Trial ให้ลองก่อน ไม่พอใจไม่ต้องซื้อ</div>
-        </div>
-      </div>
-    </div>
+
+
+<section class="sec" id="learn"><div class="w course">
+  <div><div class="eyebrow">เรียนฟรี</div><h2 style="font-size:clamp(26px,3.6vw,36px);margin-top:6px">ลุงสอนฟรี<br>ไม่มีคอร์สขาย</h2><p style="color:var(--mute)">ระบบเดียวกับที่ลุงใช้เทรดทองทุกวัน สอนผ่านกลุ่มไลน์และไลฟ์ ตั้งแต่เริ่มต้นจนวางแผนเทรดเองได้</p><a class="btn p" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">ขอเข้ากลุ่มเรียนฟรี</a></div>
+  <div class="steps">
+    <div><p style="margin:0"><b>อ่านโครงสร้างราคาทอง</b><span>แนวรับ-แนวต้านที่ใช้ได้จริง</span></p></div>
+    <div><p style="margin:0"><b>วางแผนแบบสถานการณ์</b><span>ถ้า A ทำอะไร ถ้า B ทำอะไร</span></p></div>
+    <div><p style="margin:0"><b>บริหารเงินและความเสี่ยง</b><span>ขนาด lot, SL, และการหยุดเทรด</span></p></div>
   </div>
-</section>
+</div></section>
 
-<!-- ===== MARKET OUTLOOK & STRATEGY SECTION ===== -->
-<section id="market-outlook" style="padding: clamp(48px,8vw,96px) clamp(16px,4vw,48px); background: var(--bg-alt); border-top: 1px solid rgba(201,168,76,0.3);">
-  <div style="max-width: 900px; margin: 0 auto;">
-
-    <!-- Header -->
-    <div class="reveal" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:32px; flex-wrap:wrap; gap:16px;">
-      <div>
-        <div class="section-label">วิเคราะห์แนวโน้มและการเทรด</div>
-        <h2 class="section-title">Market Outlook &amp; Strategy 📊</h2>
-        <p class="section-sub">Scenario วันนี้จากลุงอัด — อัปเดตทุกวัน</p>
-      </div>
-      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-        <div class="live-dot" id="mo-live-indicator">อัปเดตแล้ว</div>
-        <button class="mo-admin-btn" onclick="openOutlookAdmin()">⚙️ แก้ไข</button>
-      </div>
-    </div>
-
-    <!-- Price Banner -->
-    <div class="mo-price-banner reveal">
-      <div class="mo-price-pill res">
-        <div class="mo-plabel">แนวต้าน Resistance</div>
-        <div class="mo-pvalue" id="mo-res-val">—</div>
-      </div>
-      <div class="mo-divider-v"></div>
-      <div class="mo-price-pill key">
-        <div class="mo-plabel">⚡ Key Zone</div>
-        <div class="mo-pvalue" id="mo-key-val">—</div>
-      </div>
-      <div class="mo-divider-v"></div>
-      <div class="mo-price-pill sup">
-        <div class="mo-plabel">แนวรับ Support</div>
-        <div class="mo-pvalue" id="mo-sup-val">—</div>
-      </div>
-    </div>
-
-    <!-- DO NOT SELL Banner (shown when active) -->
-    <div class="mo-dns reveal" id="mo-dns-box" style="display:none;">
-      <div class="mo-dns-icon">⛔</div>
-      <div class="mo-dns-content">
-        <div class="mo-dns-en">DO NOT SELL</div>
-        <div class="mo-dns-th" id="mo-dns-text">ห้าม Sell — ห้ามสวน Buy เด็ดขาด!</div>
-      </div>
-      <div class="mo-dns-badge">BUY<br>ONLY</div>
-    </div>
-
-    <!-- Scenarios Grid -->
-    <div class="mo-scenarios-grid">
-
-      <!-- Bull Scenarios Column -->
-      <div style="display:flex; flex-direction:column; gap:16px;">
-
-        <!-- Scenario 1 -->
-        <div class="mo-scenario-card mo-scenario-bull reveal" id="mo-s1-card">
-          <div class="mo-scenario-num" id="mo-s1-num">📈 SCENARIO 01</div>
-          <div class="mo-scenario-title" id="mo-s1-title">HOLDING SUPPORT &amp; BOUNCE</div>
-          <div class="mo-scenario-thai" id="mo-s1-thai">ฉากทัศน์ที่ 1 : รับอยู่และเด้ง</div>
-          <div class="mo-items" id="mo-s1-items">
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-cond">เงื่อนไข</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Opening, No Break Below</div>
-                <div class="mo-th">เปิดแล้วไม่หลุด</div>
-              </div>
-              <span class="mo-item-price mo-price-gold" id="mo-s1-cond">—</span>
-            </div>
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-limit">LIMIT</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Entry Zone — Don't Chase Over</div>
-                <div class="mo-th">ไม่ควรเกิน</div>
-              </div>
-              <span class="mo-item-price mo-price-gold" id="mo-s1-limit">—</span>
-            </div>
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-tp">🎯 TP</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Bounce Target</div>
-                <div class="mo-th">เป้าหมายเด้ง</div>
-              </div>
-              <span class="mo-item-price mo-price-g" id="mo-s1-tp">—</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Scenario 2 Breakout -->
-        <div class="mo-scenario-card mo-scenario-bull mo-breakout reveal" id="mo-s2-card" style="background:rgba(201,168,76,0.05); border-color:rgba(201,168,76,0.3);">
-          <div class="mo-scenario-num" id="mo-s2-num">🚀 SCENARIO 02</div>
-          <div class="mo-scenario-title" id="mo-s2-title">BREAKING RESISTANCE &amp; RALLY</div>
-          <div class="mo-scenario-thai" id="mo-s2-thai">ฉากทัศน์ที่ 2 : ทะลุแนวต้านและขึ้นต่อ</div>
-          <div class="mo-items" id="mo-s2-items">
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-cond">เงื่อนไข</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">If Stand &amp; Hold Above</div>
-                <div class="mo-th">ถ้ายืนเหนือได้</div>
-              </div>
-              <span class="mo-item-price mo-price-gold" id="mo-s2-cond">—</span>
-            </div>
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-warn">⚠️ RALLY</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Watch for Strong Rally</div>
-                <div class="mo-th">ระวังขึ้นแรง ห้าม Sell</div>
-              </div>
-              <span class="mo-item-price mo-price-gold" id="mo-s2-target">—</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Bear Scenario Column -->
-      <div>
-        <div class="mo-scenario-card mo-scenario-bear reveal" id="mo-s3-card" style="height:100%;">
-          <div class="mo-scenario-num" id="mo-s3-num">📉 SCENARIO 03</div>
-          <div class="mo-scenario-title" id="mo-s3-title">SELL SIDE OPPORTUNITIES</div>
-          <div class="mo-scenario-thai" id="mo-s3-thai">โอกาสฝั่ง Sell — ถ้าหลุด Breakdown!</div>
-          <div class="mo-items" id="mo-s3-items">
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-bd">IF BREAKDOWN</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Break Below — Activate Sell</div>
-                <div class="mo-th">ถ้าหลุด เน้น Sell เลย</div>
-              </div>
-              <span class="mo-item-price mo-price-r1" id="mo-s3-bd">—</span>
-            </div>
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-t1">🎯 T1</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Target 1</div>
-                <div class="mo-th">เป้าแรก</div>
-              </div>
-              <span class="mo-item-price mo-price-r2" id="mo-s3-t1">—</span>
-            </div>
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-t2">🎯 T2</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Next Target</div>
-                <div class="mo-th">เป้าถัดไป</div>
-              </div>
-              <span class="mo-item-price mo-price-r2" id="mo-s3-t2">—</span>
-            </div>
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-major">💀 MAJOR</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Major Target / Penalty Zone</div>
-                <div class="mo-th">จุดหนัก — จุดโทษ!</div>
-              </div>
-              <span class="mo-item-price mo-price-r3" id="mo-s3-major">—</span>
-            </div>
-            <div class="mo-item">
-              <span class="mo-tag mo-tag-deep">🔥 DEEP</span>
-              <div class="mo-item-desc">
-                <div class="mo-en">Deep Break — If Flush Hard</div>
-                <div class="mo-th">หลุดลึกจริง ถึง</div>
-              </div>
-              <span class="mo-item-price mo-price-r4" id="mo-s3-deep">—</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Sell Focus -->
-    <div class="mo-sell-focus reveal">
-      <div class="mo-sf-icon">🔍</div>
-      <div>
-        <div class="mo-sf-en">SELL FOCUS: IF BREAKDOWN</div>
-        <div class="mo-sf-th" id="mo-sell-note">เน้น SELL: ถ้าหลุดเท่านั้น — ไม่หลุดไม่ Sell!</div>
-      </div>
-    </div>
-
-    <div class="mo-disclaimer">* FOR EDUCATIONAL PURPOSES ONLY · เพื่อการศึกษาเท่านั้น · อัปเดตล่าสุด: <span id="mo-updated-display">—</span></div>
+<section class="sec" id="partner"><div class="w">
+  <div class="sh"><div><div class="eyebrow">พาร์ทเนอร์ IB</div><h2>มีเพื่อนที่เทรดอยู่แล้ว? มาสร้างรายได้ด้วยกัน</h2><p>แนะนำคนรู้จักมาเทรด รับ rebate ทุก lot ที่เขาเทรด ลุงช่วยดูแลลูกค้าและปิดการขายให้ช่วงแรก</p></div></div>
+  <div class="pgrid">
+    <div class="pc"><b>ไม่ต้องมีลูกค้าก่อน</b><span>เริ่มจากคนรอบตัว 3–5 คนก็พอ</span></div>
+    <div class="pc"><b>รายได้ทุกเดือน</b><span>ได้ rebate ตาม lot ที่ลูกค้าเทรดจริง</span></div>
+    <div class="pc"><b>มีสื่อและสคริปต์ให้</b><span>รูป โพสต์ และคำตอบลูกค้า พร้อมใช้</span></div>
+    <div class="pc"><b>ขยายทีมได้</b><span>สร้าง IB ใต้สาย รับส่วนต่างเพิ่ม</span></div>
   </div>
-</section>
+  <div class="row" style="margin-top:22px"><a class="btn p" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">สนใจเป็นพาร์ทเนอร์</a><a class="btn" href="mib.html">คำนวณรายได้ IB</a></div>
+</div></section>
 
-<!-- OUTLOOK ADMIN PANEL -->
-<div id="outlookAdminPanel" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); overflow-y:auto;">
-  <div style="max-width:560px; margin:40px auto; background:#1A1010; border-radius:16px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.4);">
-    <div style="background:linear-gradient(135deg,#1A0A0A,#2D1010); padding:22px 28px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(201,168,76,0.2);">
-      <div>
-        <div style="font-family:'Playfair Display',serif; font-size:20px; font-weight:900; color:var(--gold);">📊 แก้ Market Outlook</div>
-        <div style="font-size:11px; color:rgba(255,255,255,0.4); font-family:Kanit,sans-serif; margin-top:2px;">ลุงอัด ซัดกราฟ — อัปเดต Scenario</div>
-      </div>
-      <button onclick="closeOutlookAdmin()" style="background:rgba(255,255,255,0.1); border:none; color:white; font-size:20px; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
-    </div>
-    <div id="outlookAdminLogin" style="padding:28px;">
-      <div style="font-family:Kanit,sans-serif; font-size:15px; font-weight:700; color:var(--text-main); margin-bottom:14px;">🔐 ใส่รหัสผ่าน</div>
-      <input type="password" id="outlookAdminPass" placeholder="รหัสผ่านลุงอัด" style="width:100%; padding:12px 16px; border:1.5px solid var(--border); border-radius:6px; font-family:Kanit,sans-serif; font-size:15px; background:var(--bg-card); color:var(--text-main); outline:none; margin-bottom:12px;">
-      <button onclick="checkOutlookPass()" style="width:100%; background:var(--gold); color:white; border:none; padding:13px; border-radius:6px; font-family:Kanit,sans-serif; font-size:15px; font-weight:700; cursor:pointer;">เข้าสู่ระบบ</button>
-      <div id="outlookPassError" style="color:var(--red); font-size:13px; margin-top:8px; font-family:Kanit,sans-serif; display:none;">รหัสผ่านไม่ถูกต้องครับ 🙅</div>
-    </div>
-    <div id="outlookAdminForm" style="display:none; padding:0 28px 28px;">
-      <div style="background:rgba(201,168,76,0.06); border-radius:10px; padding:16px; margin-bottom:16px;">
-        <div style="font-family:Kanit,sans-serif; font-size:12px; font-weight:700; color:var(--gold); letter-spacing:1px; margin-bottom:12px;">⚡ KEY ZONES</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:11px; color:var(--red); display:block; margin-bottom:4px;">Resistance</label>
-            <input id="mo-f-res" type="text" placeholder="e.g. 4555-4560" style="width:100%; padding:9px 12px; border:1px solid rgba(192,57,43,0.3); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:11px; color:var(--gold); display:block; margin-bottom:4px;">Key Zone</label>
-            <input id="mo-f-key" type="text" placeholder="e.g. 4490-4520" style="width:100%; padding:9px 12px; border:1px solid rgba(201,168,76,0.3); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:11px; color:#16a34a; display:block; margin-bottom:4px;">Support</label>
-            <input id="mo-f-sup" type="text" placeholder="e.g. 4450-4445" style="width:100%; padding:9px 12px; border:1px solid rgba(22,163,74,0.3); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-        </div>
-      </div>
-      <div style="background:rgba(22,163,74,0.05); border-radius:10px; padding:16px; margin-bottom:12px; border:1px solid rgba(22,163,74,0.15);">
-        <div style="font-family:Kanit,sans-serif; font-size:12px; font-weight:700; color:#16a34a; letter-spacing:1px; margin-bottom:12px;">🐂 BULLISH SCENARIOS</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">S1: เงื่อนไข (No Break)</label>
-            <input id="mo-f-s1cond" type="text" placeholder="4485-4490" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">S1: LIMIT (Entry Max)</label>
-            <input id="mo-f-s1limit" type="text" placeholder="4515-4520" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">S1: TP (Bounce Target)</label>
-            <input id="mo-f-s1tp" type="text" placeholder="4500-4515" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">S2: เงื่อนไข (Stand Above)</label>
-            <input id="mo-f-s2cond" type="text" placeholder="4520" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div style="grid-column:1/-1;">
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">S2: Rally Target (DO NOT SELL Zone)</label>
-            <input id="mo-f-s2target" type="text" placeholder="4555-4560" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-        </div>
-        <div style="margin-top:10px; display:flex; align-items:center; gap:10px;">
-          <label style="font-family:Kanit,sans-serif; font-size:12px; color:var(--gold); cursor:pointer; display:flex; align-items:center; gap:6px;">
-            <input type="checkbox" id="mo-f-dns" style="width:16px;height:16px;accent-color:var(--gold);">
-            แสดง DO NOT SELL Banner
-          </label>
-        </div>
-      </div>
-      <div style="background:rgba(192,57,43,0.05); border-radius:10px; padding:16px; margin-bottom:16px; border:1px solid rgba(192,57,43,0.15);">
-        <div style="font-family:Kanit,sans-serif; font-size:12px; font-weight:700; color:var(--red); letter-spacing:1px; margin-bottom:12px;">🐻 BEARISH SCENARIO (S3)</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">Breakdown Level</label>
-            <input id="mo-f-s3bd" type="text" placeholder="4485-4490" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">Target 1</label>
-            <input id="mo-f-s3t1" type="text" placeholder="4485-4490" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">Target 2</label>
-            <input id="mo-f-s3t2" type="text" placeholder="4460-4470" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div>
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">Major / Penalty</label>
-            <input id="mo-f-s3major" type="text" placeholder="4445-4450" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-          <div style="grid-column:1/-1;">
-            <label style="font-family:Kanit,sans-serif; font-size:10px; color:var(--text-muted); display:block; margin-bottom:3px;">Deep Break Target</label>
-            <input id="mo-f-s3deep" type="text" placeholder="4400" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:5px; background:var(--bg-card); color:var(--text-main); font-family:Kanit,sans-serif; font-size:13px; outline:none;">
-          </div>
-        </div>
-      </div>
-      <button onclick="saveOutlookData()" style="width:100%; background:var(--gold); color:white; border:none; padding:14px; border-radius:6px; font-family:Kanit,sans-serif; font-size:15px; font-weight:700; cursor:pointer;">💾 บันทึก Market Outlook</button>
-      <div id="outlookSaveMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึกสำเร็จแล้วครับ!</div>
-    </div>
+<section class="sec" id="contact"><div class="w">
+  <div class="cta"><div class="eyebrow">เริ่มได้วันนี้</div><h2>ได้เวลาเทรดทองแบบมีระบบ</h2><p>เรียนฟรี ขอแผนเทรด เปิดบัญชี หรือสนใจเป็นพาร์ทเนอร์ ทักลุงได้ทุกเรื่อง</p>
+    <a class="btn p" href="https://line.me/R/ti/p/@370dhnry">ทักไลน์หาลุง</a>
+    <div class="soc"><a href="https://m.me/1013555458507886" target="_blank" rel="noopener" style="--c:#0084FF"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.4 3.7 7.1V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 12.3-2.5-2.7-4.9 2.7 5.4-5.7 2.6 2.7 4.8-2.7-5.4 5.7z"/></svg></i>Messenger</a><a href="https://youtube.com/" target="_blank" rel="noopener" style="--c:#FF0000"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9v6l5-3z" fill="#141417"/></svg></i>YouTube</a><a href="https://tiktok.com/" target="_blank" rel="noopener" style="--c:#25F4EE"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h3c.2 1.9 1.6 3.4 3.5 3.6v3c-1.3 0-2.5-.4-3.5-1v6.2A5.8 5.8 0 1 1 11 9v3.1a2.8 2.8 0 1 0 3 2.7V3z"/></svg></i>TikTok</a><a href="https://instagram.com/" target="_blank" rel="noopener" style="--c:#E4405F"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg></i>Instagram</a></div>
   </div>
-</div>
+</div></section>
 
-<!-- ADMIN PANEL (original) -->
-<div id="adminPanel" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.7); backdrop-filter:blur(8px); overflow-y:auto;">
-  <div style="max-width:600px; margin:40px auto; background:#1A1010; border-radius:16px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <div style="background:var(--text-main); padding:24px 28px; display:flex; justify-content:space-between; align-items:center;">
-      <div>
-        <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:var(--gold);">Admin Panel 👴</div>
-        <div style="font-size:12px; color:rgba(255,255,255,0.5); font-family:Kanit,sans-serif; margin-top:2px;">ลุงอัด ซัดกราฟ — Admin Panel</div>
-      </div>
-      <button onclick="closeAdmin()" style="background:rgba(255,255,255,0.1); border:none; color:white; font-size:20px; width:36px; height:36px; border-radius:50%; cursor:pointer;">✕</button>
-    </div>
-    <div id="adminLogin" style="padding:32px 28px;">
-      <div style="font-family:Kanit,sans-serif; font-size:16px; font-weight:700; color:var(--text-main); margin-bottom:16px;">🔐 ใส่รหัสผ่าน</div>
-      <input type="password" id="adminPass" placeholder="รหัสผ่านลุงอัด" style="width:100%; padding:12px 16px; border:1.5px solid var(--border); border-radius:6px; font-family:Kanit,sans-serif; font-size:15px; outline:none; margin-bottom:12px;">
-      <button onclick="checkPass()" style="width:100%; background:var(--gold); color:white; border:none; padding:13px; border-radius:6px; font-family:Kanit,sans-serif; font-size:15px; font-weight:700; cursor:pointer;">เข้าสู่ระบบ</button>
-      <div id="passError" style="color:var(--red); font-size:13px; margin-top:8px; font-family:Kanit,sans-serif; display:none;">รหัสผ่านไม่ถูกต้องครับ 🙅</div>
-    </div>
-    <div id="adminForm" style="display:none; padding:0 28px 28px;">
-      <div style="display:flex; gap:8px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:16px;">
-        <button onclick="setAdminMode('social')" class="tf-btn" id="mode-social">📱 โซเชียล</button>
-        <button onclick="setAdminMode('broker')" class="tf-btn" id="mode-broker">🏦 Broker</button>
-      </div>
-      </div>
-      <div id="panel-social" style="display:none;">
-        <div style="background:#f9f9f7; border-radius:8px; padding:16px; margin-bottom:16px;">
-          <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--gold); margin-bottom:12px;">📱 แก้ลิงก์โซเชียล</div>
-          <label class="admin-label">📘 Facebook URL</label>
-          <input class="admin-input" id="social-facebook" type="url" placeholder="https://facebook.com/...">
-          <label class="admin-label">💚 Line OA URL</label>
-          <input class="admin-input" id="social-line" type="url" placeholder="https://line.me/...">
-          <label class="admin-label">🔴 YouTube URL</label>
-          <input class="admin-input" id="social-youtube" type="url" placeholder="https://youtube.com/@...">
-          <label class="admin-label">⬛ TikTok URL</label>
-          <input class="admin-input" id="social-tiktok" type="url" placeholder="https://tiktok.com/@...">
-          <label class="admin-label">📸 Instagram URL</label>
-          <input class="admin-input" id="social-instagram" type="url" placeholder="https://instagram.com/...">
-        </div>
-        <button onclick="saveSocial()" style="width:100%; background:var(--gold); color:white; border:none; padding:14px; border-radius:6px; font-family:Kanit,sans-serif; font-size:16px; font-weight:700; cursor:pointer;">💾 บันทึกลิงก์โซเชียล</button>
-        <div id="saveSocialMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึกลิงก์สำเร็จแล้วครับ!</div>
-      </div>
-      <div id="panel-broker" style="display:none;">
-        <div style="background:#f9f9f7; border-radius:8px; padding:16px; margin-bottom:16px;">
-          <div style="font-family:Kanit,sans-serif; font-size:13px; font-weight:700; color:var(--gold); margin-bottom:4px;">🏦 แก้ลิงก์ Broker ที่แนะนำ</div>
-          <div style="font-family:Sarabun,sans-serif; font-size:12px; color:var(--text-muted); margin-bottom:12px;">ลิงก์นี้จะอัปเดตทั้งปุ่ม IB Banner และการ์ด Broker ในส่วน Tools พร้อมกัน</div>
-          <label class="admin-label">🔗 Broker URL (ลิงก์ IB / Affiliate)</label>
-          <input class="admin-input" id="broker-url" type="url" placeholder="https://trader.eterwealthpro.com/signup?token=...">
-          <label class="admin-label">🏷️ ชื่อ Broker (แสดงในการ์ด)</label>
-          <input class="admin-input" id="broker-name" type="text" placeholder="เช่น Etern Wealth Pro">
-          <label class="admin-label">📝 คำอธิบาย Broker</label>
-          <input class="admin-input" id="broker-desc" type="text" placeholder="เช่น Broker ที่ลุงใช้จริง spread ต่ำ ฝาก-ถอนไว">
-        </div>
-        <div style="background:rgba(184,151,42,0.08); border:1px solid rgba(184,151,42,0.2); border-radius:8px; padding:12px 16px; margin-bottom:16px;">
-          <div style="font-family:Kanit,sans-serif; font-size:12px; color:var(--text-muted);">🔍 ลิงก์ปัจจุบัน:</div>
-          <div id="broker-current-url" style="font-family:Sarabun,sans-serif; font-size:12px; color:var(--gold); word-break:break-all; margin-top:4px;">—</div>
-        </div>
-        <button onclick="saveBroker()" style="width:100%; background:var(--gold); color:white; border:none; padding:14px; border-radius:6px; font-family:Kanit,sans-serif; font-size:16px; font-weight:700; cursor:pointer;">💾 บันทึกลิงก์ Broker</button>
-        <div id="saveBrokerMsg" style="display:none; text-align:center; margin-top:10px; color:#16a34a; font-family:Kanit,sans-serif; font-size:14px; font-weight:600;">✅ บันทึก Broker สำเร็จแล้วครับ!</div>
-      </div>
-    </div>
-  </div>
-</div>
+<footer><div class="w">
+  <p class="risk">คำเตือน: การเทรดทองคำและ CFD มีความเสี่ยงสูง อาจสูญเสียเงินทุนทั้งหมด บทวิเคราะห์ในเว็บนี้เป็นมุมมองส่วนตัว ไม่ใช่คำแนะนำการลงทุน ลุงอาจได้รับค่าตอบแทนจากโบรกเกอร์เมื่อเปิดบัญชีผ่านลิงก์ในเว็บนี้</p>
+  © 2026 ลุงอัด ซัดกราฟ
+</div></footer>
 
-<button onclick="openAdmin()" style="position:fixed; bottom:24px; right:24px; z-index:100; background:var(--text-main); color:var(--gold); border:1px solid rgba(184,151,42,0.3); border-radius:50%; width:48px; height:48px; font-size:20px; cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,0.3);" title="Admin">⚙️</button>
 
-<style>
-.tf-btn {
-  font-family: Kanit, sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 8px 18px;
-  border-radius: 4px;
-  border: 1.5px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-sub);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.tf-btn:hover { border-color: var(--gold); color: var(--gold); }
-.tf-active { background: var(--gold) !important; color: white !important; border-color: var(--gold) !important; }
-.admin-input {
-  width: 100%;
-  padding: 11px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 6px;
-  font-family: Kanit, sans-serif;
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s;
-  margin-bottom: 4px;
-}
-.admin-input:focus { border-color: var(--gold); }
-.admin-label {
-  font-family: Kanit, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  margin-bottom: 6px;
-  margin-top: 14px;
-  display: block;
-}
-</style>
 
 <script>
-const ADMIN_PASSWORD = 'Audy8068';
-
-}
-  if (updEl) updEl.textContent = d.updated || '—';
-}
-function openAdmin() { document.getElementById('adminPanel').style.display = 'block'; }
-function closeAdmin() {
-  document.getElementById('adminPanel').style.display = 'none';
-  document.getElementById('adminLogin').style.display = 'block';
-  document.getElementById('adminForm').style.display = 'none';
-  document.getElementById('adminPass').value = '';
-  document.getElementById('passError').style.display = 'none';
-}
-function checkPass() {
-  if (document.getElementById('adminPass').value === ADMIN_PASSWORD) {
-    document.getElementById('adminLogin').style.display = 'none';
-    document.getElementById('adminForm').style.display = 'block';
-    renderAdminFields(adminTF);
-  } else {
-    document.getElementById('passError').style.display = 'block';
-  }
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && document.getElementById('adminPass') === document.activeElement) checkPass();
-  if (e.key === 'Enter' && document.getElementById('outlookAdminPass') === document.activeElement) checkOutlookPass();
-});
-let adminMode = 'smc';
-function setAdminMode(mode) {
-  adminMode = mode;
-  ['smc','social','broker'].forEach(m => {
-    document.getElementById('mode-' + m)?.classList.remove('tf-active');
-    document.getElementById('panel-' + m).style.display = 'none';
-  });
-  document.getElementById('mode-' + mode)?.classList.add('tf-active');
-  document.getElementById('panel-' + mode).style.display = 'block';
-  if (mode === 'social') loadSocialFields();
-  if (mode === 'broker') loadBrokerFields();
-}
-let socialLinks = {
-  facebook: 'https://facebook.com/',
-  line: 'https://line.me/R/ti/p/@370dhnry?ts=03121848&oat_content=url',
-  youtube: 'https://youtube.com/',
-  tiktok: 'https://tiktok.com/',
-  instagram: 'https://instagram.com/'
-};
-function loadSocialData() {
-  const saved = localStorage.getItem('socialLinks');
-  if (saved) socialLinks = JSON.parse(saved);
-  applySocialLinks();
-}
-function applySocialLinks() {
-  const map = { facebook: 0, line: 1, youtube: 2, tiktok: 3, instagram: 4 };
-  const cards = document.querySelectorAll('#contact a');
-  Object.keys(map).forEach(k => {
-    if (cards[map[k]] && socialLinks[k]) cards[map[k]].href = socialLinks[k];
-  });
-}
-function loadSocialFields() {
-  ['facebook','line','youtube','tiktok','instagram'].forEach(k => {
-    const el = document.getElementById('social-' + k);
-    if (el) el.value = socialLinks[k] || '';
-  });
-}
-function saveSocial() {
-  ['facebook','line','youtube','tiktok','instagram'].forEach(k => {
-    const el = document.getElementById('social-' + k);
-    if (el && el.value) socialLinks[k] = el.value;
-  });
-  localStorage.setItem('socialLinks', JSON.stringify(socialLinks));
-  applySocialLinks();
-  document.getElementById('saveSocialMsg').style.display = 'block';
-  setTimeout(() => document.getElementById('saveSocialMsg').style.display = 'none', 3000);
-}
-let brokerData = {
-  url: 'https://trader.eterwealthpro.com/signup?token=cjoeubabnj0791l',
-  name: 'Broker ที่แนะนำ 🔗',
-  desc: 'Broker ที่ลุงใช้จริง regulated ปลอดภัย spread ต่ำ ฝาก-ถอนไว คลิกสมัครได้เลย!'
-};
-function loadBrokerData() {
-  const saved = localStorage.getItem('brokerData');
-  if (saved) brokerData = JSON.parse(saved);
-  applyBrokerLinks();
-}
-function applyBrokerLinks() {
-  const ibBtn = document.getElementById('broker-ib-btn');
-  if (ibBtn) ibBtn.href = brokerData.url;
-  const toolsLink = document.getElementById('broker-tools-link');
-  if (toolsLink) toolsLink.href = brokerData.url;
-  const cardTitle = document.querySelector('#broker-tools-link .about-card-title');
-  const cardDesc = document.querySelector('#broker-tools-link .about-card-desc');
-  if (cardTitle) cardTitle.textContent = brokerData.name;
-  if (cardDesc) cardDesc.textContent = brokerData.desc;
-}
-function loadBrokerFields() {
-  const urlEl = document.getElementById('broker-url');
-  const nameEl = document.getElementById('broker-name');
-  const descEl = document.getElementById('broker-desc');
-  const currentEl = document.getElementById('broker-current-url');
-  if (urlEl) urlEl.value = brokerData.url || '';
-  if (nameEl) nameEl.value = brokerData.name || '';
-  if (descEl) descEl.value = brokerData.desc || '';
-  if (currentEl) currentEl.textContent = brokerData.url || '—';
-}
-function saveBroker() {
-  const urlEl = document.getElementById('broker-url');
-  const nameEl = document.getElementById('broker-name');
-  const descEl = document.getElementById('broker-desc');
-  if (urlEl && urlEl.value) brokerData.url = urlEl.value;
-  if (nameEl && nameEl.value) brokerData.name = nameEl.value;
-  if (descEl && descEl.value) brokerData.desc = descEl.value;
-  localStorage.setItem('brokerData', JSON.stringify(brokerData));
-  applyBrokerLinks();
-  const currentEl = document.getElementById('broker-current-url');
-  if (currentEl) currentEl.textContent = brokerData.url;
-  document.getElementById('saveBrokerMsg').style.display = 'block';
-  setTimeout(() => document.getElementById('saveBrokerMsg').style.display = 'none', 3000);
-}
-
-// ===== MARKET OUTLOOK DATA =====
-let outlookData = {};
-
-function loadOutlookData() {
-  const saved = localStorage.getItem('outlookData');
-  if (saved) {
-    outlookData = JSON.parse(saved);
-    applyOutlookDisplay();
-  }
-}
-
-function applyOutlookDisplay() {
-  const d = outlookData;
-  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val || '—'; };
-  set('mo-res-val', d.res);
-  set('mo-key-val', d.key);
-  set('mo-sup-val', d.sup);
-  set('mo-s1-cond', d.s1cond);
-  set('mo-s1-limit', d.s1limit);
-  set('mo-s1-tp', d.s1tp);
-  set('mo-s2-cond', d.s2cond);
-  set('mo-s2-target', d.s2target);
-  set('mo-s3-bd', d.s3bd);
-  set('mo-s3-t1', d.s3t1);
-  set('mo-s3-t2', d.s3t2);
-  set('mo-s3-major', d.s3major);
-  set('mo-s3-deep', d.s3deep);
-  set('mo-updated-display', d.updated);
-  // DNS banner
-  const dnsBox = document.getElementById('mo-dns-box');
-  if (dnsBox) dnsBox.style.display = d.showDns ? 'flex' : 'none';
-}
-
-function openOutlookAdmin() {
-  document.getElementById('outlookAdminPanel').style.display = 'block';
-}
-
-function closeOutlookAdmin() {
-  document.getElementById('outlookAdminPanel').style.display = 'none';
-  document.getElementById('outlookAdminLogin').style.display = 'block';
-  document.getElementById('outlookAdminForm').style.display = 'none';
-  document.getElementById('outlookAdminPass').value = '';
-  document.getElementById('outlookPassError').style.display = 'none';
-}
-
-function checkOutlookPass() {
-  if (document.getElementById('outlookAdminPass').value === ADMIN_PASSWORD) {
-    document.getElementById('outlookAdminLogin').style.display = 'none';
-    document.getElementById('outlookAdminForm').style.display = 'block';
-    loadOutlookFormFields();
-  } else {
-    document.getElementById('outlookPassError').style.display = 'block';
-  }
-}
-
-function loadOutlookFormFields() {
-  const d = outlookData;
-  const fields = {
-    'mo-f-res': d.res, 'mo-f-key': d.key, 'mo-f-sup': d.sup,
-    'mo-f-s1cond': d.s1cond, 'mo-f-s1limit': d.s1limit, 'mo-f-s1tp': d.s1tp,
-    'mo-f-s2cond': d.s2cond, 'mo-f-s2target': d.s2target,
-    'mo-f-s3bd': d.s3bd, 'mo-f-s3t1': d.s3t1, 'mo-f-s3t2': d.s3t2,
-    'mo-f-s3major': d.s3major, 'mo-f-s3deep': d.s3deep
-  };
-  Object.entries(fields).forEach(([id, val]) => {
-    const el = document.getElementById(id);
-    if (el && val) el.value = val;
-  });
-  const dnsCheck = document.getElementById('mo-f-dns');
-  if (dnsCheck) dnsCheck.checked = !!d.showDns;
-}
-
-function saveOutlookData() {
-  const get = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
-  outlookData = {
-    res: get('mo-f-res'),
-    key: get('mo-f-key'),
-    sup: get('mo-f-sup'),
-    s1cond: get('mo-f-s1cond'),
-    s1limit: get('mo-f-s1limit'),
-    s1tp: get('mo-f-s1tp'),
-    s2cond: get('mo-f-s2cond'),
-    s2target: get('mo-f-s2target'),
-    showDns: document.getElementById('mo-f-dns')?.checked || false,
-    s3bd: get('mo-f-s3bd'),
-    s3t1: get('mo-f-s3t1'),
-    s3t2: get('mo-f-s3t2'),
-    s3major: get('mo-f-s3major'),
-    s3deep: get('mo-f-s3deep'),
-    updated: new Date().toLocaleString('th-TH', { dateStyle: 'short', timeStyle: 'short' })
-  };
-  localStorage.setItem('outlookData', JSON.stringify(outlookData));
-  applyOutlookDisplay();
-  document.getElementById('outlookSaveMsg').style.display = 'block';
-  setTimeout(() => { document.getElementById('outlookSaveMsg').style.display = 'none'; }, 3000);
-}
-
-// Init all
-loadSocialData();
-loadBrokerData();
-loadOutlookData();
+(()=>{const st=document.getElementById('stage');if(!st||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const els=[...st.querySelectorAll('[data-d]')];
+st.parentElement.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+ els.forEach(el=>{const d=+el.dataset.d;el.style.translate=`${-x*d}px ${-y*d}px`})});})();
 </script>
-
-<!-- TOOLS PRO SECTION -->
-<section id="tools-pro" style="padding: clamp(48px,8vw,96px) clamp(16px,4vw,48px); background: linear-gradient(135deg, #130D0D 0%, #1A0A0A 50%, #0D0808 100%); border-top: 1px solid rgba(201,168,76,0.25);">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="reveal" style="text-align:center; margin-bottom:52px;">
-      <div class="section-label" style="justify-content:center; color:var(--gold-light);">Premium Tools & คอร์ส</div>
-      <h2 class="section-title" style="color:white;">ลุงไม่ได้แค่สอน<br><span style="color:var(--gold-light);">ลุงให้เครื่องมือที่ใช้ได้จริง</span></h2>
-      <p class="section-sub" style="color:rgba(255,255,255,0.55); margin:0 auto; text-align:center;">ทุกอย่างที่ลุงขาย ลุงใช้เองในพอร์ตจริง — ทดลองฟรีก่อนตัดสินใจเสมอ</p>
-    </div>
-    <div class="grid-3col" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
-      <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(184,151,42,0.2); border-radius:16px; padding:28px; display:flex; flex-direction:column; gap:16px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(184,151,42,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="font-size:44px;">📊</div>
-        <div>
-          <div style="font-family:Kanit,sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; color:var(--gold-light); text-transform:uppercase; margin-bottom:8px;">Indicator</div>
-          <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:white; line-height:1.3;">ชี้จุดเข้า-ออก<br>อัตโนมัติ</div>
-        </div>
-        <p style="font-size:13px; color:rgba(255,255,255,0.55); font-family:Sarabun,sans-serif; line-height:1.8;">Indicator ที่ลุงพัฒนาและใช้เองทุกวัน ช่วยหาจุด Entry / SL / TP บน XAUUSD โดยเฉพาะ ไม่ต้องนั่งวิเคราะห์เองทั้งวัน</p>
-        <div style="padding-top:12px; border-top:1px solid rgba(255,255,255,0.08);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-            <span style="font-size:11px; background:rgba(22,163,74,0.15); color:#4ade80; border:1px solid rgba(22,163,74,0.2); padding:5px 14px; border-radius:50px; font-family:Kanit,sans-serif; font-weight:700;">🎁 เริ่มต้น Free Trial</span>
-          </div>
-          <div style="font-size:12px; color:rgba(255,255,255,0.35); font-family:Sarabun,sans-serif;">ทักมาใน Line OA เพื่อรับ Trial ได้เลยครับ</div>
-        </div>
-        <a href="#contact" class="btn-outline-white" style="text-align:center; justify-content:center; font-size:14px; padding:11px;">ทักมาขอ Trial ฟรี →</a>
-      </div>
-      <div class="reveal" style="background:linear-gradient(135deg, rgba(184,151,42,0.12), rgba(192,57,43,0.07)); border:1px solid rgba(184,151,42,0.35); border-radius:16px; padding:28px; display:flex; flex-direction:column; gap:16px; position:relative; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(184,151,42,0.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="position:absolute; top:16px; right:16px; background:var(--gold); color:#000; font-size:10px; font-weight:700; padding:4px 10px; border-radius:50px; font-family:Kanit,sans-serif;">⭐ แนะนำ</div>
-        <div style="font-size:44px;">🤖</div>
-        <div>
-          <div style="font-family:Kanit,sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; color:var(--gold-light); text-transform:uppercase; margin-bottom:8px;">EA (Expert Advisor)</div>
-          <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:white; line-height:1.3;">ให้ระบบเทรด<br>แทนคุณ</div>
-        </div>
-        <p style="font-size:13px; color:rgba(255,255,255,0.55); font-family:Sarabun,sans-serif; line-height:1.8;">EA ที่ลุงออกแบบระบบเอง รัน MT4/MT5 ได้เลย มี Logic การจัดการ Risk ในตัว ไม่ต้องนั่งเฝ้าหน้าจอตลอดเวลา</p>
-        <div style="padding-top:12px; border-top:1px solid rgba(184,151,42,0.2);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-            <span style="font-size:11px; background:rgba(22,163,74,0.15); color:#4ade80; border:1px solid rgba(22,163,74,0.2); padding:5px 14px; border-radius:50px; font-family:Kanit,sans-serif; font-weight:700;">🎁 เริ่มต้น Free Trial</span>
-          </div>
-          <div style="font-size:12px; color:rgba(255,255,255,0.35); font-family:Sarabun,sans-serif;">ทักมาใน Line OA เพื่อรับ Trial ได้เลยครับ</div>
-        </div>
-        <a href="#contact" class="btn-gold" style="text-align:center; justify-content:center; font-size:14px; padding:11px;">ทักมาขอ Trial ฟรี →</a>
-      </div>
-      <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(184,151,42,0.2); border-radius:16px; padding:28px; display:flex; flex-direction:column; gap:16px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(184,151,42,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="font-size:44px;">🎓</div>
-        <div>
-          <div style="font-family:Kanit,sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; color:var(--gold-light); text-transform:uppercase; margin-bottom:8px;">คอร์สเรียน</div>
-          <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:white; line-height:1.3;">เรียนจบแล้ว<br>เทรดได้จริง</div>
-        </div>
-        <p style="font-size:13px; color:rgba(255,255,255,0.55); font-family:Sarabun,sans-serif; line-height:1.8;">คอร์สที่ลุงสอนจากประสบการณ์จริง 10+ ปี ไม่มีทฤษฎีลอยๆ เรียนจบแล้วนำไปใช้กับ XAUUSD ได้ทันที มีกลุ่ม support หลังเรียน</p>
-        <div style="padding-top:12px; border-top:1px solid rgba(255,255,255,0.08);">
-          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
-            <div>
-              <div style="font-size:11px; color:rgba(255,255,255,0.35); font-family:Kanit,sans-serif;">เริ่มต้นที่</div>
-              <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:var(--gold-light);">3,000 ฿</div>
-            </div>
-          </div>
-          <div style="display:flex; gap:6px; flex-wrap:wrap;">
-            <span style="font-size:11px; background:rgba(22,163,74,0.15); color:#4ade80; border:1px solid rgba(22,163,74,0.2); padding:4px 10px; border-radius:50px; font-family:Kanit,sans-serif;">📊 ฟรี Indicator</span>
-            <span style="font-size:11px; background:rgba(100,150,255,0.15); color:#88bbff; border:1px solid rgba(100,150,255,0.2); padding:4px 10px; border-radius:50px; font-family:Kanit,sans-serif;">📚 มี Support</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-outline-white" style="text-align:center; justify-content:center; font-size:14px; padding:11px;">ดูรายละเอียดคอร์ส →</a>
-      </div>
-    </div>
-    <div class="reveal" style="margin-top:32px; background:rgba(184,151,42,0.08); border:1px solid rgba(184,151,42,0.25); border-radius:12px; padding:20px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-      <div style="display:flex; align-items:center; gap:16px;">
-        <div style="font-size:36px;">🏦</div>
-        <div>
-          <div style="font-family:Kanit,sans-serif; font-size:15px; font-weight:700; color:white;">เปิดพอร์ตผ่านลุงอัด รับสิทธิพิเศษเพิ่ม</div>
-          <div style="font-size:13px; color:rgba(255,255,255,0.45); font-family:Sarabun,sans-serif; margin-top:2px;">สมัคร Broker ผ่านลิงก์ลุงอัด — ได้รับการ support และ bonus พิเศษจากลุง</div>
-        </div>
-      </div>
-      <a id="broker-ib-btn" href="https://trader.eterwealthpro.com/signup?token=cjoeubabnj0791l" target="_blank" class="btn-gold" style="font-size:14px; padding:11px 24px; white-space:nowrap;">เปิดพอร์ตเลย →</a>
-    </div>
-  </div>
-</section>
-
-<!-- TOOLS SECTION -->
-<section id="tools" style="padding: clamp(48px,8vw,96px) clamp(16px,4vw,48px); background: var(--bg); border-top: 1px solid var(--border);">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="reveal">
-      <div class="section-label">เครื่องมือเทรด</div>
-      <h2 class="section-title">ลุงใช้อะไร ก็แชร์ให้หมด 🛠️</h2>
-      <p class="section-sub">เครื่องมือที่ลุงอัดใช้จริงทุกวัน คัดมาแล้วว่าดี ใช้งานได้จริง</p>
-    </div>
-    <div class="grid-3col" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px;">
-      <a href="https://www.tradingview.com/pricing/?share_your_love=kraingkriwittayaphom" target="_blank" style="text-decoration:none;">
-      <div class="about-card reveal" style="transition-delay:0.1s; flex-direction:column; gap:14px; cursor:pointer;">
-        <div style="font-size:40px;">📊</div>
-        <div>
-          <div class="about-card-title" style="font-size:17px;">TradingView 🔗</div>
-          <div class="about-card-desc">แพลตฟอร์มดูกราฟที่ลุงใช้ทุกวัน ดูแนวรับแนวต้าน วาด Trendline ได้ฟรี</div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
-          <span class="tag gold" style="font-size:11px;">ฟรี</span>
-          <span class="tag" style="font-size:11px;">Web / App</span>
-        </div>
-      </div>
-      </a>
-      <div class="about-card reveal" style="transition-delay:0.2s; flex-direction:column; gap:14px;">
-        <div style="font-size:40px;">💹</div>
-        <div>
-          <div class="about-card-title" style="font-size:17px;">MetaTrader 4/5</div>
-          <div class="about-card-desc">โปรแกรมเทรดหลักสำหรับ XAUUSD ใช้งานง่าย รองรับ EA และ Indicator ครบ</div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
-          <span class="tag gold" style="font-size:11px;">ฟรี</span>
-          <span class="tag" style="font-size:11px;">Desktop / Mobile</span>
-        </div>
-      </div>
-      <a href="calculator.html" style="text-decoration:none;">
-      <div class="about-card reveal" style="transition-delay:0.3s; flex-direction:column; gap:14px; cursor:pointer;">
-        <div style="font-size:40px;">🧮</div>
-        <div>
-          <div class="about-card-title" style="font-size:17px;">Position Size Calculator 🔗</div>
-          <div class="about-card-desc">คำนวณ Lot size + Pip Value สำหรับ XAUUSD โดยเฉพาะ ลุงใช้ทุกออเดอร์ ไม่เดาสุ่ม</div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
-          <span class="tag gold" style="font-size:11px;">✅ ฟรี ใช้ได้เลย</span>
-          <span class="tag" style="font-size:11px;">Position + Pip</span>
-        </div>
-      </div>
-      </a>
-      <a href="https://www.forexfactory.com/calendar" target="_blank" style="text-decoration:none;">
-      <div class="about-card reveal" style="transition-delay:0.4s; flex-direction:column; gap:14px; cursor:pointer;">
-        <div style="font-size:40px;">📅</div>
-        <div>
-          <div class="about-card-title" style="font-size:17px;">Forex Factory Calendar 🔗</div>
-          <div class="about-card-desc">ปฏิทินข่าวเศรษฐกิจ ดูก่อนเทรดทุกครั้ง รู้ก่อนว่าวันไหนตลาดผันผวน</div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
-          <span class="tag gold" style="font-size:11px;">ฟรี</span>
-          <span class="tag" style="font-size:11px;">Web</span>
-        </div>
-      </div>
-      </a>
-      <a id="broker-tools-link" href="https://trader.eterwealthpro.com/signup?token=cjoeubabnj0791l" target="_blank" style="text-decoration:none;">
-      <div class="about-card reveal" style="transition-delay:0.5s; flex-direction:column; gap:14px; cursor:pointer; border:1px solid rgba(184,151,42,0.3);">
-        <div style="font-size:40px;">🏦</div>
-        <div>
-          <div class="about-card-title" style="font-size:17px;">Broker ที่แนะนำ 🔗</div>
-          <div class="about-card-desc">Broker ที่ลุงใช้จริง regulated ปลอดภัย spread ต่ำ ฝาก-ถอนไว คลิกสมัครได้เลย!</div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
-          <span class="tag gold" style="font-size:11px;">✅ แนะนำโดยลุงอัด</span>
-          <span class="tag" style="font-size:11px;">สมัครได้เลย</span>
-        </div>
-      </div>
-      </a>
-      <a href="https://th.investing.com/" target="_blank" style="text-decoration:none;">
-      <div class="about-card reveal" style="transition-delay:0.6s; flex-direction:column; gap:14px; cursor:pointer;">
-        <div style="font-size:40px;">📰</div>
-        <div>
-          <div class="about-card-title" style="font-size:17px;">Investing.com 🔗</div>
-          <div class="about-card-desc">ดูราคาทองแบบ Real-time ข่าวตลาดและ Sentiment ของนักเทรดทั่วโลก</div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
-          <span class="tag gold" style="font-size:11px;">ฟรี</span>
-          <span class="tag" style="font-size:11px;">Web / App</span>
-        </div>
-      </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- LEARN SECTION -->
-<section id="learn" style="padding: clamp(48px,8vw,96px) clamp(16px,4vw,48px); background: linear-gradient(135deg, #130D0D 0%, #0A0808 100%); border-top: 1px solid rgba(201,168,76,0.2);">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="grid-learn" style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
-      <div class="reveal">
-        <div class="section-label">เรียนกับลุงอัด</div>
-        <h2 class="section-title">เรียนแล้ว<br><span style="color:var(--gold)">เทรดได้จริง 👴</span></h2>
-        <p class="section-sub" style="margin-bottom:28px;">ลุงสอนจากประสบการณ์จริง 10+ ปี ไม่มีสไลด์ทฤษฎีลอยๆ เรียนจากกราฟจริง ออเดอร์จริง แล้วนำไปใช้ได้ทันที</p>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <div style="display:flex; align-items:center; gap:12px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:6px;">
-            <span style="font-size:22px;">✅</span>
-            <div>
-              <div style="font-family:Kanit,sans-serif; font-size:14px; font-weight:700; color:var(--text-main);">สอนแบบ 1-on-1 กับลุงโดยตรง</div>
-              <div style="font-size:12px; color:var(--text-muted); font-family:Sarabun,sans-serif;">ถามได้ไม่อั้น ลุงอธิบายจนเข้าใจ</div>
-            </div>
-          </div>
-          <div style="display:flex; align-items:center; gap:12px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:6px;">
-            <span style="font-size:22px;">✅</span>
-            <div>
-              <div style="font-family:Kanit,sans-serif; font-size:14px; font-weight:700; color:var(--text-main);">เรียนผ่าน Chart จริง ออเดอร์จริง</div>
-              <div style="font-size:12px; color:var(--text-muted); font-family:Sarabun,sans-serif;">ไม่มีสไลด์ท่องจำ เรียนจากของจริง</div>
-            </div>
-          </div>
-          <div style="display:flex; align-items:center; gap:12px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:6px;">
-            <span style="font-size:22px;">✅</span>
-            <div>
-              <div style="font-family:Kanit,sans-serif; font-size:14px; font-weight:700; color:var(--text-main);">มือใหม่ถึงมือเก่าเรียนได้หมด</div>
-              <div style="font-size:12px; color:var(--text-muted); font-family:Sarabun,sans-serif;">ปรับระดับตามผู้เรียนแต่ละคน</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal" style="transition-delay:0.2s; display:flex; flex-direction:column; gap:16px;">
-        <div style="background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:12px; padding:28px; position:relative; overflow:hidden;">
-          <div style="position:absolute; top:-20px; right:-20px; font-size:80px; opacity:0.08;">👴</div>
-          <div style="font-family:Kanit,sans-serif; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold-light); margin-bottom:12px;">หลักสูตรที่สอน</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08);">
-              <span style="font-family:Kanit,sans-serif; font-size:14px;">📖 พื้นฐาน Forex &amp; Gold</span>
-              <span style="font-size:11px; color:var(--gold-light); background:rgba(184,151,42,0.15); padding:3px 10px; border-radius:2px;">มือใหม่</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08);">
-              <span style="font-family:Kanit,sans-serif; font-size:14px;">📊 อ่านกราฟ Price Action</span>
-              <span style="font-size:11px; color:#88bbff; background:rgba(100,150,255,0.15); padding:3px 10px; border-radius:2px;">กลาง</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08);">
-              <span style="font-family:Kanit,sans-serif; font-size:14px;">🎯 Entry / SL / TP แม่น</span>
-              <span style="font-size:11px; color:#88bbff; background:rgba(100,150,255,0.15); padding:3px 10px; border-radius:2px;">กลาง</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-family:Kanit,sans-serif; font-size:14px;">🧠 จิตวิทยาการเทรด</span>
-              <span style="font-size:11px; color:#ff9966; background:rgba(255,150,100,0.15); padding:3px 10px; border-radius:2px;">ขั้นสูง</span>
-            </div>
-          </div>
-        </div>
-        <a href="#cta" class="btn-primary" style="justify-content:center; text-align:center;">📩 สนใจเรียน ทักมาหาลุงได้เลย</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL / CONTACT SECTION -->
-<section id="contact" style="padding: clamp(48px,8vw,80px) clamp(16px,4vw,48px); background: var(--bg-alt); border-top: 1px solid var(--border);">
-  <div style="max-width: 1100px; margin: 0 auto; text-align:center;">
-    <div class="reveal">
-      <div class="section-label" style="justify-content:center;">ช่องทางติดต่อ</div>
-      <h2 class="section-title">ติดตามลุงอัดได้ทุกช่องทาง 📲</h2>
-      <p class="section-sub" style="margin: 0 auto 40px; text-align:center;">ลุงอัดอยู่ครบทุกแพลตฟอร์ม ทักมาหาได้เลยครับ</p>
-    </div>
-    <div class="grid-social reveal" style="display:grid; grid-template-columns:repeat(5,1fr); gap:16px; max-width:900px; margin:0 auto;">
-      <a href="https://m.me/1013555458507886" target="_blank" style="text-decoration:none;">
-        <div class="social-card" style="--sc:#1877F2;">
-          <div class="social-icon" style="background:rgba(24,119,242,0.1);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </div>
-          <div class="social-name">Facebook</div>
-          <div class="social-handle">@ลุงอัดซัดกราฟ</div>
-        </div>
-      </a>
-      <a href="https://line.me/R/ti/p/@370dhnry?ts=03121848&oat_content=url" target="_blank" style="text-decoration:none;">
-        <div class="social-card" style="--sc:#06C755;">
-          <div class="social-icon" style="background:rgba(6,199,85,0.1);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="#06C755"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-          </div>
-          <div class="social-name">Line OA</div>
-          <div class="social-handle">@lungad</div>
-        </div>
-      </a>
-      <a href="https://youtube.com/" target="_blank" style="text-decoration:none;">
-        <div class="social-card" style="--sc:#FF0000;">
-          <div class="social-icon" style="background:rgba(255,0,0,0.08);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </div>
-          <div class="social-name">YouTube</div>
-          <div class="social-handle">ลุงอัด ซัดกราฟ</div>
-        </div>
-      </a>
-      <a href="https://tiktok.com/" target="_blank" style="text-decoration:none;">
-        <div class="social-card" style="--sc:#69C9D0;">
-          <div class="social-icon" style="background:rgba(105,201,208,0.08);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-          </div>
-          <div class="social-name">TikTok</div>
-          <div class="social-handle">@lungad_satgraph</div>
-        </div>
-      </a>
-      <a href="https://instagram.com/" target="_blank" style="text-decoration:none;">
-        <div class="social-card" style="--sc:#E1306C;">
-          <div class="social-icon" style="background:rgba(225,48,108,0.08);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="url(#igGrad)"><defs><linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#F58529"/><stop offset="50%" style="stop-color:#E1306C"/><stop offset="100%" style="stop-color:#833AB4"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-          </div>
-          <div class="social-name">Instagram</div>
-          <div class="social-handle">@lungad_satgraph</div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<style>
-.social-card {
-  background: linear-gradient(145deg, #1A1010, #120C0C);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  padding: 28px 16px 20px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.social-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 0%, var(--sc) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.social-card:hover::before { opacity: 0.12; }
-.social-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px color-mix(in srgb, var(--sc) 30%, transparent); border-color: color-mix(in srgb, var(--sc) 60%, transparent); }
-.social-icon { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; }
-.social-card:hover .social-icon { transform: scale(1.15); box-shadow: 0 0 20px color-mix(in srgb, var(--sc) 50%, transparent); }
-.social-name { font-family: Kanit, sans-serif; font-size: 14px; font-weight: 700; color: #F5EDE0; margin-bottom: 4px; position: relative; z-index: 1; }
-.social-handle { font-family: Sarabun, sans-serif; font-size: 11px; color: rgba(255,255,255,0.4); position: relative; z-index: 1; }
-</style>
-
-<!-- CTA -->
-<section id="cta">
-  <div class="cta-bg-pattern"></div>
-  <div class="cta-glow"></div>
-  <div class="cta-inner reveal">
-    <span class="cta-emoji">👴</span>
-    <h2 class="cta-title">ได้เวลาเทรดทองแบบมีระบบ<br><span class="gold">ลุงอัดพร้อมช่วยทุกขั้นตอน</span></h2>
-    <p class="cta-sub">ทักมาหาลุงได้เลย — ไม่ว่าจะอยากทดลองใช้ Tools<br>สนใจคอร์ส หรืออยากเปิดพอร์ต <strong>ลุงดูแลทุกคนเองครับ 🥇</strong></p>
-    <div class="cta-buttons">
-      <button class="btn-gold" onclick="this.textContent='✅ ขอบคุณครับ! ลุงรอนะ 🥇'">👆 FOLLOW ลุงอัดเลย</button>
-      <button class="btn-outline-white" onclick="this.textContent='💬 รอทักมาได้เลยครับ!'">💬 ทักมาหาลุง</button>
-    </div>
-    <p class="cta-small-note">ฟรีทุกอย่าง · ไม่มีขายคอร์ส · ลุงตอบเอง</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">ลุงอัด<span> ซัดกราฟ</span></div>
-  <div class="footer-text" id="secretAdmin" style="cursor:default;">© 2025 ลุงอัด ซัดกราฟ · @lungad_satgraph</div>
-  <div class="footer-tags">
-    <span class="footer-tag g">#ลุงอัดซัดกราฟ</span>
-    <span class="footer-tag g">#XAUUSD</span>
-    <span class="footer-tag">#เทรดทอง</span>
-  </div>
-</footer>
-
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+/* กราฟแท่งเทียนด้านหลัง + ฝุ่นทองลอยขึ้น */
+(()=>{const c=document.getElementById('fx');if(!c)return;const x=c.getContext('2d'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W,H,dpr=Math.min(2,devicePixelRatio||1),cs=[],ps=[],t=0,last=0;
+function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+function seed(){cs=[];let p=.55;for(let i=0;i<40;i++){const o=p;p=Math.min(.85,Math.max(.2,p+(Math.random()-.47)*.08));cs.push({o,c:p,h:Math.min(o,p)-Math.random()*.03,l:Math.max(o,p)+Math.random()*.03})}}
+function dust(){ps.push({x:W*(.2+Math.random()*.6),y:H*.86,v:.3+Math.random()*.7,r:.6+Math.random()*1.6,a:1,w:Math.random()*6.28})}
+size();seed();addEventListener('resize',size);
+function frame(ts){const dt=Math.min(50,ts-last);last=ts;t+=dt;x.clearRect(0,0,W,H);
+ const n=cs.length,bw=W/n,show=rm?n:Math.min(n,t/90);
+ for(let i=0;i<show;i++){const k=cs[i],cx=i*bw+bw/2,up=k.c<k.o,y1=H*k.h,y2=H*k.l,a=.16+.1*(i/n);
+  x.strokeStyle=x.fillStyle=up?`rgba(255,255,255,${a*.8})`:`rgba(227,6,19,${a*1.6})`;
+  x.beginPath();x.moveTo(cx,y1);x.lineTo(cx,y2);x.stroke();
+  const top=H*Math.min(k.o,k.c),hh=Math.max(2,H*Math.abs(k.o-k.c));x.fillRect(cx-bw*.3,top,bw*.6,hh)}
+ if(!rm&&t>90*n+2500){cs.shift();const p=cs[cs.length-1].c,q=Math.min(.85,Math.max(.2,p+(Math.random()-.47)*.08));cs.push({o:p,c:q,h:Math.min(p,q)-Math.random()*.03,l:Math.max(p,q)+Math.random()*.03});t=90*n+1700}
+ if(!rm&&Math.random()<.35)dust();
+ ps=ps.filter(p=>p.a>0);ps.forEach(p=>{p.y-=p.v;p.w+=.03;p.x+=Math.sin(p.w)*.3;p.a-=.004;x.fillStyle=`rgba(255,${190+Math.random()*40|0},90,${p.a*.8})`;x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill()});
+ if(!rm)requestAnimationFrame(frame)}
+requestAnimationFrame(frame)})();
+/* ราคาทองสดบนฐาน (อัปเดตทุก 30 วินาที) */
+(()=>{const tg=document.getElementById('tag'),tp=document.getElementById('tagp'),tc=document.getElementById('tagc');let prev=null,base=null;
+async function get(){try{const r=await fetch('https://api.gold-api.com/price/XAU');if(!r.ok)throw 0;const d=await r.json(),p=+d.price;if(!p)throw 0;
+ if(base===null)base=p;tp.textContent=p.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+ const ch=p-base;tc.textContent=(ch>=0?'▲':'▼')+Math.abs(ch).toFixed(2);tc.style.color=ch>=0?'var(--up)':'#FF4D57';
+ if(prev!==null&&p!==prev){tg.classList.remove('up','dn');void tg.offsetWidth;tg.classList.add(p>prev?'up':'dn');setTimeout(()=>tg.classList.remove('up','dn'),1200)}prev=p}
+ catch(e){if(prev===null)tg.hidden=true}}
+get();setInterval(get,30000)})();
 </script>
-
+<a class="fab" href="https://line.me/R/ti/p/@370dhnry" target="_blank" rel="noopener">ทักไลน์ลุง</a>
 <script>
-function toggleDark() {
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  if (isLight) {
-    document.documentElement.removeAttribute('data-theme');
-    ['darkToggle','darkToggleMob'].forEach(id => { const b = document.getElementById(id); if(b) b.textContent = '🌙'; });
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-    ['darkToggle','darkToggleMob'].forEach(id => { const b = document.getElementById(id); if(b) b.textContent = '☀️'; });
-    localStorage.setItem('theme', 'light');
-  }
-}
-(function(){
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme','light');
-    ['darkToggle','darkToggleMob'].forEach(id => { const b = document.getElementById(id); if(b) b.textContent = '☀️'; });
-  }
+(()=>{const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ตัว "ลุงอัด" เอียง 3D ตามเมาส์ */
+const st=document.getElementById('stage'),mk=st&&st.querySelector('.m-front'),mb=st&&st.querySelector('.m-back');
+if(st&&!rm)st.parentElement.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+ mk.style.transform=`rotateY(${x*22}deg) rotateX(${-y*16}deg)`;mb.style.transform=`translate(${8-x*14}px,${8-y*14}px) rotateY(${x*22}deg) rotateX(${-y*16}deg)`});
+/* เหรียญทองพุ่งตอนกดปุ่มแดง */
+document.querySelectorAll('.btn.p,.fab').forEach(b=>b.addEventListener('click',e=>{if(rm)return;const r=b.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+ for(let i=0;i<12;i++){const c=document.createElement('i');c.className='flyc';c.style.left=cx-11+'px';c.style.top=cy-11+'px';document.body.appendChild(c);
+  const a=Math.random()*Math.PI*2,d=60+Math.random()*90;c.animate([{transform:'translate(0,0) scale(.6)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d-60}px) scale(1) rotate(${Math.random()*360}deg)`,opacity:1,offset:.6},{transform:`translate(${Math.cos(a)*d*1.2}px,${Math.sin(a)*d+120}px) scale(.8)`,opacity:0}],{duration:900+Math.random()*300,easing:'cubic-bezier(.2,.7,.4,1)'}).onfinish=()=>c.remove()}}));
+/* นับเลขขึ้น 10+ ปี / 5 */
+document.querySelectorAll('.proof b').forEach(el=>{const m=el.textContent.match(/^(\d+)(.*)$/);if(!m||rm)return;const n=+m[1],rest=m[2];let t0=null;
+ const step=ts=>{t0??=ts;const p=Math.min(1,(ts-t0)/1200);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+rest;if(p<1)requestAnimationFrame(step)};setTimeout(()=>requestAnimationFrame(step),900)});
+/* ส่วนต่าง ๆ ค่อย ๆ โผล่ตอนเลื่อนลง (เฉพาะส่วนที่อยู่ใต้จอ) */
+if(!rm&&'IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{threshold:.12});
+ document.querySelectorAll('section.sec .sh, section.sec .tool, section.sec .pc, section.sec .steps>div, .cta, .olwrap').forEach((el,i)=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('rv','pre');el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)}})}
 })();
-
-function toggleMenu() {
-  const m = document.getElementById('mobileMenu');
-  m.style.display = m.style.display === 'block' ? 'none' : 'block';
-}
-function closeMenu() { document.getElementById('mobileMenu').style.display = 'none'; }
-document.addEventListener('click', function(e) {
-  const m = document.getElementById('mobileMenu');
-  const h = document.getElementById('hamburger');
-  if (m && h && !m.contains(e.target) && !h.contains(e.target)) m.style.display = 'none';
-});
-
-function toggleContact() {
-  const p = document.getElementById('contactPopup');
-  const b = document.getElementById('contactBtn');
-  const isOpen = p.style.display === 'flex';
-  p.style.display = isOpen ? 'none' : 'flex';
-  b.textContent = isOpen ? '💬' : '✕';
-}
-document.addEventListener('click', function(e) {
-  const f = document.getElementById('contactFloat');
-  if (f && !f.contains(e.target)) {
-    document.getElementById('contactPopup').style.display = 'none';
-    document.getElementById('contactBtn').textContent = '💬';
-  }
-});
-
-let _ac = 0, _at;
-const _sa = document.getElementById('secretAdmin');
-if (_sa) _sa.addEventListener('click', function() {
-  _ac++; clearTimeout(_at);
-  _at = setTimeout(() => _ac = 0, 600);
-  if (_ac >= 3) { _ac = 0; openAdmin(); }
-});
 </script>
-
-<!-- FLOATING CONTACT -->
-<div id="contactFloat" style="position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-  <div id="contactPopup" style="display:none;flex-direction:column;gap:8px;align-items:flex-end;">
-    <a href="https://line.me/R/ti/p/@370dhnry?ts=03121848&oat_content=url" target="_blank" style="display:flex;align-items:center;gap:10px;background:#1A1010;border:1px solid rgba(6,199,85,0.3);border-radius:50px;padding:10px 16px 10px 10px;box-shadow:0 4px 16px rgba(0,0,0,0.1);text-decoration:none;">
-      <div style="width:34px;height:34px;border-radius:50%;background:#06C755;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">💚</div>
-      <div><div style="font-family:Kanit,sans-serif;font-size:13px;font-weight:700;color:#06C755;">Line OA</div><div style="font-family:Sarabun,sans-serif;font-size:11px;color:#888;">@370dhnry · ทักได้เลย</div></div>
-    </a>
-    <a href="https://m.me/1013555458507886" target="_blank" style="display:flex;align-items:center;gap:10px;background:#1A1010;border:1px solid rgba(24,119,242,0.3);border-radius:50px;padding:10px 16px 10px 10px;box-shadow:0 4px 16px rgba(0,0,0,0.1);text-decoration:none;">
-      <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0099FF,#A033FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">💬</div>
-      <div><div style="font-family:Kanit,sans-serif;font-size:13px;font-weight:700;color:#0099FF;">Messenger</div><div style="font-family:Sarabun,sans-serif;font-size:11px;color:#888;">ลุงอัด ซัดกราฟ</div></div>
-    </a>
-    <div style="font-family:Kanit,sans-serif;font-size:10px;font-weight:600;color:rgba(0,0,0,0.4);text-align:right;padding-right:6px;">ช่องทางติดต่อ</div>
-  </div>
-  <button id="contactBtn" onclick="toggleContact()" style="width:54px;height:54px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;box-shadow:0 4px 20px rgba(184,151,42,0.5);font-size:22px;display:flex;align-items:center;justify-content:center;">💬</button>
-</div>
-
 </body>
 </html>
