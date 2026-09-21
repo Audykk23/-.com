@@ -182,7 +182,7 @@ footer .risk{max-width:80ch;margin:0 0 12px}
 
 <div class="tick"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-{"symbols":[{"proName":"OANDA:XAUUSD","title":"ทองคำ"},{"proName":"OANDA:XAGUSD","title":"Silver"},{"proName":"OANDA:EURUSD","title":"EUR/USD"},{"proName":"OANDA:USDJPY","title":"USD/JPY"},{"proName":"OANDA:GBPUSD","title":"GBP/USD"},{"proName":"FX_IDC:USDTHB","title":"USD/THB"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"NASDAQ:NVDA","title":"Nvidia"},{"proName":"NASDAQ:AAPL","title":"Apple"},{"proName":"NASDAQ:MSFT","title":"Microsoft"},{"proName":"NASDAQ:GOOGL","title":"Google"},{"proName":"NASDAQ:AMZN","title":"Amazon"},{"proName":"NASDAQ:META","title":"Meta"},{"proName":"NASDAQ:TSLA","title":"Tesla"}],"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"th_TH"}
+{"symbols":[{"proName":"OANDA:XAUUSD","title":"ทองคำ"},{"proName":"OANDA:XAGUSD","title":"Silver"},{"proName":"FX:EURUSD","title":"EUR/USD"},{"proName":"FX:USDJPY","title":"USD/JPY"},{"proName":"FX:GBPUSD","title":"GBP/USD"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"NASDAQ:NVDA","title":"Nvidia"},{"proName":"NASDAQ:AAPL","title":"Apple"},{"proName":"NASDAQ:MSFT","title":"Microsoft"},{"proName":"NASDAQ:GOOGL","title":"Google"},{"proName":"NASDAQ:AMZN","title":"Amazon"},{"proName":"NASDAQ:META","title":"Meta"},{"proName":"NASDAQ:TSLA","title":"Tesla"}],"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"th_TH"}
 </script></div></div>
 
 <header class="hero"><div class="w">
@@ -384,8 +384,8 @@ async function send(text){text=text.trim();if(!text)return;$('ct').value='';add(
  if(!WORKER_URL){add('assistant','ตอนนี้ลุง AI ยังไม่พร้อม ทักไลน์ลุงโดยตรงก่อนนะ');return}
  const t=document.createElement('div');t.className='m a t';t.textContent='ลุงกำลังพิมพ์…';$('clog').appendChild(t);$('cs').disabled=true;
  try{const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:hist,context:ctx()})});
-  const d=await r.json();t.remove();if(!r.ok||!d.reply)throw 0;add('assistant',d.reply);hist.push({role:'assistant',content:d.reply})}
- catch(e){t.remove();hist.pop();add('assistant','ตอนนี้ลุง AI ตอบไม่ได้ ลองใหม่อีกที หรือทักไลน์ลุงโดยตรงได้เลย')}
+  let d;try{d=await r.json()}catch(x){throw 'ตอบกลับไม่ใช่ JSON (HTTP '+r.status+') — โค้ด Worker อาจยังไม่ได้ Deploy'}t.remove();if(!r.ok||!d.reply)throw ('HTTP '+r.status+' '+(d.error||'')+(d.status?' / AI '+d.status:''));add('assistant',d.reply);hist.push({role:'assistant',content:d.reply})}
+ catch(e){t.remove();hist.pop();console.warn('lungad-chat',e);add('assistant','ตอนนี้ลุง AI ตอบไม่ได้ ลองใหม่อีกที หรือทักไลน์ลุงโดยตรงได้เลย\n[รหัสปัญหา: '+(e&&e.message||e)+']')}
  finally{$('cs').disabled=false}}
 $('cf').onsubmit=e=>{e.preventDefault();send($('ct').value)};
 $('ct').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send($('ct').value)}};
